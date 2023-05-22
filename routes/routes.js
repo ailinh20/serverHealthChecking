@@ -9,10 +9,7 @@ router.post('/post', async (req, res) => {
         temp: req.body.temp,
         sp02: req.body.sp02,
         heartbeat: req.body.heartbeat,
-        year: req.body.year,
-        month: req.body.month,
-        day: req.body.day,
-        time: req.body.time
+        timing: req.body.timing
     })
 
     try {

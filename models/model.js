@@ -13,19 +13,7 @@ const infoSensor = new mongoose.Schema({
         required: true,
         type: Number
     },
-    year: {
-        required: true,
-        type: Number
-    },
-    month: {
-        required: true,
-        type: Number
-    },
-    day: {
-        required: true,
-        type: Number
-    },
-    time: {
+    timing: {
         required: true,
         type: String
     }
