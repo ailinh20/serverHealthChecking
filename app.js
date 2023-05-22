@@ -9,6 +9,7 @@ mongoose.connect(mongoString);
 const database = mongoose.connection
 
 const app = express()
+
 app.use(express.json());
 app.use('/api', routes);
 app.set('view engine', 'ejs'); // Sử dụng ejs làm view engine
