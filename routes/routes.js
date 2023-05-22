@@ -8,7 +8,8 @@ router.post('/post', async (req, res) => {
     const data = new infoSensor({
         temp: req.body.temp,
         sp02: req.body.sp02,
-        heartbeat: req.body.heartbeat
+        heartbeat: req.body.heartbeat,
+        timing: req.body.timing
     })
 
     try {

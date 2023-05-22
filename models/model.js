@@ -13,6 +13,10 @@ const infoSensor = new mongoose.Schema({
         required: true,
         type: Number
     },
+    timing: {
+        required: true,
+        type: String
+    }
 })
 
 module.exports = mongoose.model("infoSensor", infoSensor)
