@@ -1,0 +1,26 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+
+}
+.container {
+    width:70%;
+    margin:0px auto;
+}
+
+.container .title {
+    text-align: center;
+    font-size:40px;
+    margin-bottom: 50px;
+}
+#canvas {
+    width: 100%;
+}
