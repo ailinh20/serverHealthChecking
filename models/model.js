@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const infoSensor = new mongoose.Schema({
-    temp: {
-        required: true,
-        type: Number
-    },
     heartbeat: {
         required: true,
         type: Number
