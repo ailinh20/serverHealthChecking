@@ -6,7 +6,7 @@ const router = express.Router()
 //Post Method
 router.post('/post', async (req, res) => {
     const data = new infoSensor({
-        temp: req.body.temp,
+        age: req.body.age,
         sp02: req.body.sp02,
         heartbeat: req.body.heartbeat,
         timing: req.body.timing
