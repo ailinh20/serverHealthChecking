@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const infoSensor = new mongoose.Schema({
-    temp: {
+    age: {
         required: true,
         type: Number
     },
@@ -13,7 +13,7 @@ const infoSensor = new mongoose.Schema({
         required: true,
         type: Number
     },
-    hour: {
+    timing: {
         required: true,
         type: String
     }

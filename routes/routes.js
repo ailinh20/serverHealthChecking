@@ -2,18 +2,22 @@ const express = require('express');
 const infoSensor = require('../models/model.js');
 
 const router = express.Router()
-
+  
 //Post Method
 router.post('/post', async (req, res) => {
+    if (req.body.age == "") {
+        return res.status(400).json({ message: 'Vui lòng nhập tuổi trước khi gửi dữ liệu' });
+      }
     const data = new infoSensor({
-        temp: req.body.temp,
+        age: req.body.age,
         sp02: req.body.sp02,
         heartbeat: req.body.heartbeat,
-        hour:req.body.hour
+        timing:req.body.timing
     })
 
     try {
         const dataToSave = await data.save();
+        sendUpdateToClients(req.body);
         res.status(200).json(dataToSave)
     }
     catch (error) {
@@ -82,5 +86,10 @@ router.delete('/deleteall', async (req, res) => {
       res.status(500).json({ message: 'Đã xảy ra lỗi khi xóa dữ liệu' });
     }
   });
-  
+router.get('/ws', (req, res) => {
+    wss.handleUpgrade(req, req.socket, Buffer.alloc(0), (ws) => {
+      wss.emit('connection', ws, req);
+    });
+  });
+
 module.exports = router;
