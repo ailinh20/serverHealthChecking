@@ -22,7 +22,7 @@ width: 60%;
     text-align: center;
     margin-top: -70px;
     font-size: 40px;
-    text-shadow: 2px 2px 4px rgba(163, 24, 159, 0.5);
+    text-shadow: 2px 2px 4px rgba(6, 52, 85, 0.5);
 }
 #canvas {
     width: 100%;
@@ -45,15 +45,14 @@ width: 60%;
     position: relative;
   }
 .notification {
-    margin-top: 90px;
-    margin-right: 500px;
+    margin-top: 50px;
+    margin-right: 20px;
     padding: 10px;
-    background-color: #26c90d;
-    color: #780505;
+    color: hsl(0, 0%, 98%);
     border: 1px solid #75c414;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(30, 164, 28, 0.1);
-    font-size: 18px;
+    font-size: 23px;
   }
 
 

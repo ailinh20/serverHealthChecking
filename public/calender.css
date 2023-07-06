@@ -1,11 +1,11 @@
 :root {
-    --dark-text: #f8fbff;
-    --light-body: #f3f8fe;
-    --light-main: #fdfdfd;
-    --light-second: #c3c2c8;
-    --light-hover: #f0f0f0;
+    --dark-text: #adbc25;
+    --light-body: #cc922f;
+    --light-main: #c61616;
+    --light-second: #61b41d;
+    --light-hover: #a3ba09;
     --light-text: #151426;
-    --light-btn: #9796f0;
+    --light-btn: #a11e7a;
     --blue: #0000ff;
     --white: #fff;
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -33,7 +33,7 @@
   } */
   .calendar {
     width: 20%;
-    background-color: white;
+    background-color: rgb(233, 222, 235);
     border-radius: 25px;
     overflow: hidden;
     padding: 10px 20px 0px 20px;
@@ -42,13 +42,13 @@
     box-shadow: var(--shadow);
   }
   .calendar-header {
-    background: #9796f0;
+    background: #bea9bd;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: 10;
     color: var(--white);
-    padding: 10px;
+    padding: 30px;
   }
   .calendar-body {
     pad: 10px;
@@ -146,7 +146,7 @@
   }
   
   .calendar-days .day.clicked {
-    background-color: #fbc7d4;
+    background-color: #ddfbc7;
     color: var(--dark-text);
   }
   .calendar-days div.current-date {
@@ -209,7 +209,7 @@
     font-family: Microsoft JhengHei UI;
     font-size: 1.4rem;
     padding-right: 5%;
-    border-right: 3px solid #9796f0;
+    border-right: 3px solid #ea7c32;
     position: absolute;
     left: -1rem;
   }

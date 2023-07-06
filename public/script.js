@@ -1,6 +1,3 @@
-var age = "25";
-var heart;
-var O2;
 let globalData;
 const labels = [];
 const dataC = {
@@ -38,11 +35,6 @@ const config = {
   },
 };
 
-function calculateAverage(data) {
-  const sum = data.reduce((total, value) => total + value, 0);
-  const average = sum / data.length;
-  return average;
-}
 const canvas = document.getElementById('canvas');
 const chart = new Chart(canvas, config);
 
@@ -66,13 +58,10 @@ function fetchDataAndInitializeChart() {
     .then(response => response.json())
     .then(data => {
       globalData = data;
-      labels.push(...data.map(item => item.timing.substring(11, 19)));
-
+      labels.push(...data.map(item => item.timing.substring(11, 19)));   
       lastTimestamp = data[data.length - 1].timing;
       currentIndex = globalData.length-5;
       end = globalData.length -1;
-      console.log(end);
-      updateHeartAndO2(data.lenght - 1);
       updateChartConfiguration();
 
       setInterval(fetchNewData, 5000); // Tự động cập nhật sau mỗi 5 giây
@@ -80,11 +69,6 @@ function fetchDataAndInitializeChart() {
     .catch(error => {
       console.error('Lỗi khi lấy dữ liệu từ server:', error);
     });
-}
-function updateHeartAndO2(newHeart, newO2) {
-  heart = newHeart;
-  O2 = newO2;
-  document.dispatchEvent(new Event('dataUpdated'));
 }
 
 function fetchNewData() {
@@ -94,8 +78,7 @@ function fetchNewData() {
       if (data.length > 0 && data[data.length - 1].timing !== lastTimestamp) {
         globalData = data;
         currentIndex = globalData.length-5;
-        end = globalData.lenght -1;
-        updateHeartAndO2(data[data.length - 1].heartbeat, data[data.length - 1].sp02);
+        end = globalData.length -1;
         labels.push(data[data.length - 1].timing.substring(11, 19));
 
         updateData(data.length - 1);
@@ -113,12 +96,15 @@ fetchDataAndInitializeChart();
 
 const btnBack = document.getElementById('btnBack');
 btnBack.addEventListener('click', () => {
-  if (currentIndex > 0) {
+  console.log(end-currentIndex);
+  if (currentIndex > 0 && (end-currentIndex== 4)) {
     currentIndex--;
     end --;
+  }
+  else if(currentIndex > 0) currentIndex --;
     updateChartConfiguration();
     updateChart();
-  }
+  
 });
 
 const btnNext = document.getElementById('btnNext');
@@ -145,42 +131,15 @@ function updateChartConfiguration() {
 
   chart.config.data.datasets[0].data = heartbeatData;
   chart.config.data.datasets[1].data = sp02Data;
-
+  let predict = 0;
+console.log("end: "+ end+"current: "+currentIndex);
   chart.update();
-     // Tính trung bình cộng của 5 dữ liệu gần nhất
-     if (end - currentIndex + 1 >= 5) {
-      const recentHeartpData = heartbeatData.slice(-5);
-      const recentSpo2Data = sp02Data.slice(-5);
-  
-      const averageHeart = calculateAverage(recentHeartpData);
-      const averageSpo2 = calculateAverage(recentSpo2Data);
-      updateHeartAndO2(averageHeart, averageSpo2);
-     }
+  const socket = io();
+  socket.emit ('updateEndCurrent', { end, currentIndex});
+  socket.on('prediction', function(data) {
+    predict = data.prediction;
+    //console.log(data.prediction)
+    document.dispatchEvent(new Event('dataUpdated'));
+  });
 }
-// canvas.addEventListener('click', handleChartClick);
-
-// function handleChartClick(event) {
-//   const chartArea = chart.chartArea;
-//   const offsetX = event.clientX - chartArea.left;
-//   const dataIndex = Math.floor((offsetX / chartArea.width) * (chart.data.labels.length - 1));
-//   const barWidth = chartArea.width / (chart.data.labels.length - 1);
-//   if (dataIndex >= 0 && dataIndex < chart.data.labels.length) {
-//     const clickedData = globalData[currentIndex + dataIndex];
-//     const tooltip = document.getElementById('tooltip');
-//     tooltip.style.display = 'block';
-//     const tooltipLeft = chartArea.left + (dataIndex * barWidth);
-//     const tooltipTop = chartArea.top + chart.scales.y.top;
-
-//     tooltip.style.left = tooltipLeft + 'px';
-//     tooltip.style.top = tooltipTop + 'px';
-//     tooltip.textContent = `SpO2: ${clickedData.sp02}, Heartbeat: ${clickedData.heartbeat}`;
-//    // updateHeartAndO2(clickedData.sp02, clickedData.heartbeat);
-//   } else {
-//     document.getElementById('tooltip').style.display = 'none';
-//   }
-// }
-// const myDiv = document.getElementById("myDiv");
-// myDiv.addEventListener("click", function() {
-//   myDiv.classList.toggle("clicked");
-// });
 

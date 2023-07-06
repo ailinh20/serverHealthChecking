@@ -171,17 +171,19 @@ function handleDayClick(day) {
   for (let i = 0; i < globalData.length; i++) {
     if (globalData[i].timing.substring(0, 10) ===selectedDateFormatted) {
       startIndex = i;
+      endIndex = i + 4;
       console.log(startIndex);
       break;
     }
     console.log(startIndex);
   }
-  for (let i = 0; i < globalData.length; i++) {
-    if (globalData[i].timing.substring(0, 10) ===selectedDateFormatted) {
-      endIndex = i;
-      //console.log(endIndex);
-    }
-  }
+
+  // for (let i = 0; i < globalData.length; i++) {
+  //   if (globalData[i].timing.substring(0, 10) ===selectedDateFormatted) {
+  //     endIndex = i;
+  //     //console.log(endIndex);
+  //   }
+  // }
     console.log(endIndex);
     currentIndex = startIndex;
     end = endIndex;

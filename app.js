@@ -1,11 +1,10 @@
 require('dotenv').config();
+require("colors");
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes.js');
-const Model = require('./models/AI.js');
 const infoSensor = require('./models/model.js');
 
-const socketIO = require('socket.io');
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
 
 const mongoString = process.env.DATABASE_URL;
@@ -27,10 +26,44 @@ database.once('connected', () => {
     console.log('Database Connected');
 });
 
+//Socket io
+const http = require('http');
+const server = http.createServer(app);
+const {Server} = require ('socket.io')
+let end = 0;
+let currentIndex = 0;
+const io = new Server(server)
+
+let sp02Data = [];
+let heartbeatData = [];
+
+io.on('connection', (socket) => {
+    console.log ("A client connected");
+    // Lắng nghe sự kiện 'updateEndCurrent' từ client
+    socket.on('updateEndCurrent', (data) => {
+        end = data.end;
+        currentIndex = data.currentIndex;
+
+        let startIndex = currentIndex;
+        let endIndex = end;
+    
+        let selectedSp02Data = sp02Data.slice(startIndex, endIndex + 1);
+        let selectedHeartbeatData = heartbeatData.slice(startIndex, endIndex + 1);
+    
+        let sp02Average = calculateAverage(selectedSp02Data);
+        let heartbeatAverage = calculateAverage(selectedHeartbeatData);
+        console.log("Data of 5 times in a row\n".yellow+"SpO2 Average : ".blue+ sp02Average+"\nHeartbeat Average : ".blue+ heartbeatAverage);
+        let prediction = predict('25', sp02Average, heartbeatAverage);
+        console.log("P : ".green + prediction);
+        io.emit('prediction',{prediction});
+            
+    });
+});
+
 // MQTT
 const host = 'broker.emqx.io';
 const port = '1883';
-const clientId = 'mqttx_c7788f64';//`mqtt_${Math.random().toString(16).slice(3)}`;
+const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
 
 const connectUrl = `mqtt://${host}:${port}`;
 
@@ -73,13 +106,35 @@ client.on('message', (topic, message) => {
         });
 
 })
-
+function calculateAverage(data) {
+    const sum = data.reduce((total, value) => total + value, 0);
+    const average = sum / data.length;
+    return average;
+}
+let predict = (in1, in2, in3) => {
+    const coefficients = [0.0660209726519282, 0.12359479564440112, -0.9142408558355729];
+    const intercept = 73.3259513211596;
+  
+    let prediction = intercept;
+    prediction += coefficients[0] * in1;
+    prediction += coefficients[1] * in2;
+    prediction += coefficients[2] * in3;
+    let P = 1 / (1 + Math.exp(-prediction));
+    return P;
+  };
 app.get('/', async (req, res) => {
-    const data = await infoSensor.find();
-    // Tạo một đối tượng Model
-    res.render('home', { data: data });
-});
-
+    try{
+        const data = await infoSensor.find().exec();
+        sp02Data = data.map(item => item.sp02);
+        heartbeatData = data.map(item => item.heartbeat);
+           
+          res.render('home', { data });
+        } catch (error) {
+          console.error('Error retrieving data from MongoDB:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      });
+        
 app.delete('/api/deleteall', async (req, res) => {
     try {
         await infoSensor.deleteMany({});
@@ -91,32 +146,7 @@ app.delete('/api/deleteall', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-// Tạo kết nối WebSocket
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-    console.log('A client connected');
-
-    // Gửi dữ liệu ban đầu khi có kết nối mới
-    infoSensor.find().then((data) => {
-        socket.emit('data-update', data);
-    });
-
-    // Lắng nghe sự thay đổi trong MongoDB và gửi cập nhật tới tất cả các kết nối WebSocket
-    const changeStream = infoSensor.watch();
-    changeStream.on('change', (change) => {
-        infoSensor.find().then((data) => {
-            io.emit('data-update', data);
-        });
-    });
-
-    // Xử lý khi kết nối WebSocket bị đóng
-    socket.on('disconnect', () => {
-        console.log('A client disconnected');
-        changeStream.close();
-    });
-});
