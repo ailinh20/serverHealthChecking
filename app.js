@@ -94,7 +94,8 @@ client.on('message', (topic, message) => {
 
     //Thời gian hiện tại
     const currentTime = moment();
-    const timing = currentTime.format('YYYY-MM-DD HH:mm:ss');
+    const currentTimeUTC7 = currentTime.utcOffset(7);
+    const timing = currentTimeUTC7.format('YYYY-MM-DD HH:mm:ss');
     console.log(timing.cyan);
 
     const data = new infoSensor({
