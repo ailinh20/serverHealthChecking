@@ -116,7 +116,7 @@ btnNext.addEventListener('click', () => {
     updateChart();
   }
 });
-
+let predict = 0;
 function updateChartConfiguration() {
   const displayedLabels = labels.slice(currentIndex, end+1);
   chart.config.options.scales.x.max = displayedLabels.length - 1;
@@ -131,7 +131,7 @@ function updateChartConfiguration() {
 
   chart.config.data.datasets[0].data = heartbeatData;
   chart.config.data.datasets[1].data = sp02Data;
-  let predict = 0;
+
 console.log("end: "+ end+"current: "+currentIndex);
   chart.update();
   const socket = io();
