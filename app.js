@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
     
         let sp02Average = calculateAverage(selectedSp02Data);
         let heartbeatAverage = calculateAverage(selectedHeartbeatData);
-        let prediction = predict('25', sp02Average, heartbeatAverage);
+        let prediction = predict('21', sp02Average, heartbeatAverage);
         io.emit('prediction',{prediction});            
     });
 });
@@ -53,7 +53,6 @@ io.on('connection', (socket) => {
 const host = 'broker.emqx.io';
 const port = '1883';
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
-
 const connectUrl = `mqtt://${host}:${port}`;
 
 const client = mqtt.connect(connectUrl, {
@@ -107,6 +106,7 @@ client.on('message', (topic, message) => {
     data.save()
         .then(() => {
             console.log('Data saved to MongoDB'.green.bold);
+            io.emit('newData', data);
         })
         .catch((error) => {
             console.error(error);
@@ -121,8 +121,8 @@ function calculateAverage(data) {
     return average;
 }
 let predict = (in1, in2, in3) => {
-    const coefficients = [0.0660209726519282, 0.12359479564440112, -0.9142408558355729];
-    const intercept = 73.3259513211596;
+    const coefficients = [-0.18952351634421533, -0.01859829227504317, 6.072414290817279e-05];
+    const intercept = -0.002527506580184905;
   
     let prediction = intercept;
     prediction += coefficients[0] * in1;

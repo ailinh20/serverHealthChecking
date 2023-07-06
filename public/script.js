@@ -64,33 +64,27 @@ function fetchDataAndInitializeChart() {
       end = globalData.length -1;
       updateChartConfiguration();
 
-      setInterval(fetchNewData, 5000); // Tự động cập nhật sau mỗi 5 giây
+      //setInterval(fetchNewData, 5000); // Tự động cập nhật sau mỗi 5 giây
     })
     .catch(error => {
       console.error('Lỗi khi lấy dữ liệu từ server:', error);
     });
 }
 
-function fetchNewData() {
-  fetch('/api')
-    .then(response => response.json())
-    .then(data => {
-      if (data.length > 0 && data[data.length - 1].timing !== lastTimestamp) {
-        globalData = data;
-        currentIndex = globalData.length-5;
-        end = globalData.length -1;
-        labels.push(data[data.length - 1].timing.substring(11, 19));
+const socket = io();
 
-        updateData(data.length - 1);
-        lastTimestamp = data[data.length - 1].timing;
+socket.on('newData', function(data) {
+    globalData.push(data);
+    currentIndex = globalData.length - 5;
+    end = globalData.length - 1;
+    labels.push(data.timing.substring(11, 19));
 
-        updateChartConfiguration();
-      }
-    })
-    .catch(error => {
-      console.error('Lỗi khi lấy dữ liệu từ server:', error);
-    });
-}
+    updateData(globalData.length - 1);
+    lastTimestamp = data.timing;
+
+    updateChartConfiguration();
+});
+
 
 fetchDataAndInitializeChart();
 
