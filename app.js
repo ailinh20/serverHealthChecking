@@ -78,8 +78,8 @@ client.on('connect', () => {
 client.on('message', (topic, message) => {
     //message is a Buffer
     let strMessage = message.toString();
-    console.log("********".cyan);
-    console.log(strMessage.cyan);
+    console.log("********".cyan.bold);
+    console.log(strMessage.cyan.bold);
 
     //Split messsage
     let dataArray = strMessage.split("\n");
@@ -96,7 +96,7 @@ client.on('message', (topic, message) => {
     const currentTime = moment();
     const currentTimeUTC7 = currentTime.utcOffset(7);
     const timing = currentTimeUTC7.format('YYYY-MM-DD HH:mm:ss');
-    console.log(timing.cyan);
+    console.log(`Timing: ${timing}`.cyan.bold);
 
     const data = new infoSensor({
       age: "21",
@@ -106,7 +106,7 @@ client.on('message', (topic, message) => {
   })
     data.save()
         .then(() => {
-            console.log('Data saved to MongoDB'.green);
+            console.log('Data saved to MongoDB'.green.bold);
         })
         .catch((error) => {
             console.error(error);
