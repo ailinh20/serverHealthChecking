@@ -2,14 +2,14 @@ require('dotenv').config();
 require("colors");
 const express = require('express');
 const mongoose = require('mongoose');
+const moment = require('moment');
 const routes = require('./routes/routes.js');
 const infoSensor = require('./models/model.js');
+const DBConnection = require("./config/db");
 
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
 
-const mongoString = process.env.DATABASE_URL;
-mongoose.connect(mongoString);
-const database = mongoose.connection;
+DBConnection();
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
@@ -17,14 +17,6 @@ app.use(express.static(__dirname + '/models'));
 app.use(express.json());
 app.use('/api', routes);
 app.set('view engine', 'ejs'); // Sử dụng ejs làm view engine
-
-database.on('error', (error) => {
-    console.log(error);
-});
-
-database.once('connected', () => {
-    console.log('Database Connected');
-});
 
 //Socket io
 const http = require('http');
@@ -38,7 +30,7 @@ let sp02Data = [];
 let heartbeatData = [];
 
 io.on('connection', (socket) => {
-    console.log ("A client connected");
+    console.log ("A client connected".yellow);
     // Lắng nghe sự kiện 'updateEndCurrent' từ client
     socket.on('updateEndCurrent', (data) => {
         end = data.end;
@@ -52,11 +44,8 @@ io.on('connection', (socket) => {
     
         let sp02Average = calculateAverage(selectedSp02Data);
         let heartbeatAverage = calculateAverage(selectedHeartbeatData);
-        console.log("Data of 5 times in a row\n".yellow+"SpO2 Average : ".blue+ sp02Average+"\nHeartbeat Average : ".blue+ heartbeatAverage);
         let prediction = predict('25', sp02Average, heartbeatAverage);
-        console.log("P : ".green + prediction);
-        io.emit('prediction',{prediction});
-            
+        io.emit('prediction',{prediction});            
     });
 });
 
@@ -71,41 +60,60 @@ const client = mqtt.connect(connectUrl, {
     clientId,
     clean: true,
     connectTimeout: 4000,
-    username: 'emqx',
-    password: 'public',
+    username: '',
+    password: '',
     reconnectPeriod: 1000,
 });
 
-const topic = '/CE232_PUB';
+const topic = 'CE232_PUB';
 
 client.on('connect', () => {
-    console.log('MQTT Connected');
+    console.log('MQTT Connected'.cyan.bold.underline);
 
     client.subscribe([topic], () => {
-        console.log(`Subscribe to topic '${topic}'`);
+        console.log(`Subscribe to topic '${topic}'`.blue.bold.underline);
     });
 });
 
 client.on('message', (topic, message) => {
     //message is a Buffer
     let strMessage = message.toString();
-    let objMessage = JSON.parse(strMessage);
-    console.log(objMessage);
+    console.log("********".cyan);
+    console.log(strMessage.cyan);
+
+    //Split messsage
+    let dataArray = strMessage.split("\n");
+
+    // Lấy giá trị Heart beat rate từ phần tử thứ nhất trong mảng
+    let heartbeatString = dataArray[0].split(":")[1].trim();
+    let heartbeat = parseFloat(heartbeatString);
+    
+    // Lấy giá trị SpO2 từ phần tử thứ hai trong mảng
+    let sp02String = dataArray[1].split(":")[1].trim();
+    let sp02 = parseFloat(sp02String);
+
+    //Thời gian hiện tại
+    const currentTime = moment();
+    const timing = currentTime.format('YYYY-MM-DD HH:mm:ss');
+    console.log(timing.cyan);
+
     const data = new infoSensor({
-      age: "25",
-      sp02: objMessage.sp02,
-      heartbeat: objMessage.heartbeat,
-      timing: objMessage.timing
+      age: "21",
+      sp02: sp02,
+      heartbeat: heartbeat,
+      timing: timing
   })
     data.save()
         .then(() => {
-            console.log('Message saved to MongoDB');
+            console.log('Data saved to MongoDB'.green);
         })
         .catch((error) => {
             console.error(error);
         });
 
 })
+
+//AI
 function calculateAverage(data) {
     const sum = data.reduce((total, value) => total + value, 0);
     const average = sum / data.length;
@@ -134,16 +142,6 @@ app.get('/', async (req, res) => {
           res.status(500).json({ error: 'Internal Server Error' });
         }
       });
-        
-app.delete('/api/deleteall', async (req, res) => {
-    try {
-        await infoSensor.deleteMany({});
-        res.status(200).json({ message: 'Dữ liệu đã được xóa thành công' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Đã xảy ra lỗi khi xóa dữ liệu' });
-    }
-});
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
