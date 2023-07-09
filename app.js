@@ -121,14 +121,15 @@ function calculateAverage(data) {
     return average;
 }
 let predict = (in1, in2, in3) => {
-    const coefficients = [-0.18952351634421533, -0.01859829227504317, 6.072414290817279e-05];
-    const intercept = -0.002527506580184905;
+    const coefficients = [0.029465744785904115, 0.10402460016684321, -0.9404549381606107];
+    const intercept = 78.83459280396039;
   
     let prediction = intercept;
     prediction += coefficients[0] * in1;
     prediction += coefficients[1] * in2;
     prediction += coefficients[2] * in3;
     let P = 1 / (1 + Math.exp(-prediction));
+    console.log(P);
     return P;
   };
 app.get('/', async (req, res) => {

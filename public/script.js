@@ -28,7 +28,7 @@ const config = {
         ticks: {
           display: true,
           pointRadius: 4,
-          color: 'rgba(0, 0, 0, 1)', // Đặt màu sắc của các điểm trên trục hoành
+          color: 'rgba(0, 0, 0, 1)', 
         },
       },
     },
