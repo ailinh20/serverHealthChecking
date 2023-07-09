@@ -40,11 +40,16 @@ io.on('connection', (socket) => {
         let endIndex = end;
     
         let selectedSp02Data = sp02Data.slice(startIndex, endIndex + 1);
+        console.log(selectedSp02Data);
+        
         let selectedHeartbeatData = heartbeatData.slice(startIndex, endIndex + 1);
-    
+        console.log(selectedHeartbeatData);
         let sp02Average = calculateAverage(selectedSp02Data);
         let heartbeatAverage = calculateAverage(selectedHeartbeatData);
-        let prediction = predict('21', sp02Average, heartbeatAverage);
+        console.log("TB_SP02:= "+sp02Average);
+        console.log("TB_HEARTBEAT: =" +heartbeatAverage);
+        let prediction = predict('21', heartbeatAverage, sp02Average);
+        console.log(prediction);
         io.emit('prediction',{prediction});            
     });
 });
@@ -129,7 +134,6 @@ let predict = (in1, in2, in3) => {
     prediction += coefficients[1] * in2;
     prediction += coefficients[2] * in3;
     let P = 1 / (1 + Math.exp(-prediction));
-    console.log(P);
     return P;
   };
 app.get('/', async (req, res) => {

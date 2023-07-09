@@ -63,7 +63,7 @@ function fetchDataAndInitializeChart() {
       currentIndex = globalData.length-5;
       end = globalData.length -1;
       updateChartConfiguration();
-
+      
       //setInterval(fetchNewData, 5000); // Tự động cập nhật sau mỗi 5 giây
     })
     .catch(error => {
@@ -127,13 +127,13 @@ function updateChartConfiguration() {
   chart.config.data.datasets[1].data = sp02Data;
 
 console.log("end: "+ end+"current: "+currentIndex);
+socket.emit ('updateEndCurrent', { end, currentIndex});
+socket.on('prediction', function(data) {
+  predict = data.prediction;
+  //console.log(data.prediction)
+  document.dispatchEvent(new Event('dataUpdated'));
+});
   chart.update();
-  const socket = io();
-  socket.emit ('updateEndCurrent', { end, currentIndex});
-  socket.on('prediction', function(data) {
-    predict = data.prediction;
-    //console.log(data.prediction)
-    document.dispatchEvent(new Event('dataUpdated'));
-  });
+  
 }
 
