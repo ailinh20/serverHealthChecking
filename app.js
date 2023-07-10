@@ -3,20 +3,17 @@ require("colors");
 const express = require('express');
 const mongoose = require('mongoose');
 const moment = require('moment');
-const routes = require('./routes/routes.js');
 const infoSensor = require('./models/model.js');
-const DBConnection = require("./config/db");
-
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
-
-DBConnection();
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/models'));
 app.use(express.json());
-app.use('/api', routes);
 app.set('view engine', 'ejs'); // Sử dụng ejs làm view engine
+
+//connect MongoDB
+const DBConnection = require("./config/db");
+DBConnection();
 
 //Socket io
 const http = require('http');
@@ -60,7 +57,7 @@ const port = '1883';
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
 const connectUrl = `mqtt://${host}:${port}`;
 
-const client = mqtt.connect(connectUrl, {
+const clientMqtt = mqtt.connect(connectUrl, {
     clientId,
     clean: true,
     connectTimeout: 4000,
@@ -71,15 +68,15 @@ const client = mqtt.connect(connectUrl, {
 
 const topic = 'CE232_PUB';
 
-client.on('connect', () => {
+clientMqtt.on('connect', () => {
     console.log('MQTT Connected'.cyan.bold.underline);
 
-    client.subscribe([topic], () => {
+    clientMqtt.subscribe([topic], () => {
         console.log(`Subscribe to topic '${topic}'`.blue.bold.underline);
     });
 });
 
-client.on('message', (topic, message) => {
+clientMqtt.on('message', (topic, message) => {
     //message is a Buffer
     let strMessage = message.toString();
     console.log("********".cyan.bold);
@@ -119,7 +116,6 @@ client.on('message', (topic, message) => {
         .catch((error) => {
             console.error(error);
         });
-
 })
 
 //AI
@@ -139,6 +135,8 @@ let predict = (in1, in2, in3) => {
     let P = 1 / (1 + Math.exp(-prediction));
     return P;
   };
+
+//Web app
 app.get('/', async (req, res) => {
     try{
         const data = await infoSensor.find().exec();
