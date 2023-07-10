@@ -150,6 +150,16 @@ app.get('/', async (req, res) => {
         }
       });
 
+app.get('/api/getall', async (req, res) => {
+    try{
+        const data = await infoSensor.find();
+        res.json(data)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

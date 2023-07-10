@@ -54,7 +54,7 @@ function updateData(index) {
 }
 
 function fetchDataAndInitializeChart() {
-  fetch('/api')
+  fetch('/api/getall')
     .then(response => response.json())
     .then(data => {
       globalData = data;
