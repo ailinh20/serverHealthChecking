@@ -129,8 +129,8 @@ function calculateAverage(data) {
     return average;
 }
 let predict = (in1, in2, in3) => {
-    const coefficients = [0.029465744785904115, 0.10402460016684321, -0.9404549381606107];
-    const intercept = 78.83459280396039;
+    const coefficients = [0.08548920334542164, 0.10159895551625349, -0.9682936444948846];
+    const intercept = 79.32097643456484;
   
     let prediction = intercept;
     prediction += coefficients[0] * in1;
