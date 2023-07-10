@@ -111,6 +111,9 @@ client.on('message', (topic, message) => {
     data.save()
         .then(() => {
             console.log('Data saved to MongoDB'.green.bold);
+            sp02Data.push(data.sp02);
+            heartbeatData.push(data.heartbeat);
+
             io.emit('newData', data);
         })
         .catch((error) => {
