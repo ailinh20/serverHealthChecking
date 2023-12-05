@@ -33,6 +33,7 @@
   } */
   .calendar {
     width: 20%;
+    height: min-content;
     background-color: rgb(233, 222, 235);
     border-radius: 25px;
     overflow: hidden;
@@ -95,9 +96,9 @@
   }
   .month-picker:hover {
     background-color: var(--color-hover);
-  }
-  .month-picker:hover {
     color: var(--color-txt);
+    transform: scale(1.2);
+    transition: all .2s ease-in-out;
   }
   .year-picker {
     display: flex;
@@ -134,12 +135,13 @@
   .calendar-days div span {
     position: absolute;
   }
-   /* .calendar-days div:hover {
+  .calendar-days div:hover {
     transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-    background-color: #fbc7d4;
+    /* background-color: #fbc7d4; */
     border-radius: 20%;
-    color: var(--dark-text);
-  } */
+    /* color: var(--dark-text); */
+    border: 1px solid #151426;
+  }
   .calendar-days .day {
     transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
     border-radius: 20%;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,9 +20,10 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <div class="chart-container"></div>   
+    <div class="chart-container"></div>
     <div class="title">BIỂU ĐỒ NHỊP TIM VÀ SpO2</div>
     <div class="Line_chart"></div>
     <canvas id="canvas"></canvas>
@@ -37,7 +39,7 @@
       <span class="month-picker" id="month-picker">May</span>
       <div class="year-picker" id="year-picker">
         <span class="year-change" id="pre-year">
-          <pre></pre>
+          <pre><</pre>
         </span>
         <span id="year">2020</span>
         <span class="year-change" id="next-year">
@@ -70,15 +72,15 @@
     <div class="month-list"></div>
   </div>
   <div class="calendar-days">
-    
-  </div>  
+
+  </div>
   <script>
-    document.addEventListener('dataUpdated', function() {
+    document.addEventListener('dataUpdated', function () {
       const alertMessage = predict > 0.5 ? 'Có nguy cơ bị bệnh tim' : 'Không có nguy cơ bị bệnh tim';
 
       const notificationElement = document.getElementById('notification');
       notificationElement.textContent = alertMessage;
-      
+
     });
   </script>
   <div id="tooltip" style="position: absolute; display: none;"></div>
@@ -87,4 +89,5 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
   <script src="/script.js"></script>
 </body>
+
 </html>
