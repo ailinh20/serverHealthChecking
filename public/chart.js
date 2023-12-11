@@ -7,9 +7,9 @@ const dataH = {
   datasets: [
     {
       label: 'Nhịp tim',
-      backgroundColor: 'red',
-      borderColor: 'red',
       data: [],
+      backgroundColor: '#fc5d57',
+      borderColor: '#fc5d57',
       tension: 0.4
     }
   ]
@@ -20,8 +20,8 @@ const dataS = {
   datasets: [
     {
       label: 'SpO2',
-      backgroundColor: 'green',
-      borderColor: 'green',
+      backgroundColor: '#57fc72',
+      borderColor: '#57fc72',
       data: [],
       tension: 0.4,
     }
@@ -36,7 +36,6 @@ const configH = {
         ticks: {
           display: true,
           pointRadius: 4,
-          color: 'rgba(0, 0, 0, 1)', 
         },
       },
     },
@@ -52,12 +51,14 @@ const configS = {
         ticks: {
           display: true,
           pointRadius: 4,
-          color: 'rgba(0, 0, 0, 1)', 
         },
       },
     },
   },
 };
+
+Chart.defaults.color = '#ffffff';
+Chart.defaults.borderColor = '#ffffff';
 
 const canvasH = document.getElementById('canvasH');
 const canvasS = document.getElementById('canvasS');
