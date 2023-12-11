@@ -20,8 +20,8 @@ const dataS = {
   datasets: [
     {
       label: 'SpO2',
-      backgroundColor: '#57fc72',
-      borderColor: '#57fc72',
+      backgroundColor: '#5793fc',
+      borderColor: '#5793fc',
       data: [],
       tension: 0.4,
     }
@@ -57,8 +57,8 @@ const configS = {
   },
 };
 
-Chart.defaults.color = '#ffffff';
-Chart.defaults.borderColor = '#ffffff';
+Chart.defaults.color = '#484459';
+Chart.defaults.borderColor = '#484459';
 
 const canvasH = document.getElementById('canvasH');
 const canvasS = document.getElementById('canvasS');
@@ -91,6 +91,7 @@ function fetchDataAndInitializeChart() {
       currentIndex = globalData.length-5;
       end = globalData.length -1;
       updateChartConfiguration();
+      
     })
     .catch(error => {
       console.error('Lỗi khi lấy dữ liệu từ server:', error);
