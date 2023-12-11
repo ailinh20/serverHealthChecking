@@ -27,5 +27,8 @@
   },
   "engines": {
     "node": ">=14 <15"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.41"
   }
 }

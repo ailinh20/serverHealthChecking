@@ -9,7 +9,8 @@ const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
-app.set('view engine', 'ejs'); // Sử dụng ejs làm view engine
+app.set('view engine', 'html'); // Sử dụng ejs làm view engine
+app.engine('html', require('ejs').renderFile);
 
 //connect MongoDB
 const DBConnection = require("./config/db");
@@ -137,18 +138,23 @@ let predict = (in1, in2, in3) => {
   };
 
 //Web app
-app.get('/', async (req, res) => {
-    try{
-        const data = await infoSensor.find().exec();
-        sp02Data = data.map(item => item.sp02);
-        heartbeatData = data.map(item => item.heartbeat);
-           
-          res.render('home', { data });
-        } catch (error) {
-          console.error('Error retrieving data from MongoDB:', error);
-          res.status(500).json({ error: 'Internal Server Error' });
-        }
-      });
+app.get('/', async (req, res) => 
+{
+    try
+    {
+    const data = await infoSensor.find().exec();
+    sp02Data = data.map(item => item.sp02);
+    heartbeatData = data.map(item => item.heartbeat);
+    res.render('home', { data });
+    } 
+    
+    catch(error) 
+    {
+        console.error('Error retrieving data from MongoDB:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+);
 
 app.get('/api/getall', async (req, res) => {
     try{

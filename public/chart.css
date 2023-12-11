@@ -1,0 +1,92 @@
+.notification {
+  background-color: #c1501b;
+  padding: 10px;
+  background-size: contain;
+  top: 0px;
+}
+#calendar.hidden {
+  display: none;
+}
+
+.chart {
+  width: 80%;
+  height: 60%;
+}
+
+.title {
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  font-size: 40px;
+  text-shadow: 2px 2px 4px rgba(6, 52, 85, 0.5);
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+#tooltip {
+  position: fixed;
+  display: none;
+  background-color: #556B2F;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 999;
+}
+.header {
+  display: flex;
+  align-items:center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.watch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+}
+
+#weather-info {
+  color: rgb(237, 23, 8);
+  font-size: 16px;
+  font-weight: bold;
+}
+@media only screen and (min-width: 801px) {
+  .title[id=canH],
+  .title[id=canS]{
+    float: left;
+  }
+  .chart {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 800px){
+  .title {
+    font-size: 28px;
+    width: 100%;
+  }
+  .chart {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 16px;
+    width: 100%;
+  }
+  .chart {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+  

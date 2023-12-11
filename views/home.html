@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health_web</title>
+  <link rel="stylesheet" href="chart.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function() {
+      const datePicker = $("#dob");
+
+      datePicker.datepicker({
+        dateFormat: 'yy-mm-dd', // Set the desired date format
+        onSelect: function(dateText, inst) {
+          const selectedDate = new Date(dateText);
+          const day = selectedDate.getDate();
+          handleDayClick(day);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div style="width: 100%;"> 
+    <div class="header">
+      <img class="today-icon" src="/images/today.png" alt="Today Icon">
+      <div class="watch">
+        <canvas id="canvas" width="170%" height="170%" ></canvas>
+        <div id="weather-info"></div>
+      </div>
+    </div>    
+
+    <div class="notification" id="notification" style="width: 20%; margin-top: 0; float: right;"></div>
+    <div class="chart" style="float: right;">
+      <div style="width: 100%;">  
+        <div class="title" id="canH">NHỊP TIM
+          <canvas id="canvasH"></canvas>
+        </div>
+        <div class="title" id="canS">SpO2
+          <canvas id="canvasS"></canvas>
+        </div>
+      </div>
+      <button id="btnBack">Back</button>
+      <button id="btnNext">Next</button>
+      </div>
+    </div>
+    <div style="margin-top: 3%;">
+      <label for="dob" style="background-color: orange; padding: 4px;">Ngày theo dõi:</label>
+      <input type="text" id="dob" name="dob">
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('dataUpdated', function() {
+      const alertMessage = predict > 0.5 ? 'Có nguy cơ bị bệnh tim' : 'Không có nguy cơ bị bệnh tim';
+      const notificationElement = document.getElementById('notification');
+      notificationElement.textContent = alertMessage; 
+    });
+  </script>
+  <div id="tooltip" style="position: absolute; display: none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="time.js"></script>
+  <script src="calender.js"></script>
+  <script src="chart.js"></script>
+  <script src="weather.js"></script>
+</body>
+</html>
