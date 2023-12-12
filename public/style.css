@@ -75,6 +75,7 @@ body {
   background-color: antiquewhite; 
   width: 30%;
   float: right;
+  border-radius: 10px;
 }
 
 #ngaytheodoi {
@@ -217,7 +218,7 @@ body {
   border: 3px solid #8d7dd8;
   background-color: #aba2d355;
   color: #484459;
-  width: 70px;
+  width: 90px;
   font-size: medium;
   font-weight: bold;
 }

@@ -47,7 +47,7 @@
           <input type="text" id="dob" name="dob">
         </div>
         <div class="yourhealth" style="margin-left: 60%;">
-          <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">How is your health today?</div>
+          <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức khỏe bạn hôm nay thế nào?</div>
           <div id="stat" style="float: right;">
             <section id="bpm-display-container">
               <div id="bpm-display">
@@ -63,7 +63,8 @@
               </div>
             </section>
           </div>
-          <div id="notification" class="text-animation"></div>
+          <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div>
+          <div id="notification" class="text-animation" style="width: 90%; height: 80%;"></div>
         </div>
       </div>
 
@@ -78,8 +79,8 @@
             <canvas id="canvasS"></canvas>
           </div>
         </div>
-        <button id="btnBack">Back</button>
-        <button id="btnNext">Next</button>
+        <button id="btnBack">Trước đó</button>
+        <button id="btnNext">Sau đó</button>
       </div>
     </div>
   </div>
@@ -89,11 +90,14 @@
     document.addEventListener('dataUpdated', function () {
       const alertMessage = predict > 0.5 ? 'Có nguy cơ bị bệnh tim' : 'Không có nguy cơ bị bệnh tim';
       const notificationElement = document.getElementById('notification');
+      const faceEmojiElement = document.getElementById('face-emoji');
 
       if (predict > 0.5) {
         notificationElement.classList.add('text-animation');
+        faceEmojiElement.textContent = '😢😢😢';
       } else {
         notificationElement.classList.remove('text-animation');
+        faceEmojiElement.textContent = '😊😊😊'; 
       }
       notificationElement.textContent = alertMessage;
     });

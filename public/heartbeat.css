@@ -64,7 +64,8 @@
 #bpm-display label {
   font-size: 0.6rem;
   text-transform: uppercase;
-  color: rgb(201, 18, 201);
+  color: rgb(15, 41, 210);
+  font-weight: bolder;
 }
 
 #bpm-value {
@@ -85,7 +86,8 @@
 #spo2-display label {
   font-size: 0.6rem;
   text-transform: uppercase;
-  color: rgb(201, 18, 201);
+  color: rgb(15, 41, 210);
+  font-weight: bolder;
 }
 
 #spo2-value {
