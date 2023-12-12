@@ -42,8 +42,8 @@
 #bpm-display-container {
   height: 5vw;
   width: 5vw;
-  max-width: 10vw;
-  max-height: 10vw;
+  max-width: 8vw;
+  max-height: 8vw;
   margin: 0 auto;
   border: 9px solid var(--graph-color);
   border-radius: 100%;

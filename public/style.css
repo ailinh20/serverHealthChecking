@@ -71,6 +71,11 @@ body {
   justify-content: left;
   align-items: center;
 }
+.yourhealth {
+  background-color: antiquewhite; 
+  width: 30%;
+  float: right;
+}
 
 #ngaytheodoi {
   /* padding: 1%; */
@@ -93,7 +98,7 @@ body {
   border: 3px solid #8d7dd8;
   border-radius: 5px;
   font-weight: bold;
-  width: 60px;
+  width: 70px;
 }
 
 #stat {
