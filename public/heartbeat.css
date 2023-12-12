@@ -51,7 +51,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0em auto 3em auto;
+  margin: 0em auto 0 auto;
   cursor: pointer;
   transition: border-color var(--transition-duration), transform var(--transition-duration);
   animation: pulseAnimation 1s infinite;

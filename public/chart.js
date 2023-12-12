@@ -94,7 +94,7 @@ const canvasS = document.getElementById('canvasS');
 const chartH = new Chart(canvasH, configH);
 const chartS = new Chart(canvasS, configS);
 
-let currentIndex =0;
+let currentIndex = 0;
 let end = 0;
 let lastTimestamp = null;
 
@@ -114,13 +114,13 @@ function fetchDataAndInitializeChart() {
     .then(response => response.json())
     .then(data => {
       globalData = data;
-      labelH.push(...data.map(item => item.timing.substring(11, 19)));   
-      labelS.push(...data.map(item => item.timing.substring(11, 19)));   
+      labelH.push(...data.map(item => item.timing.substring(11, 19)));
+      labelS.push(...data.map(item => item.timing.substring(11, 19)));
       lastTimestamp = data[data.length - 1].timing;
-      currentIndex = globalData.length-5;
-      end = globalData.length -1;
+      currentIndex = globalData.length - 5;
+      end = globalData.length - 1;
       updateChartConfiguration();
-      
+
     })
     .catch(error => {
       console.error('Lỗi khi lấy dữ liệu từ server:', error);
@@ -129,29 +129,29 @@ function fetchDataAndInitializeChart() {
 
 const socket = io();
 
-socket.on('newData', function(data) {
-    globalData.push(data);
-    currentIndex = globalData.length - 5;
-    end = globalData.length - 1;
-    labelH.push(data.timing.substring(11, 19));
-    labelS.push(data.timing.substring(11, 19));
-    updateData(globalData.length - 1);
-    lastTimestamp = data.timing;
-    updateChartConfiguration();
+socket.on('newData', function (data) {
+  globalData.push(data);
+  currentIndex = globalData.length - 5;
+  end = globalData.length - 1;
+  labelH.push(data.timing.substring(11, 19));
+  labelS.push(data.timing.substring(11, 19));
+  updateData(globalData.length - 1);
+  lastTimestamp = data.timing;
+  updateChartConfiguration();
 });
 
 fetchDataAndInitializeChart();
 
 const btnBack = document.getElementById('btnBack');
 btnBack.addEventListener('click', () => {
-  if (currentIndex > 0 && (end-currentIndex == 4)) {
+  if (currentIndex > 0 && (end - currentIndex == 4)) {
     currentIndex--;
-    end --;
+    end--;
   }
-  else if(currentIndex > 0) currentIndex --;
-    updateChartConfiguration();
-    updateChart();
-  
+  else if (currentIndex > 0) currentIndex--;
+  updateChartConfiguration();
+  updateChart();
+
 });
 
 const btnNext = document.getElementById('btnNext');
@@ -167,15 +167,15 @@ btnNext.addEventListener('click', () => {
 function handleDayClick(day) {
   const selectedDate = $("#dob").datepicker("getDate");
   const selectedDateFormatted = new Date(selectedDate.getTime() - selectedDate.getTimezoneOffset() * 60000)
-  .toISOString()
-  .split('T')[0];
-  
+    .toISOString()
+    .split('T')[0];
+
   let startIndex = -1;
   let endIndex = -1;
   console.log(globalData[10].timing.substring(0, 10));
   let i = 0;
   for (i; i < globalData.length; i++) {
-    if (globalData[i].timing.substring(0, 10) ===selectedDateFormatted) {
+    if (globalData[i].timing.substring(0, 10) === selectedDateFormatted) {
       startIndex = i;
       endIndex = i + 4;
       break;
@@ -189,9 +189,9 @@ function handleDayClick(day) {
 
 let predict = 0;
 function updateChartConfiguration() {
-  const displayedLabelH = labelH.slice(currentIndex, end+1);
-  const displayedLabelS = labelS.slice(currentIndex, end+1);
-  
+  const displayedLabelH = labelH.slice(currentIndex, end + 1);
+  const displayedLabelS = labelS.slice(currentIndex, end + 1);
+
   console.log('Displayed labels H:', displayedLabelH);
   console.log('Displayed labels S:', displayedLabelS);
 
@@ -201,10 +201,10 @@ function updateChartConfiguration() {
   chartS.config.data.labels = displayedLabelS;
 
   const heartbeatData = globalData
-    .slice(currentIndex, end+1)
+    .slice(currentIndex, end + 1)
     .map(item => item.heartbeat);
   const sp02Data = globalData
-    .slice(currentIndex, end+1)
+    .slice(currentIndex, end + 1)
     .map(item => item.sp02);
 
   chartH.config.data.datasets[0].data = heartbeatData;
@@ -214,12 +214,12 @@ function updateChartConfiguration() {
   const formattedDate = $.datepicker.formatDate("yy-mm-dd", selectedDate);
   $("#dob").datepicker("setDate", formattedDate);
 
-console.log("end: "+ end+"current: "+currentIndex);
-socket.emit ('updateEndCurrent', { end, currentIndex});
-socket.on('prediction', function(data) {
-  predict = data.prediction;
-  document.dispatchEvent(new Event('dataUpdated'));
-});
+  console.log("end: " + end + "current: " + currentIndex);
+  socket.emit('updateEndCurrent', { end, currentIndex });
+  socket.on('prediction', function (data) {
+    predict = data.prediction;
+    document.dispatchEvent(new Event('dataUpdated'));
+  });
   chartH.update();
   chartS.update();
   updateBPM(heartbeatData, sp02Data);
