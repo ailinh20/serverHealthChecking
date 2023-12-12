@@ -1,5 +1,4 @@
 /// <reference types="chart.js" />
-
 let globalData;
 const labelH = [];
 const dataH = {
@@ -8,8 +7,9 @@ const dataH = {
     {
       label: 'Nhịp tim',
       data: [],
-      backgroundColor: '#fc5d57',
-      borderColor: '#fc5d57',
+      backgroundColor: 'rgba(255, 0, 0, 0.9)',
+      borderColor: '#f82323',
+      pointRadius: 15,
       tension: 0.4
     }
   ]
@@ -20,8 +20,9 @@ const dataS = {
   datasets: [
     {
       label: 'SpO2',
-      backgroundColor: '#5793fc',
-      borderColor: '#5793fc',
+      backgroundColor: 'rgba(134, 205, 13, 0.9)',
+      borderColor: '#86cd0d',
+      pointRadius: 15,
       data: [],
       tension: 0.4,
     }
@@ -36,6 +37,20 @@ const configH = {
         ticks: {
           display: true,
           pointRadius: 4,
+          font: {
+            size: 16,
+            weight: 'bold',
+          },
+        },
+      },
+      y: {
+        ticks: {
+          display: true,
+          pointRadius: 4,
+          font: {
+            size: 16,
+            weight: 'bold',
+          },
         },
       },
     },
@@ -51,6 +66,20 @@ const configS = {
         ticks: {
           display: true,
           pointRadius: 4,
+          font: {
+            size: 16,
+            weight: 'bold',
+          },
+        },
+      },
+      y: {
+        ticks: {
+          display: true,
+          pointRadius: 4,
+          font: {
+            size: 16,
+            weight: 'bold',
+          },
         },
       },
     },
@@ -193,6 +222,7 @@ socket.on('prediction', function(data) {
 });
   chartH.update();
   chartS.update();
+  updateBPM(heartbeatData, sp02Data);
 }
 
 
