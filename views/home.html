@@ -46,7 +46,8 @@
           <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
           <input type="text" id="dob" name="dob">
         </div>
-        <div class="yourhealth" style="margin-left: 60%;">
+        
+        <div class="yourhealth" style="margin-left: 50%;">
           <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức khỏe bạn hôm nay thế nào?</div>
           <div id="stat" style="float: right;">
             <section id="bpm-display-container">
@@ -62,9 +63,12 @@
                 <label for="spo2-value">SpO2(%)</label>
               </div>
             </section>
+            <div id="notification" class="text-animation">
+              <span id="text-content"></span>
+              <div id="face-emoji"></div>
+            </div>
           </div>
-          <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div>
-          <div id="notification" class="text-animation" style="width: 90%; height: 80%;"></div>
+          <!-- <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div> -->
         </div>
       </div>
 
@@ -88,18 +92,20 @@
 
   <script>
     document.addEventListener('dataUpdated', function () {
-      const alertMessage = predict > 0.5 ? 'Có nguy cơ bị bệnh tim' : 'Không có nguy cơ bị bệnh tim';
+      let alertMessage;
       const notificationElement = document.getElementById('notification');
+      const textContentElement = document.getElementById('text-content');
       const faceEmojiElement = document.getElementById('face-emoji');
 
       if (predict > 0.5) {
         notificationElement.classList.add('text-animation');
-        faceEmojiElement.textContent = '😢😢😢';
+        alertMessage = 'Có nguy cơ bị bệnh tim';
       } else {
         notificationElement.classList.remove('text-animation');
-        faceEmojiElement.textContent = '😊😊😊'; 
+        alertMessage = 'Không có nguy cơ bị bệnh tim';
       }
-      notificationElement.textContent = alertMessage;
+      textContentElement.textContent = alertMessage;
+      faceEmojiElement.innerHTML = predict > 0.5 ? '😢😢😢' : '😊😊😊';
     });
   </script>
   <div id="tooltip" style="position: absolute; display: none;"></div>

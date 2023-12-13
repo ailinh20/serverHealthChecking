@@ -103,8 +103,8 @@ body {
 }
 
 #stat {
-  padding-left: 50%;
-  padding-right: 50px;
+  /* padding-left: 50%; */
+  /* padding-right: 50px; */
   display: flex;
   flex-direction: row;
 }
@@ -115,7 +115,12 @@ body {
   font-weight: bold;
   font-size: larger;
   padding: 7px 10px;
+  margin-left: 10px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* text-shadow: 4px 3px 3px rgba(229, 131, 178, 1); */
 }
 
