@@ -4,21 +4,15 @@ var Schema = mongoose.Schema;
 var UserModel = new Schema({
     name: {
         type: String,
-        required: true,
     },
     address: {
         type: String,
-        required: true
     },
     phoneNumber: {
         type: String,
-        required: true,
-        unique: true
     },
     email: {
         type: String,
-        required: true,
-        unique: true
     },
     pass: {
         type: String,
@@ -26,7 +20,6 @@ var UserModel = new Schema({
     },
     dayOfBirth: {
 		type: Date,
-        required: true
     },
     idDevice: {
         type: String,

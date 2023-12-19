@@ -1,17 +1,17 @@
 /* Google Font Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 body{
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #7d2ae8;
+  background: #35ac93;
   padding: 30px;
 }
 .container{
@@ -55,7 +55,7 @@ body{
   position: absolute;
   height: 100%;
   width: 100%;
-  background: #7d2ae8;
+  background: #35ac93;
   opacity: 0.5;
   z-index: 12;
 }
@@ -119,7 +119,7 @@ body{
   bottom: 0;
   height: 3px;
   width: 25px;
-  background: #7d2ae8;
+  background: #35ac93;
 }
 .forms .signup-form  .title:before{
   width: 20px;
@@ -148,11 +148,11 @@ body{
 }
 .form-content .input-box input:focus,
 .form-content .input-box input:valid{
-  border-color: #7d2ae8;
+  border-color: #35ac93;
 }
 .form-content .input-box i{
   position: absolute;
-  color: #7d2ae8;
+  color: #35ac93;
   font-size: 17px;
 }
 .forms .form-content .text{
@@ -162,6 +162,7 @@ body{
 }
 .forms .form-content .text a{
   text-decoration: none;
+  color: #35ac93;
 }
 .forms .form-content .text a:hover{
   text-decoration: underline;
@@ -172,17 +173,17 @@ body{
 }
 .forms .form-content .button input{
   color: #fff;
-  background: #7d2ae8;
+  background: #35ac93;
   border-radius: 6px;
   padding: 0;
   cursor: pointer;
   transition: all 0.4s ease;
 }
 .forms .form-content .button input:hover{
-  background: #5b13b9;
+  background: #26ae91;
 }
 .forms .form-content label{
-  color: #5b13b9;
+  color: #26ae91;
   cursor: pointer;
 }
 .forms .form-content label:hover{
@@ -196,6 +197,36 @@ body{
 .container #flip{
   display: none;
 }
+
+.btnHome {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color:#35ac93;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 20pt;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 5px;
+}
+.btnHome:hover {
+  background-color: #fff;
+  color: #35ac93;
+  border: #35ac93 3px solid;
+  transition: 0.4s;
+}
+.btnHome:active {
+  background-color: #35ac93;
+  color: #fff;
+}
+.iconHomePage:hover {
+  color: #35ac93;
+  transition: 0.4s;
+}
+
 @media (max-width: 730px) {
   .container .cover{
     display: none;
