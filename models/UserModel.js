@@ -19,7 +19,7 @@ var UserModel = new Schema({
         required: true
     },
     dayOfBirth: {
-		type: Date,
+		type: String,
     },
     idDevice: {
         type: String,
