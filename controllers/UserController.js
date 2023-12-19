@@ -2,6 +2,8 @@ const asyncHandler = require("../middlewares/async")
 
 const UserModel = require("../models/UserModel");
 
+
+//Create user
 exports.createUser = asyncHandler(async (req, res, next) => {
     try {
         // Kiểm tra xem đã tồn tại người dùng nào với email hoặc số điện thoại đã cung cấp chưa
@@ -75,6 +77,36 @@ exports.getUser = asyncHandler(async (req, res, next) => {
     } 
 });
 
+//Update 1 user by phone number or email
+exports.updateUser = asyncHandler(async (req, res, next) => {
+    console.log(req.body);
+    const updateFields = {};
+    for (const [key, value] of Object.entries(req.body)) {
+        updateFields[key] = value;
+    }
+    try {
+        const isPhoneNumber = req.params.id.match(/^\d+$/); // Kiểm tra xem ID có phải là số không
+
+        // Cập nhật truy vấn dựa trên việc đó có phải là số điện thoại hay email không
+        if (isPhoneNumber) {
+            user = await UserModel.findOne({ phoneNumber: req.params.id });
+        } else {
+            user = await UserModel.findOne({ email: req.params.id });
+        }
+        if (user) {
+            await UserModel.updateOne({ _id: user._id }, { $set: updateFields });
+            const updatedUser = await UserModel.findById(user._id);
+            res.status(200).json({ success: true, data: updatedUser });
+        } else {
+            return res.status(404).json({ success: false, message: 'Không thể tìm thấy người dùng' });
+        }
+        
+    } catch (err) {
+        res.status(400).json({ success: false, data: err.message });
+    }
+});
+
+//Get all user
 exports.getAllUser = asyncHandler(async (req, res, next) => {
     try {
         const users = await UserModel.find();

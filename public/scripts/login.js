@@ -6,6 +6,12 @@ var registerPassword = document.getElementById("registerPassword");
 var registerConfirmPassword = document.getElementById("registerConfirmPassword");
 
 
+
+function returnHomePage() {
+    // Chuyển hướng đến trang home.html
+    window.location.href = "/";
+}
+
 function isEmail(input) {
     // Sử dụng một biểu thức chính quy đơn giản để kiểm tra xem input có dạng email không
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

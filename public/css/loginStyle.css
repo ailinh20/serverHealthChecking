@@ -162,6 +162,7 @@ body{
 }
 .forms .form-content .text a{
   text-decoration: none;
+  color: #35ac93;
 }
 .forms .form-content .text a:hover{
   text-decoration: underline;
@@ -196,6 +197,36 @@ body{
 .container #flip{
   display: none;
 }
+
+.btnHome {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color:#35ac93;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 20pt;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 5px;
+}
+.btnHome:hover {
+  background-color: #fff;
+  color: #35ac93;
+  border: #35ac93 3px solid;
+  transition: 0.4s;
+}
+.btnHome:active {
+  background-color: #35ac93;
+  color: #fff;
+}
+.iconHomePage:hover {
+  color: #35ac93;
+  transition: 0.4s;
+}
+
 @media (max-width: 730px) {
   .container .cover{
     display: none;
