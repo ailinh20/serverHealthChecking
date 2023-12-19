@@ -4,13 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Health Web</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="heartbeat.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Theo dõi</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/heartbeat.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="shortcut icon" href="/public/images/heartbeat.png" type="">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <link href="css/responsive.css" rel="stylesheet" />
+
   <script>
     $(function () {
       const datePicker = $("#dob");
@@ -27,11 +47,51 @@
   </script>
 </head>
 
-<body>
+<body class="sub_page">
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <img src="images/hero-bg.png" alt="">
+    </div>
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="../views/index.html">Trang chủ <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="monitoring.html">Theo dõi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/public/booking.html">Đặt lịch</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/public/login.html">Đăng nhập</a>
+            </li>
+            <form class="form-inline">
+              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
   <div style="width: 100%">
 
     <div class="header">
-      <img class="today-icon" src="/images/today.png" alt="Today Icon">
+      <img class="today-icon" src="images/today.png" alt="Today Icon">
       <div class="watch">
         <canvas id="canvas" width="170%" height="170%"></canvas>
         <div id="weather-info"></div>
@@ -46,9 +106,10 @@
           <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
           <input type="text" id="dob" name="dob">
         </div>
-        
+
         <div class="yourhealth" style="margin-left: 50%;">
-          <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức khỏe bạn hôm nay thế nào?</div>
+          <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức
+            khỏe bạn hôm nay thế nào?</div>
           <div id="stat" style="float: right;">
             <section id="bpm-display-container">
               <div id="bpm-display">
