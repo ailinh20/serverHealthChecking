@@ -120,7 +120,6 @@ function fetchDataAndInitializeChart() {
       currentIndex = globalData.length - 5;
       end = globalData.length - 1;
       updateChartConfiguration();
-
     })
     .catch(error => {
       console.error('Lỗi khi lấy dữ liệu từ server:', error);
