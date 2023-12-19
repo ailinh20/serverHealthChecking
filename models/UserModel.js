@@ -2,6 +2,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserModel = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true
+    },
     phoneNumber: {
         type: String,
         required: true,

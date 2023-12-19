@@ -156,7 +156,7 @@ app.get('/', async (req, res) =>
     const data = await infoSensor.find().exec();
     sp02Data = data.map(item => item.sp02);
     heartbeatData = data.map(item => item.heartbeat);
-    res.render('home', { data });
+    res.render('index', { data });
     } 
     
     catch(error) 
