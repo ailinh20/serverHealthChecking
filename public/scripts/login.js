@@ -15,12 +15,14 @@ function isEmail(input) {
 function login() {
     console.log(username.value);
     console.log(password.value);
+    const loginIdentifier = username.value;
     fetch(`/api/v1/user/getuser/${username.value}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
                 if (data.data.pass == password.value) 
                 {
+                    localStorage.setItem('loginIdentifier', loginIdentifier);
                     Swal.fire({
                         icon: "success",
                         title: "Đăng nhập thành công.",

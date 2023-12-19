@@ -6,12 +6,12 @@
     <title>HTML Link with JavaScript</title>
     <link rel="stylesheet" href="./css/profile.css">
 </head>
-<body style="background-image: url(./images/br.jpg); background-repeat: no-repeat; background-size: cover;">
+<body style="background-image: url(./images/background.png); background-repeat: no-repeat;">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
         <h2>Thông tin cá nhân</h2>
     </nav>
-    <div style="float: left; width: 25%; background-color: #ffffff; background-size: contain;">
+    <div style="float: left; width: 25%; background-image: url(./images/br1.png);">
         <!-- Profile picture card -->
         <div>Ảnh đại diện</div>
         <input type="file" id="inputImage" style="display: none;">
@@ -72,23 +72,9 @@
                     </div>
                 </form>
             <!-- Save changes button-->
-            <div><button type="button" style="margin-top: 5%;">Save changes</button></div>
+            <div><button id="saveChangesBtn" type="button" style="margin-top: 5%;">Save changes</button></div>
         </div>
     </div>
-    <script>
-    document.getElementById('inputImage').addEventListener('change', function(event) {
-        var fileInput = event.target;
-        var file = fileInput.files[0];
-
-        if (file) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                // Cập nhật nguồn ảnh trên trang web
-                document.getElementById('profileImage').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-    </script>  
+    <script src="./scripts/profile.js"></script>  
     </body>
     </html>
