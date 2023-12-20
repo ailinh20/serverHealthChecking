@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserModel = new Schema({
+var AdminModel = new Schema({
     name: {
         type: String,
     },
@@ -19,12 +19,20 @@ var UserModel = new Schema({
         required: true
     },
     dayOfBirth: {
-		type: String,
+		type: Date,
     },
-    idDevice: {
+    userName: {
         type: String,
-        ref: "SensorModel"
+    },
+    gender: {
+        type: String
+    },
+    city: {
+        type: String,
+    },
+    country: {
+        type: String
     }
 })
 
-module.exports = mongoose.model("UserModel", UserModel)
+module.exports = mongoose.model("AdminModel", AdminModel)

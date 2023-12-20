@@ -4,28 +4,34 @@ const express = require('express');
 const mongoose = require('mongoose');
 const moment = require('moment');
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
+const path = require('path');
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.set('view engine', 'html'); 
 app.engine('html', require('ejs').renderFile);
-
+const publicPath = path.resolve(__dirname, 'public');
+app.use(express.static(publicPath));
 
 //connect MongoDB
 const DBConnection = require("./config/db");
 DBConnection();
 
 //require DB
-const infoSensor = require('./models/SensorModel.js');
+const infoSensor = require('./models/inforsensor.js');
+require("./models/SensorModel.js")
 require("./models/UserModel.js")
+require("./models/AdminModel.js")
 
 //Route
 const userRoutes = require("./routes/UserRoute.js")
+const adminRoutes = require("./routes/AdminRoute.js")
 
 //register routes
 const versionOne = (routeName) => `/api/v1/${routeName}`;
 app.use(versionOne("user"), userRoutes);
+app.use(versionOne("admin"), adminRoutes);
 
 //Socket io
 const http = require('http');
