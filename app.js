@@ -4,13 +4,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const moment = require('moment');
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
+const path = require('path');
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.set('view engine', 'html'); 
 app.engine('html', require('ejs').renderFile);
-
+const publicPath = path.resolve(__dirname, 'public');
+app.use(express.static(publicPath));
 
 //connect MongoDB
 const DBConnection = require("./config/db");
