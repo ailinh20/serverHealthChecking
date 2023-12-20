@@ -19,13 +19,16 @@ DBConnection();
 //require DB
 const infoSensor = require('./models/SensorModel.js');
 require("./models/UserModel.js")
+require("./models/AdminModel.js")
 
 //Route
 const userRoutes = require("./routes/UserRoute.js")
+const adminRoutes = require("./routes/AdminRoute.js")
 
 //register routes
 const versionOne = (routeName) => `/api/v1/${routeName}`;
 app.use(versionOne("user"), userRoutes);
+app.use(versionOne("admin"), adminRoutes);
 
 //Socket io
 const http = require('http');

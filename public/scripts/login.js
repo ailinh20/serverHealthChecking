@@ -25,6 +25,7 @@ function login() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                
                 if (data.data.pass == password.value) 
                 {
                     Swal.fire({
