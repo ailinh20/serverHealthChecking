@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Basic -->
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Theo dõi</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/heartbeat.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="shortcut icon" href="/public/images/heartbeat.png" type="">
+
+  <title> Đặt lịch </title>
+
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
@@ -29,40 +28,36 @@
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
-  <script>
-    $(function () {
-      const datePicker = $("#dob");
-
-      datePicker.datepicker({
-        dateFormat: 'yy-mm-dd', // Set the desired date format
-        onSelect: function (dateText, inst) {
-          const selectedDate = new Date(dateText);
-          const day = selectedDate.getDate();
-          handleDayClick(day);
-        }
-      });
-    });
-  </script>
 </head>
 
 <body class="sub_page">
+
   <div class="hero_area">
 
     <div class="hero_bg_box">
       <img src="images/hero-bg.png" alt="">
     </div>
+
+    <!-- header section strats -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
+            <span>
+              HEART HEALTH
+            </span>
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item active">
@@ -87,69 +82,95 @@
         </nav>
       </div>
     </header>
+    <!-- end header section -->
+  </div>
 
-    <div style="width: 100%">
+  <!-- department section -->
 
-      <div class="header">
-        <img class="today-icon" src="images/today.png" alt="Today Icon">
-        <div class="watch">
-          <canvas id="canvas" width="170%" height="170%"></canvas>
-          <div id="weather-info"></div>
+  <section class="department_section layout_padding">
+    <div class="department_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+            
+          </h2>
+          <p>
+            
+          </p>
         </div>
-      </div>
-
-      <div id="content">
-
-        <div id="note">
-
-          <div id="ngaytheodoi">
-            <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
-            <input type="text" id="dob" name="dob">
-          </div>
-
-          <div class="yourhealth" style="margin-left: 50%;">
-            <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức
-              khỏe bạn hôm nay thế nào?</div>
-            <div id="stat" style="float: right;">
-              <section id="bpm-display-container">
-                <div id="bpm-display">
-                  <output id="bpm-value" title="Heart rate"></output>
-                  <label for="bpm-value">bpm</label>
-                  <div id="bpm-icon"></div>
-                </div>
-              </section>
-              <section id="bpm-display-container">
-                <div id="spo2-display">
-                  <output id="spo2-value" title="SpO2"></output>
-                  <label for="spo2-value">SpO2(%)</label>
-                </div>
-              </section>
-              <div id="notification" class="text-animation">
-                <span id="text-content"></span>
-                <div id="face-emoji"></div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Cardiology
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
               </div>
             </div>
-            <!-- <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div> -->
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Diagnosis
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Surgery
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s4.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  First Aid
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="chart" style="float: right;">
-          <div style="width: 100%;">
-            <div class="title" id="canH" style="color: rgb(255, 33, 21);">
-              <i class="fa fa-heartbeat" aria-hidden="true"></i> NHỊP TIM
-              <canvas id="canvasH"></canvas>
-            </div>
-            <div class="title" id="canS" style="color: aqua;">
-              % SpO2
-              <canvas id="canvasS"></canvas>
-            </div>
-          </div>
-          <button id="btnBack">Trước đó</button>
-          <button id="btnNext">Sau đó</button>
+        <div class="btn-box">
+          <a href="">
+            View All
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- end department section -->
+
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -239,32 +260,25 @@
     </div>
   </footer>
   <!-- footer section -->
-  <script>
-    document.addEventListener('dataUpdated', function () {
-      let alertMessage;
-      const notificationElement = document.getElementById('notification');
-      const textContentElement = document.getElementById('text-content');
-      const faceEmojiElement = document.getElementById('face-emoji');
 
-      if (predict > 0.5) {
-        notificationElement.classList.add('text-animation');
-        alertMessage = 'Có nguy cơ bị bệnh tim';
-      } else {
-        notificationElement.classList.remove('text-animation');
-        alertMessage = 'Không có nguy cơ bị bệnh tim';
-      }
-      textContentElement.textContent = alertMessage;
-      faceEmojiElement.innerHTML = predict > 0.5 ? '😢😢😢' : '😊😊😊';
-    });
+  <!-- jQery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
-  <div id="tooltip" style="position: absolute; display: none;"></div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="scripts/time.js"></script>
-  <script src="scripts/calender.js"></script>
-  <script src="scripts/chart.js"></script>
-  <script src="scripts/weather.js"></script>
-  <script src="scripts/heartbeat.js"></script>
+  <!-- custom js -->
+  <script type="text/javascript" src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
 </body>
 
 </html>
