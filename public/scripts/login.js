@@ -26,14 +26,24 @@ function login() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                
+                if (username.value == "admin" && data.data.pass == password.value) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Đăng nhập thành công.",
+                        timer: 1000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    }).then((result) =>{
+                        window.location.href = "/backend/page-patient.html";
+                    });
+                } else
                 if (data.data.pass == password.value) 
                 {
                     localStorage.setItem('loginIdentifier', loginIdentifier);
                     Swal.fire({
                         icon: "success",
                         title: "Đăng nhập thành công.",
-                        timer: 1200,
+                        timer: 1000,
                         timerProgressBar: true,
                         showConfirmButton: false
                     }).then((result) =>{
