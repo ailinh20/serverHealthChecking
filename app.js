@@ -172,6 +172,7 @@ app.get('/', async (req, res) =>
 app.get('/api/getall', async (req, res) => {
     try{
         const data = await infoSensor.find();
+        console.log('Data from MongoDB:', data);
         res.json(data)
     }
     catch(error){
