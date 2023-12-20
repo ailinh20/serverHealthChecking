@@ -73,9 +73,10 @@ body {
 }
 .yourhealth {
   background-color: antiquewhite; 
-  width: 30%;
+  width: 30%; /* Điều chỉnh chiều rộng theo nhu cầu của bạn */
   float: right;
   border-radius: 10px;
+  box-sizing: border-box; /* Đảm bảo padding không tăng kích thước tổng thể */
 }
 
 #ngaytheodoi {
