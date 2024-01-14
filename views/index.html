@@ -11,12 +11,12 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="/public/images/heartbeat.png" type="">
+  <link rel="shortcut icon" href="images/heartbeat.png" type="">
 
   <title> HEART HEALTH </title>
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -26,13 +26,29 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- font awesome style -->
-  <link href="/public/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="/public/css/style.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="/public/css/responsive.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+  <!-- Bootstrap JS và jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+    // Load the header and pass the brand link and name
+    $("#header-container").load("header.html", function () {
+        // Replace 'BRAND_LINK' and 'BRAND_NAME' with the desired values for this page
+        $("#header-container .navbar-brand").attr("href", "/");
+        $("#header-container #brandName").text("Trang chủ");
+    });
+    });
+</script>
 </head>
 
 <body>
@@ -40,53 +56,11 @@
   <div class="hero_area">
 
     <div class="hero_bg_box">
-      <img src="/public/images/hero-bg.png" alt="">
+      <img src="images/hero-bg.png" alt="">
     </div>
-
     <!-- header section strats -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              HEART HEALTH
-            </span>
-          </a>
+        <div id="header-container"></div>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="views/index.html">Trang chủ <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/monitoring.html">Theo dõi</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/booking.html">Đặt lịch</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login.html">Đăng nhập</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/profile.html">Thông tin cá nhân</a>
-              </li>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-    
     <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
@@ -103,7 +77,7 @@
                       Cách để có được một trái tym khỏe mạnh. </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
-                        Read More
+                        Đọc thêm
                       </a>
                     </div>
                   </div>
@@ -117,16 +91,14 @@
                 <div class="col-md-7">
                   <div class="detail-box">
                     <h1>
-                      We Provide Best Healthcare
+                      Nơi để theo dõi tình trạng trái tym của bạn
                     </h1>
                     <p>
-                      Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta
-                      aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis
-                      delectus repellat modi impedit sequi.
+                      Biểu đồ theo dõi tình trạng sức khỏe trái tym theo thời gian thực.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Read More
+                      <a href="monitoring.html" class="btn1">
+                        Theo dõi ngay
                       </a>
                     </div>
                   </div>
@@ -140,16 +112,14 @@
                 <div class="col-md-7">
                   <div class="detail-box">
                     <h1>
-                      We Provide Best Healthcare
+                      Nhận tư vấn trực tuyến và đặt lịch khám với các bác sĩ uy tín.
                     </h1>
                     <p>
-                      Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta
-                      aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis
-                      delectus repellat modi impedit sequi.
+                      Đội ngũ y bác sĩ tận tình, uy tín và chất lượng.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Read More
+                      <a href="booking.html" class="btn1">
+                        Đặt ngay
                       </a>
                     </div>
                   </div>
@@ -177,10 +147,11 @@
       <div class="container ">
         <div class="heading_container heading_center">
           <h2>
-            Our Departments
+            Chuyên khoa
           </h2>
           <p>
-            Asperiores sunt consectetur impedit nulla molestiae delectus repellat laborum dolores doloremque accusantium
+            Y bác sĩ đến từ các bệnh viện nối tiếng trên Việt Nam. <br>
+            Hoàn toàn có thể đưa cho bạn các lời khuyên liên quan đến:
           </p>
         </div>
         <div class="row">
@@ -191,10 +162,10 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  Cardiology
+                  Tim mạch
                 </h5>
                 <p>
-                  fact that a reader will be distracted by the readable page when looking at its layout.
+                  Những vấn đề về tim mạch
                 </p>
               </div>
             </div>
@@ -206,10 +177,10 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  Diagnosis
+                  Chẩn đoán
                 </h5>
                 <p>
-                  fact that a reader will be distracted by the readable page when looking at its layout.
+                  Chẩn đoán bệnh tại chỗ
                 </p>
               </div>
             </div>
@@ -221,10 +192,10 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  Surgery
+                  Phẫu thuật
                 </h5>
                 <p>
-                  fact that a reader will be distracted by the readable page when looking at its layout.
+                  Những lưu ý khi bước vào bàn phẫu thuật.
                 </p>
               </div>
             </div>
@@ -236,10 +207,10 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  First Aid
+                  Sơ cứu
                 </h5>
                 <p>
-                  fact that a reader will be distracted by the readable page when looking at its layout.
+                  Nguyên tắc và sự cần thiết của sơ cứu.
                 </p>
               </div>
             </div>
@@ -247,7 +218,7 @@
         </div>
         <div class="btn-box">
           <a href="">
-            View All
+            Xem thêm
           </a>
         </div>
       </div>
@@ -270,17 +241,17 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                About <span>Us</span>
+                Về chúng tôi
               </h2>
             </div>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
+              Chúng tôi tự hào giới thiệu đội ngũ y bác sĩ chất lượng cao tại trung tâm y tế của chúng tôi. Với sứ mệnh
+              chăm sóc sức khỏe và phục vụ cộng đồng, các bác sĩ của chúng tôi không chỉ là những chuyên gia có kinh
+              nghiệm mà còn là những người tận tâm và tận lực. Họ cam kết mang đến dịch vụ chăm sóc sức khỏe chuyên
+              nghiệp, đồng thời tạo nên môi trường tin cậy và an toàn cho mọi người.
             </p>
             <a href="">
-              Read More
+              Đọc thêm
             </a>
           </div>
         </div>
@@ -296,19 +267,17 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Doctors
+          Đội ngũ Y Bác sĩ
         </h2>
         <p class="col-md-10 mx-auto px-0">
-          Incilint sapiente illo quo praesentium officiis laudantium nostrum, ad adipisci cupiditate sit, quisquam
-          aliquid. Officiis laudantium fuga ad voluptas aspernatur error fugiat quos facilis saepe quas fugit, beatae id
-          quisquam.
+          Dày dặn kinh nghiệm, có trình độ thạc sĩ, tiến sĩ trở lên.
         </p>
       </div>
       <div class="row">
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d1.jpg" alt="">
+              <img src="images/Tan.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">
@@ -326,10 +295,10 @@
                 </a>
               </div>
               <h5>
-                Elina Josh
+                Hoàng Tân
               </h5>
               <h6 class="">
-                Doctor
+                Bác sĩ chuyên khoa tym mạch
               </h6>
             </div>
           </div>
@@ -337,7 +306,7 @@
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d2.jpg" alt="">
+              <img src="images/Link.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">
@@ -355,10 +324,10 @@
                 </a>
               </div>
               <h5>
-                Adam View
+                Ái Linh
               </h5>
               <h6 class="">
-                Doctor
+                Bác sĩ chuyên khoa tym mạch
               </h6>
             </div>
           </div>
@@ -366,7 +335,7 @@
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d3.jpg" alt="">
+              <img src="images/Huyen.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">
@@ -384,10 +353,10 @@
                 </a>
               </div>
               <h5>
-                Mia Mike
+                Thu Huyền
               </h5>
               <h6 class="">
-                Doctor
+                Bác sĩ chuyên khoa Heart
               </h6>
             </div>
           </div>
@@ -395,7 +364,7 @@
       </div>
       <div class="btn-box">
         <a href="">
-          View All
+          Xem thêm
         </a>
       </div>
     </div>
@@ -408,7 +377,7 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Get In Touch
+          Để lại thông tin liên hệ:
         </h2>
       </div>
       <div class="row">
@@ -418,12 +387,12 @@
               <div class="form-row">
                 <div class="col-lg-6">
                   <div>
-                    <input type="text" placeholder="Your Name" />
+                    <input type="text" placeholder="Họ và tên" />
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div>
-                    <input type="text" placeholder="Phone Number" />
+                    <input type="text" placeholder="Số điện thoại" />
                   </div>
                 </div>
               </div>
@@ -431,11 +400,11 @@
                 <input type="email" placeholder="Email" />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" class="message-box" placeholder="Lời nhắn" />
               </div>
               <div class="btn_box">
                 <button>
-                  SEND
+                  Gửi
                 </button>
               </div>
             </form>
@@ -459,7 +428,7 @@
     <div class="container">
       <div class="heading_container heading_center ">
         <h2>
-          Testimonial
+          Cảm nhận
         </h2>
       </div>
       <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
@@ -469,18 +438,16 @@
               <div class="col-md-11 col-lg-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
-                    <img src="images/client.jpg" alt="" />
+                    <img src="images/Minh.jpg" alt="" />
                   </div>
                   <div class="detail-box">
                     <div class="name">
                       <h6>
-                        Alan Emerson
+                        Nhật Minh
                       </h6>
                     </div>
                     <p>
-                      Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                      nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                      inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
+                      Bác sĩ tận tình.
                     </p>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
@@ -493,18 +460,16 @@
               <div class="col-md-11 col-lg-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
-                    <img src="images/client.jpg" alt="" />
+                    <img src="Minh.jpg" alt="" />
                   </div>
                   <div class="detail-box">
                     <div class="name">
                       <h6>
-                        Alan Emerson
+                        Nhật Minh
                       </h6>
                     </div>
                     <p>
-                      Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                      nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                      inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
+                      Bác sĩ chuyên nghiệp.
                     </p>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
@@ -517,18 +482,16 @@
               <div class="col-md-11 col-lg-10 mx-auto">
                 <div class="box">
                   <div class="img-box">
-                    <img src="images/client.jpg" alt="" />
+                    <img src="images/Minh.jpg" alt="" />
                   </div>
                   <div class="detail-box">
                     <div class="name">
                       <h6>
-                        Alan Emerson
+                        Nhật Minh
                       </h6>
                     </div>
                     <p>
-                      Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                      nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                      inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
+                      Bác sĩ cho lời khuyên hay.
                     </p>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
@@ -560,19 +523,19 @@
         <div class="col-md-6 col-lg-3 footer_col">
           <div class="footer_contact">
             <h4>
-              Reach at..
+              Liên hệ chúng tôi:
             </h4>
             <div class="contact_link_box">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  Địa chỉ:
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Số điện thoại: 123456789
                 </span>
               </a>
               <a href="">
@@ -598,49 +561,34 @@
             </a>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 footer_col">
-          <div class="footer_detail">
-            <h4>
-              About
-            </h4>
-            <p>
-              Beatae provident nobis mollitia magnam voluptatum, unde dicta facilis minima veniam corporis laudantium
-              alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
-            </p>
-          </div>
-        </div>
+
         <div class="col-md-6 col-lg-2 mx-auto footer_col">
           <div class="footer_link_box">
             <h4>
-              Links
+              Liên kết
             </h4>
             <div class="footer_links">
-              <a class="active" href="index.html">
-                Home
+              <a class="active" href="/">
+                Trang chủ
               </a>
-              <a class="" href="about.html">
-                About
+              <a class="" href="monitoring.html">
+                Theo dõi tình trạng       
               </a>
-              <a class="" href="departments.html">
-                Departments
-              </a>
-              <a class="" href="doctors.html">
-                Doctors
-              </a>
-              <a class="" href="contact.html">
-                Contact Us
+              <br>
+              <a class="" href="booking.html">
+                Đặt lịch
               </a>
             </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 footer_col ">
           <h4>
-            Newsletter
+            Gửi cho chúng tôi
           </h4>
           <form action="#">
-            <input type="email" placeholder="Enter email" />
+            <input type="email" placeholder="Nhập email:" />
             <button type="submit">
-              Subscribe
+              Đăng ký
             </button>
           </form>
         </div>
@@ -648,9 +596,9 @@
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates<br><br></a>
+          <a href="https://html.design/">Me<br><br></a>
           &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/">ThemeWagon</a>
+          <a href="https://themewagon.com/">Me</a>
         </p>
 
       </div>
@@ -659,18 +607,18 @@
   <!-- footer section -->
 
   <!-- jQery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
   <!-- bootstrap js -->
-  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="scripts/bootstrap.js"></script>
   <!-- owl slider -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <!-- custom js -->
-  <script type="text/javascript" src="js/custom.js"></script>
+  <script type="text/javascript" src="scripts/custom.js"></script>
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>

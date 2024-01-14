@@ -37,11 +37,12 @@ function fetchUserInfo(loginIdentifier) {
             if (data.success) {
                 // Điền thông tin người dùng vào các trường
                 document.getElementById('inputFirstName').value = data.data.name || '';
-                document.getElementById('inputOrgName').value = data.data.organizationName || '';
                 document.getElementById('inputLocation').value = data.data.address || '';
                 document.getElementById('inputEmailAddress').value = data.data.email || '';
                 document.getElementById('inputPhone').value = data.data.phoneNumber || '';
                 document.getElementById('inputBirthday').value = data.data.dayOfBirth || '';
+                document.getElementById('inputPassword').value = data.data.pass || '';
+                console.log(data.data.address);
             } else {
                 console.error('Không thể lấy thông tin người dùng');
             }
@@ -55,11 +56,11 @@ function saveChanges(loginIdentifier) {
     // Lấy giá trị từ các trường và gửi yêu cầu fetch để cập nhật thông tin người dùng
     const updatedUserInfo = {
         firstName: document.getElementById('inputFirstName').value,
-        organizationName: document.getElementById('inputOrgName').value,
         location: document.getElementById('inputLocation').value,
         emailAddress: document.getElementById('inputEmailAddress').value,
         phoneNumber: document.getElementById('inputPhone').value,
         birthday: document.getElementById('inputBirthday').value,
+        pass: document.getElementById('inputPassword').value,
         // Thêm các trường khác nếu cần
     };
     console.log(updatedUserInfo); // Log để kiểm tra giá trị
@@ -81,6 +82,7 @@ function saveChanges(loginIdentifier) {
                 showConfirmButton: false
             }).then((result) => {
                 // Cập nhật lại thông tin người dùng trên trang nếu cần
+                console.log("abc");
                 fetchUserInfo(loginIdentifier);
             });
         } else {

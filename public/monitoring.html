@@ -45,72 +45,171 @@
       });
     });
   </script>
-</head></header>
+</head>
 
-  <div style="width: 100%">
+<body class="sub_page">
+  <div class="hero_area">
+    <div id="header-container"></div>
+    <div style="width: 100%">
 
-    <div class="header">
-      <img class="today-icon" src="images/today.png" alt="Today Icon">
-      <div class="watch">
-        <canvas id="canvas" width="170%" height="170%"></canvas>
-        <div id="weather-info"></div>
+      <div class="header">
+        <img class="today-icon" src="images/today.png" alt="Today Icon">
+        <div class="watch">
+          <canvas id="canvas" width="170%" height="170%"></canvas>
+          <div id="weather-info"></div>
+        </div>
       </div>
-    </div>
 
-    <div id="content">
+      <div id="content">
 
-      <div id="note">
+        <div id="note">
 
-        <div id="ngaytheodoi">
-          <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
-          <input type="text" id="dob" name="dob">
+          <div id="ngaytheodoi">
+            <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
+            <input type="text" id="dob" name="dob">
+          </div>
+
+          <div class="yourhealth" style="margin-left: 50%;">
+            <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức
+              khỏe bạn hôm nay thế nào?</div>
+            <div id="stat" style="float: right;">
+              <section id="bpm-display-container">
+                <div id="bpm-display">
+                  <output id="bpm-value" title="Heart rate"></output>
+                  <label for="bpm-value">bpm</label>
+                  <div id="bpm-icon"></div>
+                </div>
+              </section>
+              <section id="bpm-display-container">
+                <div id="spo2-display">
+                  <output id="spo2-value" title="SpO2"></output>
+                  <label for="spo2-value">SpO2(%)</label>
+                </div>
+              </section>
+              <div id="notification" class="text-animation">
+                <span id="text-content"></span>
+                <div id="face-emoji"></div>
+              </div>
+            </div>
+            <!-- <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div> -->
+          </div>
         </div>
 
-        <div class="yourhealth" style="margin-left: 50%;">
-          <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right;">Sức
-            khỏe bạn hôm nay thế nào?</div>
-          <div id="stat" style="float: right;">
-            <section id="bpm-display-container">
-              <div id="bpm-display">
-                <output id="bpm-value" title="Heart rate"></output>
-                <label for="bpm-value">bpm</label>
-                <div id="bpm-icon"></div>
-              </div>
-            </section>
-            <section id="bpm-display-container">
-              <div id="spo2-display">
-                <output id="spo2-value" title="SpO2"></output>
-                <label for="spo2-value">SpO2(%)</label>
-              </div>
-            </section>
-            <div id="notification" class="text-animation">
-              <span id="text-content"></span>
-              <div id="face-emoji"></div>
+        <div class="chart" style="float: right;">
+          <div style="width: 100%;">
+            <div class="title" id="canH" style="color: rgb(255, 33, 21);">
+              <i class="fa fa-heartbeat" aria-hidden="true"></i> NHỊP TIM
+              <canvas id="canvasH"></canvas>
+            </div>
+            <div class="title" id="canS" style="color: aqua;">
+              % SpO2
+              <canvas id="canvasS"></canvas>
             </div>
           </div>
-          <!-- <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div> -->
+          <button id="btnBack">Trước đó</button>
+          <button id="btnNext">Sau đó</button>
         </div>
-      </div>
-
-      <div class="chart" style="float: right;">
-        <div style="width: 100%;">
-          <div class="title" id="canH" style="color: rgb(255, 33, 21);">
-            <i class="fa fa-heartbeat" aria-hidden="true"></i> NHỊP TIM
-            <canvas id="canvasH"></canvas>
-          </div>
-          <div class="title" id="canS" style="color: aqua;">
-            % SpO2
-            <canvas id="canvasS"></canvas>
-          </div>
-        </div>
-        <button id="btnBack">Trước đó</button>
-        <button id="btnNext">Sau đó</button>
       </div>
     </div>
   </div>
-  </div>
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 footer_col">
+          <div class="footer_contact">
+            <h4>
+              Liên hệ chúng tôi:
+            </h4>
+            <div class="contact_link_box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Địa chỉ:
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Số điện thoại: 123456789
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  demo@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="footer_social">
+            <a href="">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
 
+        <div class="col-md-6 col-lg-2 mx-auto footer_col">
+          <div class="footer_link_box">
+            <h4>
+              Liên kết
+            </h4>
+            <div class="footer_links">
+              <a class="active" href="/">
+                Trang chủ
+              </a>
+              <a class="" href="monitoring.html">
+                Theo dõi tình trạng
+              </a>
+              <br>
+              <a class="" href="booking.html">
+                Đặt lịch
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 footer_col ">
+          <h4>
+            Gửi cho chúng tôi
+          </h4>
+          <form action="#">
+            <input type="email" placeholder="Nhập email:" />
+            <button type="submit">
+              Đăng ký
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">Me<br><br></a>
+          &copy; <span id="displayYear"></span> Distributed By
+          <a href="https://themewagon.com/">Me</a>
+        </p>
+
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
   <script>
+  $(function () {
+    // Load the header and pass the brand link and name
+    $("#header-container").load("header.html", function () {
+      // Replace 'BRAND_LINK' and 'BRAND_NAME' with the desired values for this page
+      $("#header-container .navbar-brand").attr("href", "monitoring.html");
+      $("#header-container #brandName").text("Theo dõi tình trạng");
+    });
+  });
     document.addEventListener('dataUpdated', function () {
       let alertMessage;
       const notificationElement = document.getElementById('notification');

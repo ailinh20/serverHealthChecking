@@ -1,7 +1,7 @@
 const asyncHandler = require("../middlewares/async")
 
 const UserModel = require("../models/UserModel");
-
+const AdminModel = require("../models/AdminModel");
 
 //Create user
 exports.createUser = asyncHandler(async (req, res, next) => {
@@ -50,10 +50,18 @@ exports.createUser = asyncHandler(async (req, res, next) => {
     }
 })
 
-//Get user by phone number or email
+//Get user/admin by phone number or email
 exports.getUser = asyncHandler(async (req, res, next) => {
     let user;
     try {
+
+        if (req.params.id == "admin"){
+            admin = await AdminModel.findOne({ userName: "admin" });
+            res.status(200).json({
+                success: true,
+                data: admin
+            });
+        }
         // Kiểm tra xem ID được cung cấp có phải là số điện thoại hay email không
         const isPhoneNumber = req.params.id.match(/^\d+$/); // Kiểm tra xem ID có phải là số không
 
