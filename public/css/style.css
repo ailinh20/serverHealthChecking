@@ -73,9 +73,10 @@ body {
 }
 .yourhealth {
   background-color: antiquewhite; 
-  width: 30%;
+  width: 30%; /* Điều chỉnh chiều rộng theo nhu cầu của bạn */
   float: right;
   border-radius: 10px;
+  box-sizing: border-box; /* Đảm bảo padding không tăng kích thước tổng thể */
 }
 
 #ngaytheodoi {
@@ -553,7 +554,8 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  padding: 45px 0 145px 0;
+  padding: 45px 0px 20px 10%;
+  margin-bottom: 5%;
 }
 
 .slider_section .row {
@@ -562,13 +564,13 @@ a:focus {
           align-items: center;
 }
 
-.slider_section #customCarousel1 {
+.slider_section #customCarousel1  #customCarousel2{
   width: 100%;
   position: unset;
 }
 
 .slider_section .detail-box {
-  color: #1fab89;
+  color: white;
 }
 
 .slider_section .detail-box h1 {
