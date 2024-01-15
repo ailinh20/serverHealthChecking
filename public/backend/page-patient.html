@@ -7,6 +7,8 @@
     <title>Heart Health </title>
 
     <!-- Favicon -->
+    <link rel="stylesheet" href="../css/heartbeat.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="shortcut icon" href="../assets/images/HEALTH.png" />
     <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
     <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.0">
@@ -53,7 +55,7 @@
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
-                            <ul id="patient" class="iq-submenu collapse" data-toggle="collapse" >
+                            <ul id="patient" class="iq-submenu collapse" data-toggle="collapse">
                                 <li class="">
                                     <a href="../app/patients.html">
                                         <i class="las la-minus"></i><span>Theo dõi</span>
@@ -374,76 +376,34 @@
                                 <div class="card-body text-center p-0">
                                     <div class="item">
                                         <div class="odr-img">
-                                            <img src="../assets/images/user/user-1.jpg"
-                                                class="img-fluid rounded-circle avatar-90 m-auto" alt="image">
+                                            <a href="../app/patient-profile.html">
+                                                <img src="../assets/images/user/user-1.jpg"
+                                                    class="img-fluid rounded-circle avatar-90 m-auto" alt="image">
+                                            </a>
                                         </div>
                                         <div class="odr-content rounded">
-                                            <h4 class="mb-2">Nhật Minh</h4>
-                                            <p class="mb-3">nhatminh@gmail.com</p>
-                                            <ul class="list-unstyled mb-3">
-                                                <li class="bg-secondary-light rounded-circle iq-card-icon-small mr-4"><i
-                                                        class="ri-mail-open-line m-0"></i></li>
-                                                <li class="bg-primary-light rounded-circle iq-card-icon-small mr-4"><i
-                                                        class="ri-chat-3-line m-0"></i></li>
-                                                <li class="bg-success-light rounded-circle iq-card-icon-small"><i
-                                                        class="ri-phone-line m-0"></i></li>
-                                            </ul>
-                                            <div class="pt-3 border-top">
-                                                <a href="#" class="btn btn-primary">Message</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card-transparent card-block card-stretch card-height">
-                                <div class="card-body text-center p-0">
-                                    <div class="item">
-                                        <div class="odr-img">
-                                            <img src="../assets/images/user/user-5.jpg"
-                                                class="img-fluid rounded-circle avatar-90 m-auto" alt="image">
-                                        </div>
-                                        <div class="odr-content rounded">
-                                            <h4 class="mb-2">Ái Linh</h4>
-                                            <p class="mb-3">ailinh@gmail.com</p>
-                                            <ul class="list-unstyled mb-3">
-                                                <li class="bg-secondary-light rounded-circle iq-card-icon-small mr-4"><i
-                                                        class="ri-mail-open-line m-0"></i></li>
-                                                <li class="bg-primary-light rounded-circle iq-card-icon-small mr-4"><i
-                                                        class="ri-chat-3-line m-0"></i></li>
-                                                <li class="bg-success-light rounded-circle iq-card-icon-small"><i
-                                                        class="ri-phone-line m-0"></i></li>
-                                            </ul>
-                                            <div class="pt-3 border-top">
-                                                <a href="#" class="btn btn-primary">Message</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card-transparent card-block card-stretch card-height">
-                                <div class="card-body text-center p-0">
-                                    <div class="item">
-                                        <div class="odr-img">
-                                            <img src="../assets/images/user/11.png"
-                                                class="img-fluid rounded-circle avatar-90 m-auto" alt="image">
-                                        </div>
-                                        <div class="odr-content rounded">
-                                            <h4 class="mb-2">Thu Huyền</h4>
-                                            <p class="mb-3">thuhuyen@gmail.com</p>
-                                            <ul class="list-unstyled mb-3">
-                                                <li class="bg-secondary-light rounded-circle iq-card-icon-small mr-4"><i
-                                                        class="ri-mail-open-line m-0"></i></li>
-                                                <li class="bg-primary-light rounded-circle iq-card-icon-small mr-4"><i
-                                                        class="ri-chat-3-line m-0"></i></li>
-                                                <li class="bg-success-light rounded-circle iq-card-icon-small"><i
-                                                        class="ri-phone-line m-0"></i></li>
-                                            </ul>
-                                            <div class="pt-3 border-top">
-                                                <a href="#" class="btn btn-primary">Message</a>
+                                            <a href="../app/patient-profile.html">
+                                                <h4 class="mb-2">Nguyễn Văn A</h4>
+                                            </a>
+                                            <p class="mb-3" id="SoDienThoai">0123456798</p>
+                                            <div id="stat">
+                                                <section id="bpm-display-container">
+                                                    <div id="bpm-display">
+                                                        <output id="bpm-value" title="Heart rate"></output>
+                                                        <label for="bpm-value">bpm</label>
+                                                        <div id="bpm-icon"></div>
+                                                    </div>
+                                                </section>
+                                                <section id="bpm-display-container">
+                                                    <div id="spo2-display">
+                                                        <output id="spo2-value" title="SpO2"></output>
+                                                        <label for="spo2-value">SpO2(%)</label>
+                                                    </div>
+                                                </section>
+                                                <div id="notification" class="text-animation">
+                                                    <span id="text-content"></span>
+                                                    <div id="face-emoji"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
