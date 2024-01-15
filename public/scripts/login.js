@@ -33,31 +33,31 @@ function login() {
                         timer: 1000,
                         timerProgressBar: true,
                         showConfirmButton: false
-                    }).then((result) =>{
+                    }).then((result) => {
                         window.location.href = "/backend/page-patient.html";
                     });
                 } else
-                if (data.data.pass == password.value) 
-                {
-                    localStorage.setItem('loginIdentifier', loginIdentifier);
-                    Swal.fire({
-                        icon: "success",
-                        title: "Đăng nhập thành công.",
-                        timer: 1000,
-                        timerProgressBar: true,
-                        showConfirmButton: false
-                    }).then((result) =>{
-                        window.location.href = "/";
-                    });
-                }
-                else 
-                {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Email/Số điện thoại hoặc mật khẩu không chính xác."
-                    });
-                }
+                    if (data.data.pass == password.value) {
+                        localStorage.setItem('loginIdentifier', loginIdentifier);
+                        Swal.fire({
+                            icon: "success",
+                            title: "Đăng nhập thành công.",
+                            timer: 1000,
+                            timerProgressBar: true,
+                            showConfirmButton: false
+                        }).then((result) => {
+                            // Cài đặt một cookie
+                            document.cookie = "loginSuccess=true; path=/";
+                            window.location.href = "/";
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Email/Số điện thoại hoặc mật khẩu không chính xác."
+                        });
+                    }
                 console.log("Thông tin người dùng:", data.data);
             } else {
                 // Hiển thị thông báo lỗi nếu không tìm thấy người dùng
@@ -78,15 +78,13 @@ function login() {
 
 
 function signup() {
-    if (registerConfirmPassword.value !== registerPassword.value) 
-    {
+    if (registerConfirmPassword.value !== registerPassword.value) {
         Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Phần xác nhận mật khẩu của bạn không khớp"
         });
-    } else if (registerUsername.value !== "" && registerPassword.value !== "" && registerConfirmPassword.value !== "")   
-    {
+    } else if (registerUsername.value !== "" && registerPassword.value !== "" && registerConfirmPassword.value !== "") {
         var newUser = {
             pass: registerPassword.value
         };
@@ -104,31 +102,31 @@ function signup() {
             },
             body: JSON.stringify(newUser)
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Đăng ký thành công.",
-                    timer: 1200,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                }).then((result) =>{
-                    location.reload();
-                });
-                console.log("Đăng ký thành công");
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Email hoặc số điện thoại đã tồn tại."
-                });
-                console.log(data.message);
-            }
-        })  
-        .catch(error => {
-            console.error('Lỗi khi gọi API createUser:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Đăng ký thành công.",
+                        timer: 1200,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    }).then((result) => {
+                        location.reload();
+                    });
+                    console.log("Đăng ký thành công");
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Email hoặc số điện thoại đã tồn tại."
+                    });
+                    console.log(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi khi gọi API createUser:', error);
+            });
     }
     return false;
 }

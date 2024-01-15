@@ -5,6 +5,9 @@ var AdminModel = new Schema({
     name: {
         type: String,
     },
+    hospital: {
+        type: String,
+    },
     address: {
         type: String,
     },
@@ -26,6 +29,12 @@ var AdminModel = new Schema({
     },
     gender: {
         type: String
+    },
+    male: {
+        type: Boolean
+    },
+    female: {
+        type: Boolean
     },
     city: {
         type: String,
