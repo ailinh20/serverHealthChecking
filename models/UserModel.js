@@ -24,6 +24,9 @@ var UserModel = new Schema({
     idDevice: {
         type: String,
         ref: "SensorModel"
+    },
+    UrlImg: {
+        type: String,
     }
 })
 
