@@ -1,4 +1,4 @@
-require('dotenv').config();
+yyrequire('dotenv').config();
 require("colors");
 const express = require('express');
 const mongoose = require('mongoose');
