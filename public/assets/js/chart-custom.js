@@ -3304,7 +3304,7 @@ if (jQuery("#high-basicline-chart").length && Highcharts.chart("high-basicline-c
       data: [1, 3, 4, 3, 3, 5, 4]
     }]
   }), 
-  
+  //////////////////////////////////////////////////////////////// CHART nhịp TIM////////////////
   jQuery("#NhipTim").length && Highcharts.chart("NhipTim", {
     chart: {
       type: "areaspline"
@@ -3353,6 +3353,8 @@ if (jQuery("#high-basicline-chart").length && Highcharts.chart("high-basicline-c
       data: [3, 4, 3, 5, 4, 10, 12]
     }]
   }), 
+
+    //////////////////////////////////////////////////////////////// CHART SPO2////////////////
   jQuery("#SpO2").length && Highcharts.chart("SpO2", {
     chart: {
       type: "areaspline"

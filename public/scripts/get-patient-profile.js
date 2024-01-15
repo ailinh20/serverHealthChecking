@@ -6,6 +6,7 @@ function getInforPatient() {
     var phoneNumber = document.getElementsByName('SoDienThoai');
     var email = document.getElementsByName('Email');
 
+    var TieuSuBenh = document.getElementsByName('TieuSuBenh');
     fetch(`/api/v1/admin/getadmin`)/////////////// chưa sửa
         .then(response => response.json())
         .then(data => {
@@ -15,6 +16,7 @@ function getInforPatient() {
                 address.value = data.data.city || ''; /////////////// chưa sửa
                 phoneNumber.value = data.data.dayOfBirth || ''; /////////////// chưa sửa
                 email.value = data.data.country || ''; /////////////// chưa sửa
+                TieuSuBenh.value = data.data.country || ''; /////////////// chưa sửa
             } else {
                 console.error('Không thể lấy thông tin người dùng');
             }
