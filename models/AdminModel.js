@@ -5,6 +5,9 @@ var AdminModel = new Schema({
     name: {
         type: String,
     },
+    hospital: {
+        type: String,
+    },
     address: {
         type: String,
     },
@@ -14,23 +17,32 @@ var AdminModel = new Schema({
     email: {
         type: String,
     },
+    username: {
+        type: String,
+    },
     pass: {
         type: String,
         required: true
     },
     dayOfBirth: {
-		type: Date,
-    },
-    userName: {
-        type: String,
+		type: String,
     },
     gender: {
         type: String
+    },
+    male: {
+        type: Boolean
+    },
+    female: {
+        type: Boolean
     },
     city: {
         type: String,
     },
     country: {
+        type: String
+    },
+    urlAvatar: {
         type: String
     }
 })

@@ -1,8 +1,8 @@
 const asyncHandler = require("../middlewares/async")
 
-const UserModel = require("../models/UserModel");
+const UserModel = require("../models/NotiModel");
 
-//Create user
+//Create noti
 exports.createUser = asyncHandler(async (req, res, next) => {
     try {
         // Kiểm tra xem đã tồn tại username hay chưa

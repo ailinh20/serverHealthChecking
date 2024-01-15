@@ -14,9 +14,16 @@ var UserModel = new Schema({
     email: {
         type: String,
     },
+    username: {
+        type:String,
+        required: true
+    },
     pass: {
         type: String,
         required: true
+    },
+    role: {
+        type: String
     },
     dayOfBirth: {
 		type: String,

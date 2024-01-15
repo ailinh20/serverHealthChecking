@@ -227,6 +227,18 @@ body{
   transition: 0.4s;
 }
 
+.role:checked ~ .checkmark{
+  background-color: #26ae91;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.role:checked ~ .checkmark::after{
+  display: block;
+}
+
 @media (max-width: 730px) {
   .container .cover{
     display: none;
