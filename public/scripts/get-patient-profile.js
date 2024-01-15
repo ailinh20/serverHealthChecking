@@ -5,7 +5,8 @@ function getInforPatient() {
     var address = document.getElementById("DiaChi");
     var phoneNumber = document.getElementsByName('SoDienThoai');
     var email = document.getElementsByName('Email');
-
+    
+    var email = document.getElementsByName('Email');
     fetch(`/api/v1/admin/getadmin`)/////////////// chưa sửa
         .then(response => response.json())
         .then(data => {
