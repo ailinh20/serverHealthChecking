@@ -17,15 +17,15 @@ var AdminModel = new Schema({
     email: {
         type: String,
     },
+    username: {
+        type: String,
+    },
     pass: {
         type: String,
         required: true
     },
     dayOfBirth: {
-		type: Date,
-    },
-    userName: {
-        type: String,
+		type: String,
     },
     gender: {
         type: String
@@ -40,6 +40,9 @@ var AdminModel = new Schema({
         type: String,
     },
     country: {
+        type: String
+    },
+    urlAvatar: {
         type: String
     }
 })
