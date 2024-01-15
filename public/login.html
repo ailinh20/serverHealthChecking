@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
-    <link rel="stylesheet" href="./css/loginStyle.css">
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/public/images/heartbeat.png" type="">
+
+<head>
+  <meta charset="UTF-8">
+  <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+  <link rel="stylesheet" href="./css/loginStyle.css">
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/public/images/heartbeat.png" type="">
     <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clrewe1h6184ippb4mxvlj2yh"></script>
 
-   </head>
+</head>
+
 <body>
   <div class="container">
-    <button>
-      <a id="btnHomeLeft" class="btnHome" href="/">
+    <!-- <button>
+      <a id="btnHome" class="btnHome" href="/">
         <i class="fas fa-home" id="iconHomePage"></i>
       </a>
     </button>
@@ -23,7 +25,7 @@
       <a id="btnHomeRight" class="btnHome" style="right: 15px; left: auto;" href="/">
         <i class="fas fa-home" id="iconHomePage"></i>
       </a>
-    </button>
+    </button> -->
     <input type="checkbox" id="flip">
     <div class="cover">
       <div class="front">
@@ -42,33 +44,37 @@
       </div>
     </div>
     <div class="forms">
-        <div class="form-content">
-          <div class="login-form">
-            <div class="title">Đăng nhập</div>
-            <!-- Đăng nhập -->
+      <div class="form-content">
+        <div class="login-form">
+          <div class="title">Đăng nhập</div>
+          <!-- Đăng nhập -->
           <form action="#" onsubmit="return login()">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Email/Số điện thoại" required id="username">
+                <input type="text" placeholder="Username/Email/Số điện thoại" required id="username">
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Mật khẩu" required id="password">
               </div>
+              <div style="margin: 10px auto; text-align: left;" class="text sign-up-text">
+                <input type="checkbox" id="role">
+                <label for="role">Người dùng</label> 
+              </div>
               <div class="text"><a href="backend/auth-recoverpw.html">Quên mật khẩu?</a></div>
               <div class="button input-box">
                 <input type="submit" value="Đăng nhập">
               </div>
-              <div class="text sign-up-text">Chưa có tài khoản? <label for="flip">Đăng ký ngay</label></div>
+              <!-- <div class="text sign-up-text">Chưa có tài khoản? <label for="flip">Đăng ký ngay</label></div> -->
+              <div class="text" style="text-align: center;"><a href="/">Quay về trang chủ</a></div>
             </div>
-        </form>
+          </form>
 
-      </div>
-        <div class="signup-form">
+        </div>
+        <!-- <div class="signup-form">
           <div class="title">Đăng ký</div>
-          <!-- Đăng ký -->
-        <form action="#" onsubmit="return signup()">
+          <form action="#" onsubmit="return signup()">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
@@ -87,12 +93,13 @@
               </div>
               <div class="text sign-up-text">Đã có tài khoản? <label for="flip">Đăng nhập ngay</label></div>
             </div>
-      </form>
-    </div>
-    </div>
+          </form>
+        </div> -->
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./scripts/login.js"></script>
 </body>
+
 </html>

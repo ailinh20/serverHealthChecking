@@ -3250,7 +3250,9 @@ if (jQuery("#high-basicline-chart").length && Highcharts.chart("high-basicline-c
         [80, -76.5]
       ]
     }]
-  }), jQuery("#high-area-chart").length && Highcharts.chart("high-area-chart", {
+  }), 
+  
+  jQuery("#high-area-chart").length && Highcharts.chart("high-area-chart", {
     chart: {
       type: "areaspline"
     },
@@ -3301,7 +3303,108 @@ if (jQuery("#high-basicline-chart").length && Highcharts.chart("high-basicline-c
       color: "#37e6b0",
       data: [1, 3, 4, 3, 3, 5, 4]
     }]
-  }), jQuery("#high-columnndbar-chart").length && Highcharts.chart("high-columnndbar-chart", {
+  }), 
+  //////////////////////////////////////////////////////////////// CHART nhịp TIM////////////////
+  jQuery("#NhipTim").length && Highcharts.chart("NhipTim", {
+    chart: {
+      type: "areaspline"
+    },
+    title: {
+      text: "Theo dõi nhịp tim"
+    },
+    legend: {
+      layout: "vertical",
+      align: "left",
+      verticalAlign: "top",
+      x: 150,
+      y: 100,
+      floating: !0,
+      borderWidth: 1,
+      backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || "#FFFFFF"
+    },
+    xAxis: {
+      categories: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      plotBands: [{
+        from: 4.5,
+        to: 6.5,
+        color: "rgba(68, 170, 213, .2)"
+      }]
+    },
+    yAxis: {
+      title: {
+        text: "Số nhịp/s"
+      }
+    },
+    tooltip: {
+      shared: !0,
+      valueSuffix: " nhịp/s"
+    },
+    credits: {
+      enabled: !1
+    },
+    plotOptions: {
+      areaspline: {
+        fillOpacity: .5
+      }
+    },
+    series: [{
+      name: "Nhịp Tim",
+      color: "#4788ff",
+      data: [3, 4, 3, 5, 4, 10, 12]
+    }]
+  }), 
+
+    //////////////////////////////////////////////////////////////// CHART SPO2////////////////
+  jQuery("#SpO2").length && Highcharts.chart("SpO2", {
+    chart: {
+      type: "areaspline"
+    },
+    title: {
+      text: "Theo dõi nhịp tim"
+    },
+    legend: {
+      layout: "vertical",
+      align: "left",
+      verticalAlign: "top",
+      x: 150,
+      y: 100,
+      floating: !0,
+      borderWidth: 1,
+      backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || "#FFFFFF"
+    },
+    xAxis: {
+      categories: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      plotBands: [{
+        from: 4.5,
+        to: 6.5,
+        color: "rgba(255, 26, 10, 0.1)"
+      }]
+    },
+    yAxis: {
+      title: {
+        text: "%"
+      }
+    },
+    tooltip: {
+      shared: !0,
+      valueSuffix: " %"
+    },
+    credits: {
+      enabled: !1
+    },
+    plotOptions: {
+      areaspline: {
+        fillOpacity: .5
+      }
+    },
+    series: [{
+      name: "Nồng độ oxy",
+      color: "#ff1a3f4d",
+      data: [3, 4, 3, 5, 4, 10, 12]
+    }]
+  }),
+  
+  jQuery("#high-columnndbar-chart").length && Highcharts.chart("high-columnndbar-chart", {
     chart: {
       type: "bar"
     },

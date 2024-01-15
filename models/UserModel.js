@@ -14,9 +14,16 @@ var UserModel = new Schema({
     email: {
         type: String,
     },
+    username: {
+        type:String,
+        required: true
+    },
     pass: {
         type: String,
         required: true
+    },
+    role: {
+        type: String
     },
     dayOfBirth: {
 		type: String,
@@ -24,6 +31,15 @@ var UserModel = new Schema({
     idDevice: {
         type: String,
         ref: "SensorModel"
+    },
+    UrlImg: {
+        type: String
+    },
+    status: {
+        type: Number
+    },
+    gender: {
+        type: String
     }
 })
 

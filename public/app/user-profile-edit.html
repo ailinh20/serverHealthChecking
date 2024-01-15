@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Health Heart | Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <title>Health Heart</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/images/favicon.ico" />
@@ -31,7 +31,7 @@
         <div class="iq-sidebar  sidebar-default ">
             <div class="iq-sidebar-logo d-flex align-items-center">
                 <a href="../backend/page-patient.html" class="header-logo">
-                    <img src="../assets/images/logo.svg" alt="logo">
+                    <img src="../assets/images/HEALTH.png" alt="logo">
                     <h3 class="logo-title light-logo">Health Heart</h3>
                 </a>
                 <div class="iq-menu-bt-sidebar ml-0">
@@ -400,18 +400,16 @@
                                                 <div class=" row align-items-center">
                                                     <div class="form-group col-sm-12">
                                                         <label for="fname">Họ tên:</label>
-                                                        <input type="text" class="form-control" id="fname"
-                                                            value="Tan">
+                                                        <input type="text" class="form-control" id="fname">
                                                     </div>
                                                     <div class="form-group col-sm-6">
-                                                        <label for="uname">Tên đăng nhập:</label>
-                                                        <input type="text" class="form-control" id="uname"
-                                                            value="Tan@01">
+                                                        <label for="uname">Nơi làm việc:</label>
+                                                        <input type="text" class="form-control" id="oname"
+                                                        value="">
                                                     </div>
                                                     <div class="form-group col-sm-6">
                                                         <label for="cname">Thành phố:</label>
-                                                        <input type="text" class="form-control" id="cname"
-                                                            value="Hồ Chí Minh">
+                                                        <input type="text" class="form-control" id="cname">
                                                     </div>
                                                     <div class="form-group col-sm-6">
                                                         <label class="d-block">Giới tính:</label>
@@ -433,7 +431,7 @@
                                                         <input class="form-control" id="dob" value="01-01-2002">
                                                     </div>
                                                     <div class="form-group col-sm-6">
-                                                        <label>Country:</label>
+                                                        <label>Đất nước:</label>
                                                         <select class="form-control" id="exampleFormControlSelect3">
                                                             <option>Caneda</option>
                                                             <option>Noida</option>
@@ -446,14 +444,15 @@
                                                     <div class="form-group col-sm-12">
                                                         <label>Địa chỉ:</label>
                                                         <textarea class="form-control" name="address" rows="5"
-                                                            style="line-height: 22px;">
-                                       Khu phố 6
-                                       phường Linh Trung, Thành Phố Thủ Đức
-                                       Thành Phố Hồ Chí Minh
-                                       </textarea>
+                                                            style="line-height: 22px;" id="address">
+                                                            Khu phố 6
+                                                            phường Linh Trung, Thành Phố Thủ Đức
+                                                            Thành Phố Hồ Chí Minh
+                                                        </textarea>
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary mr-2">Nhập</button>
+                                                <button type="button" class="btn btn-primary mr-2"
+                                                    onclick="updateInfo()">Nhập</button>
                                                 <button type="reset" class="btn iq-bg-danger">Hủy</button>
                                             </form>
                                         </div>
@@ -469,16 +468,15 @@
                                         <div class="card-body">
                                             <form>
                                                 <div class="form-group">
-                                                    <label for="cpass">Current Password:</label>
+                                                    <label for="cpass">Mật khẩu hiện tại:</label>
                                                     <a href="javascripe:void();" class="float-right">Forgot Password</a>
                                                     <input type="Password" class="form-control" id="cpass" value="">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="npass">New Password:</label>
+                                                <div class="form-group">Mật khẩu mới:</label>
                                                     <input type="Password" class="form-control" id="npass" value="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="vpass">Verify Password:</label>
+                                                    <label for="vpass">Nhập lại Mật khẩu:</label>
                                                     <input type="Password" class="form-control" id="vpass" value="">
                                                 </div>
                                                 <button type="submit" class="btn btn-primary mr-2">Nhập</button>
@@ -913,6 +911,9 @@
     <script src="../assets/js/app.js"></script>
 
     <script src="../assets/vendor/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script async src="../scripts/profile-edit.js"></script>
+
 </body>
 
 </html>

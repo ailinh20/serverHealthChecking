@@ -1,8 +1,8 @@
 const asyncHandler = require("../middlewares/async")
 
-const UserModel = require("../models/UserModel");
+const UserModel = require("../models/NotiModel");
 
-//Create user
+//Create noti
 exports.createUser = asyncHandler(async (req, res, next) => {
     try {
         // Kiểm tra xem đã tồn tại username hay chưa
@@ -29,9 +29,6 @@ exports.createUser = asyncHandler(async (req, res, next) => {
             address: req.body.address,
             dayOfBirth: req.body.dayOfBirth,
             idDevice: req.body.idDevice,
-            gender: req.body.gender,
-            UrlImg: req.body.UrlImg,
-            status: req.body.status,
             role: "user",
         });
 
@@ -97,10 +94,6 @@ exports.updateUser = asyncHandler(async (req, res, next) => {
             user = await UserModel.findOne({ phoneNumber: req.params.id });
         } else {
             user = await UserModel.findOne({ email: req.params.id });
-
-            if(!user) {
-                user = await UserModel.findOne({ username: req.params.id });
-            }
         }
         if (user) {
             await UserModel.updateOne({ _id: user._id }, { $set: updateFields });
@@ -127,41 +120,6 @@ exports.getAllUser = asyncHandler(async (req, res, next) => {
         res.status(500).json({ success: false, message: err.message });
     }
 });
-
-//delete user by username
-exports.deleteUser = asyncHandler(async (req, res, next) => {
-    try {
-        // Kiểm tra xem username có được cung cấp hay không
-        const idUser = req.params.id;
-
-        // Tìm người dùng theo username
-        const user = await UserModel.findOne({ username: req.params.id });
-
-        // Nếu không tìm thấy người dùng, trả về lỗi
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: 'Không thể tìm thấy username'
-            });
-        } else {
-            // Xóa người dùng từ cơ sở dữ liệu
-            await UserModel.deleteOne({ _id: user._id });
-
-            // Trả về phản hồi thành công
-            res.status(200).json({
-                success: true,
-                message: 'Xóa thánh công'
-            });
-        }
-    } catch (err) {
-        // Trả về phản hồi lỗi nếu có lỗi xảy ra
-        res.status(500).json({
-            success: false,
-            message: 'Lỗi khi xóa người dùng'
-        });
-    }
-});
-
 
 
 

@@ -37,28 +37,60 @@
               </div>
           </div>
           <div class="data-scrollbar" data-scroll="1">
-              <nav class="iq-sidebar-menu">
-                  <ul id="iq-sidebar-toggle" class="iq-menu">
-                      <li class="">
-                          <a href="../backend/page-patient.html" class="svg-icon">                        
-                              <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
-                              </svg>
-                              <span class="ml-4">Bệnh Nhân</span>
-                          </a>
-                      </li>
-                      <li class="active">
-                          <a href="../backend/page-calender.html" class="svg-icon">                        
-                              <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
-                              </svg>
-                              <span class="ml-4">Lịch hẹn</span>
-                          </a>
-                      </li>
-                  </ul>
-              </nav>
-              <div class="pt-5 pb-2"></div>
-          </div>
+            <nav class="iq-sidebar-menu">
+                <ul id="iq-sidebar-toggle" class="iq-menu">
+                    <li class="">
+                        <a href="#patient" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span class="ml-4">Bệnh nhân</span>
+                            <i class="las la-angle-right iq-arrow-right arrow-active"></i>
+                            <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                        </a>
+                        <ul id="patient" class="iq-submenu collapse" data-toggle="collapse" >
+                            <li class="">
+                                <a href="../app/patients.html">
+                                    <i class="las la-minus"></i><span>Theo dõi</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../app/patient-profile.html">
+                                    <i class="las la-minus"></i><span>User Profile</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../app/patient-add.html">
+                                    <i class="las la-minus"></i><span>Thêm bệnh nhân</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="../app/patient-list.html">
+                                    <i class="las la-minus"></i><span>Danh sách</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="../backend/page-calender.html" class="svg-icon">
+                            <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span class="ml-4">Lịch hẹn</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="pt-5 pb-2"></div>
+        </div>
       </div>      <div class="iq-top-navbar">
           <div class="iq-navbar-custom">
               <nav class="navbar navbar-expand-lg navbar-light p-0">
