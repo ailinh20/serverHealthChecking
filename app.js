@@ -1,18 +1,52 @@
 require('dotenv').config();
 require("colors");
 const express = require('express');
+const bodyParser = require('body-parser');
+const cloudinary = require('cloudinary').v2;
 const mongoose = require('mongoose');
 const moment = require('moment');
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
 const path = require('path');
 
 const app = express();
+
+// Thêm middleware để xử lý yêu cầu có kích thước lớn
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.set('view engine', 'html'); 
 app.engine('html', require('ejs').renderFile);
 const publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
+
+//Imgbb
+cloudinary.config({
+    cloud_name: 'dktccqk0e',
+    api_key: '744291944833613',
+    api_secret: 'TFlT-KVRQBvkiArtp2Vq2B_HM1M'
+  });
+
+app.post('/api/upload', async (req, res) => {
+    try {
+        const imageData = req.body.imageData; // Dữ liệu hình ảnh dưới dạng base64
+
+        // Sử dụng Cloudinary để tải ảnh lên
+        cloudinary.uploader.upload(imageData, function(error, result) {
+            if (error) {
+                console.error('Cloudinary upload error:', error);
+                res.status(500).json({ success: false, error: 'Không thể lưu trữ hình ảnh' });
+            } else {
+                const imageUrl = result.secure_url;
+                res.json({ success: true, imageUrl });
+            }
+        });
+    } catch (error) {
+        console.error('Server error:', error);
+        res.status(500).json({ success: false, error: 'Không thể lưu trữ hình ảnh' });
+    }
+});
 
 //connect MongoDB
 const DBConnection = require("./config/db");
@@ -176,6 +210,7 @@ app.get('/', async (req, res) =>
 app.get('/api/getall', async (req, res) => {
     try{
         const data = await infoSensor.find();
+        console.log('Data from MongoDB:', data);
         res.json(data)
     }
     catch(error){

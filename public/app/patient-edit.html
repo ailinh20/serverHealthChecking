@@ -59,7 +59,7 @@
                                         <i class="las la-minus"></i><span>Theo dõi</span>
                                     </a>
                                 </li>
-                                <li class="">
+                                <li class="active">
                                     <a href="../app/patient-add.html">
                                         <i class="las la-minus"></i><span>Thêm bệnh nhân</span>
                                     </a>
@@ -371,35 +371,25 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <div class="header-title">
-                                    <h4 class="card-title">Cập nhật thông tin</h4>
+                                    <h4 class="card-title">Thêm bệnh nhân mới</h4>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
                                         <div class="crm-profile-img-edit position-relative">
-                                            <img class="crm-profile-pic rounded avatar-100"
+                                            <img id="profileImage" class="crm-profile-pic rounded avatar-100" 
                                                 src="../assets/images/user/11.png" alt="profile-pic">
                                             <div class="crm-p-image bg-primary">
                                                 <i class="las la-pen upload-button"></i>
-                                                <input class="file-upload" type="file" accept="image/*">
+                                                <input id="inputImage" class="file-upload" type="file" accept="image/*"style="display:none;" onchange="handleImageUpload(event)">
                                             </div>
                                         </div>
                                     </div>
                                     <div><span>Mạng xã hội</span></div>
                                     <div class="form-group">
-                                        <label for="furl">Zalo:</label>
-                                        <input type="text" class="form-control" id="furl" placeholder="Số điện thoại">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="furl">Facebook:</label>
-                                        <input type="text" class="form-control" id="furl"
-                                            placeholder="Đường dẫn Facebook">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="instaurl">Instagram:</label>
-                                        <input type="text" class="form-control" id="instaurl"
-                                            placeholder="Đường dẫn Instagram">
+                                        <label for="zurl">Zalo:</label>
+                                        <input type="text" class="form-control" id="zurl" placeholder="Số điện thoại">
                                     </div>
                                 </form>
                             </div>
@@ -409,7 +399,7 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <div class="header-title">
-                                    <h4 class="card-title">Sửa thông tin bệnh nhân</h4>
+                                    <h4 class="card-title">Thông tin bệnh nhân</h4>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -432,40 +422,39 @@
                                             <div class="form-group col-sm-6">
                                                 <label class="d-block">Giới tính:</label>
                                                 <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadio6" name="customRadio1"
+                                                    <input type="radio" id="customRadio6" name="gender"
                                                         class="custom-control-input" checked="">
                                                     <label class="custom-control-label" for="customRadio6"> Nam
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadio7" name="customRadio1"
+                                                    <input type="radio" id="customRadio7" name="gender"
                                                         class="custom-control-input">
                                                     <label class="custom-control-label" for="customRadio7"> Nữ
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="lname">Thành phố, tỉnh:</label>
+                                                <label for="city">Thành phố, tỉnh:</label>
                                                 <select class="form-select form-select-sm mb-3 form-control" id="city"
                                                     aria-label=".form-select-sm"  required="true">
                                                     <option value="" selected>Chọn tỉnh thành</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="lname">Quận, huyện:</label required="true">
+                                                <label for="district">Quận, huyện:</label required="true">
                                                 <select class="form-select form-select-sm mb-3 form-control"
                                                     id="district" aria-label=".form-select-sm">
                                                     <option value="" selected>Chọn quận huyện</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="lname">Phường, xã:</label required="true">
+                                                <label for="ward">Phường, xã:</label required="true">
                                                 <select class="form-select form-select-sm form-control" id="ward"
                                                     aria-label=".form-select-sm">
                                                     <option value="" selected>Chọn phường xã</option>
                                                 </select>
                                             </div>
-
 
                                             <div class="form-group col-md-6">
                                                 <label for="add1">Số nhà, đường:</label>
@@ -473,8 +462,8 @@
                                                     placeholder="Số nhà, tên đường, khu phố">
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label>Quốc tịch:</label>
-                                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                <label for="country">Quốc tịch:</label>
+                                                <select name="type" class="selectpicker form-control" data-style="py-0" id = "country">
                                                     <option>VietNam</option>
                                                     <option>Korean</option>
                                                     <option>USA</option>
@@ -483,8 +472,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label>Nghề nghiệp:</label>
-                                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                                <label for="career">Nghề nghiệp:</label>
+                                                <select name="type" class="selectpicker form-control" data-style="py-0"  id = "career">
                                                     <option>Kinh doanh</option>
                                                     <option>Công nhân</option>
                                                     <option>Công nhân viên chức</option>
@@ -503,14 +492,39 @@
                                                 <input type="email" class="form-control" id="email" placeholder="Email">
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label for="email">Tiền sử bệnh án:</label>
-                                                <input type="email" class="form-control" id="email" required="true" placeholder="Tiền sử bệnh án, ưu tiên các bệnh liên quan đến Tim Mạch" >
+                                                <label for="History">Tiền sử bệnh án:</label>
+                                                <input type="text" class="form-control" id="History" required="true" placeholder="Tiền sử bệnh án, ưu tiên các bệnh liên quan đến Tim Mạch" >
                                             </div>
                                         </div>
                                         <hr>
+                                        <h5 class="mb-3">Tài khoản định danh</h5>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="uname">Tên đăng nhập:</label>
+                                                <input type="text" class="form-control" id="uname"
+                                                    placeholder="Tên đăng nhập">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="pass">Mật khẩu:</label>
+                                                <input type="password" class="form-control" id="pass"
+                                                    placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="rpass">Nhập lại mật khẩu:</label>
+                                                <input type="password" class="form-control" id="rpass"
+                                                    placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="role">Role:</label>
+                                                <select name="type" class="selectpicker form-control" data-style="py-0" id = "role">
+                                                    <option>user</option>
+                                                    <option>admin</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div> 
-                                            <button type="submit" class="btn btn-primary">Sửa</button>
-                                            <button type="reset" class="btn btn-light" >Hủy</button>
+                                            <button id="save" type="save" class="btn btn-primary">Lưu</button>
+                                            <button id="huy" type="reset" class="btn btn-light" >Hủy</button>
                                         </div>
                                     </form>
                                 </div>
@@ -833,6 +847,7 @@
     <!-- bo-loc-select-chon-tinh-thanh-quan-huyen-xa-phuong -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="../assets/js/address.js"></script>
+    <script src="../assets/js/patient-edit.js"></script>  
 </body>
 
 </html>

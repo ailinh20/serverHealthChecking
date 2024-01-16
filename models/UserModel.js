@@ -3,16 +3,25 @@ var Schema = mongoose.Schema;
 
 var UserModel = new Schema({
     name: {
-        type: String,
+        type: String
+    },
+    gender: {
+        type: String
     },
     address: {
-        type: String,
+        type: String
+    },
+    nationality: {
+        type: String
     },
     phoneNumber: {
-        type: String,
+        type: String
     },
     email: {
-        type: String,
+        type: String
+    },
+    anamnesis: {
+        type: String
     },
     username: {
         type:String,
@@ -26,21 +35,21 @@ var UserModel = new Schema({
         type: String
     },
     dayOfBirth: {
-		type: String,
+		type: String
     },
     idDevice: {
         type: String,
         ref: "SensorModel"
     },
+    carrier: {
+        type: String
+    },
     UrlImg: {
         type: String
     },
-    status: {
-        type: Number
-    },
-    gender: {
+    zalo: {
         type: String
-    }
+    },
 })
 
 module.exports = mongoose.model("UserModel", UserModel)

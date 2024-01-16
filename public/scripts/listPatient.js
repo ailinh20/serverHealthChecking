@@ -23,8 +23,8 @@ function displayListUser(users) {
             `<td><span class="badge ${user.status === 1 ? 'bg-primary' : 'bg-danger'}">${user.status === 1 ? 'Bình thường' : 'Nguy cơ'}</span></td>`,
             `<td>
                 <div class="flex align-items-center list-user-action">
-                    <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xem" href="patient-profile.html"><i class="ri-menu-3-line mr-0"></i></a>
-                    <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" href="patient-edit.html"><i class="ri-pencil-line mr-0"></i></a>
+                    <a class="btn btn-sm bg-primary info-button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xem" href="../app/patient-profile.html?username=${user.username}"><i class="ri-menu-3-line mr-0"></i></a>
+                    <a class="btn btn-sm bg-primary edit-button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" href="../app/patient-edit.html?username=${user.username}"><i class="ri-pencil-line mr-0"></i></a>
                     <a class="btn btn-sm bg-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa" href="#" onclick="deleteUser('${user.username}');"><i class="ri-delete-bin-line mr-0"></i></a>
                 </div>
             </td>`
@@ -33,9 +33,23 @@ function displayListUser(users) {
         // Chèn ô dữ liệu vào dòng mới
         newRow.innerHTML = cells.join('');
 
+        const editButton = newRow.querySelector('.edit-button');
+        editButton.addEventListener('click', function() {
+            // Chuyển đến trang chỉnh sửa và truyền thông tin của người dùng
+            redirectToEditPage(user);
+        });
+        const infoButton = newRow.querySelector('.info-button');
+        editButton.addEventListener('click', function() {
+            // Chuyển đến trang chỉnh sửa và truyền thông tin của người dùng
+            redirectToEditPage(user);
+        });
         // Chèn dòng mới vào bảng
         tableBody.appendChild(newRow);
     });
+}
+function redirectToEditPage(user) {
+    // Sử dụng window.location.href để chuyển hướng đến trang chỉnh sửa
+    window.location.href = `patient-edit.html?username=${user.username}`;
 }
 function searchUser() {
     const inputSearch = document.getElementById('exampleInputSearch');

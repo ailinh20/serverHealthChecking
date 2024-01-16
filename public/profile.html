@@ -5,77 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Link with JavaScript</title>
     <link rel="stylesheet" href="./css/profile.css">
+    <link href="css/style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1041.0/aws-sdk.min.js"></script>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <script>
+        $(function () {
+        // Load the header and pass the brand link and name
+        $("#header-container").load("header.html", function () {
+            // Replace 'BRAND_LINK' and 'BRAND_NAME' with the desired values for this page
+            $("#header-container .navbar-brand").attr("href", "profile.html");
+            $("#header-container #brandName").text("Thông tin cá nhân");
+        });
+        });
+    </script>
 </head>
-<body style="background-image: url(./images/background.png); background-repeat: no-repeat;">
+<body class="sub_page">
+
+    <div class="hero_area"> 
+        <!-- header section strats -->
+        <div id="header-container"></div>
+    </div>
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <h2>Thông tin cá nhân</h2>
+        <h2>Hình đại diện</h2>
     </nav>
     <div style="float: left; width: 25%; background-image: url(./images/br1.png);">
-        <!-- Profile picture card -->
-        <div>Ảnh đại diện</div>
-        <input type="file" id="inputImage" style="display: none;">
         <div class="card-body text-center">
             <!-- Profile picture image -->
-            <img id="profileImage" class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-            <!--Profile picture upload button -->
-            <button><label for="inputImage" class="btn btn-primary">Tải hình lên</label></button>  
+            <img id="profileImage" alt="Profile Image" style="max-width: 100%; max-height: 100%;">
+            <!-- Profile picture upload button -->
+            <input type="file" id="inputImage" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+            <label for="inputImage" class="btn btn-primary">Tải hình lên</label>
         </div>
-    </div>
-    <div style="width: 50%; float: right; margin-right: 20%;">
+    </div>  
+    <button id="switchToPersonalInfoBtn" class="menu" onclick="switchTo('personalInfo')">Thông tin cá nhân</button>
+    <button id="switchToMedicalProfileBtn" class="menu" onclick="switchTo('medicalProfile')">Hồ sơ bệnh án</button>
+    <!-- Thông tin cá nhân-->     
+    <div id="personalInfo" style="width: 60%; float: left; padding-left: 5%; display: block;">
         <!-- Account details card-->
         <div style="background-color: rgba(131, 246, 189, 0.3); padding-left: 5%; padding-top: 3%;">
-                <form>
-                    <!-- Form Group (name)-->
+            <form>
+                <!-- Form Group (name)-->
+                <div>
+                    <label for="inputFirstName">Họ và tên</label>
+                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Lê Thị A">
+                </div>
+                <div>
+                    <!-- Form Group (location)-->
                     <div>
-                        <label for="inputFirstName">Họ và tên</label>
-                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Lê Thị A">
+                        <label  for="inputLocation">Địa chỉ</label>
+                        <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="Quận 9, TP.HCM">
                     </div>
+                    </div>
+                    <!-- Form Group (email address)-->
                     <div>
-                        <!-- Form Group (organization name)-->
-                        <div>
-                            <label  for="inputOrgName">Nghề nghiệp</label>
-                            <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Nhân viên văn phòng">
-                        </div>
-                        <!-- Form Group (location)-->
-                        <div>
-                            <label  for="inputLocation">Địa chỉ</label>
-                            <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="Quận 9, TP.HCM">
-                        </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div>
-                            <label  for="inputEmailAddress">Địa chỉ email</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
-                        </div>
-                        <!-- Form Row-->
-                        <!-- Form Group (phone number)-->
-                        <div>
-                            <label  for="inputPhone">Số điện thoại</label>
-                            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
-                        </div>
-                        <!-- Form Group (birthday)-->
-                        <div>
-                            <label  for="inputBirthday">Ngày sinh</label>
-                            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
-                        </div>
-                        <!-- Form Group (password) -->
-                        <div>
-                            <label  for="inputPassword">Mật khẩu</label>
-                            <input class="form-control" id="inputPassword" type="password" placeholder="Nhập mật khẩu">
-                        </div>
-                        <!-- Form Group (confirm password) -->
-                        <div>
-                            <label  for="inputConfirmPassword">Xác nhận mật khẩu</label>
-                            <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Xác nhận lại mật khẩu">
-                        </div>
+                        <label  for="inputEmailAddress">Địa chỉ email</label>
+                        <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
                     </div>
-                </form>
+                    <!-- Form Row-->
+                    <!-- Form Group (phone number)-->
+                    <div>
+                        <label  for="inputPhone">Số điện thoại</label>
+                        <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                    </div>
+                    <!-- Form Group (birthday)-->
+                    <div>
+                        <label  for="inputBirthday">Ngày sinh</label>
+                        <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                    </div>
+                    <!-- Form Group (password) -->
+                    <div>
+                        <label  for="inputPassword">Mật khẩu</label>
+                        <input class="form-control" id="inputPassword" type="password" placeholder="Nhập mật khẩu">
+                    </div>
+                    <!-- Form Group (confirm password) -->
+                    <div>
+                        <label  for="inputConfirmPassword">Xác nhận mật khẩu</label>
+                        <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Xác nhận lại mật khẩu">
+                    </div>
+                </div>
+            </form>
             <!-- Save changes button-->
-            <div><button id="saveChangesBtn" type="button" style="margin-top: 5%;">Save changes</button></div>
+            <div><button id="saveChangesBtn" type="button" style="margin-top: 5%; margin-bottom: 5%; background-color: rgb(36, 187, 13); color: white; border-color: rgb(36, 187, 13);">Save changes</button></div>
+        </div>
+    </div>    
+    <!-- Hồ sơ bệnh án-->
+    <div id="medicalProfile" style="width: 60%; float: left; padding-left: 5%; display: none;">
+        <div style="background-color: rgba(131, 246, 189, 0.3); padding-left: 5%; padding-top: 3%;">
+            <form>
+                <!-- Form Group (name)-->
+                <div>
+                    <label>ID Thiết bị</label>
+                    <div class="form-control" id="IdDevice"></div>
+                </div>
+            </form>
         </div>
     </div>
-    <script type="module" src="./scripts/profile.js"></script>  
-    </body>
-    </html>
+    <script>
+         function switchTo(sectionId) {
+            // Ẩn tất cả các phần
+            document.getElementById('personalInfo').style.display = 'none';
+            document.getElementById('medicalProfile').style.display = 'none';
+
+            // Hiển thị phần được chọn
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+    <script src="./scripts/profile.js"></script>  
+</body>
+</html>

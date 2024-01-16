@@ -242,6 +242,14 @@
   </footer>
   <!-- footer section -->
   <script>
+  $(function () {
+    // Load the header and pass the brand link and name
+    $("#header-container").load("header.html", function () {
+      // Replace 'BRAND_LINK' and 'BRAND_NAME' with the desired values for this page
+      $("#header-container .navbar-brand").attr("href", "monitoring.html");
+      $("#header-container #brandName").text("Theo dõi tình trạng");
+    });
+  });
     document.addEventListener('dataUpdated', function () {
       let alertMessage;
       const notificationElement = document.getElementById('notification');
@@ -263,7 +271,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="scripts/time.js"></script>
-  <script src="scripts/calender.js"></script>
   <script src="scripts/chart.js"></script>
   <script src="scripts/weather.js"></script>
   <script src="scripts/heartbeat.js"></script>
