@@ -3,17 +3,35 @@ require("colors");
 const express = require('express');
 const mongoose = require('mongoose');
 const moment = require('moment');
-const infoSensor = require('./models/model.js');
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
+const path = require('path');
 
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
-app.set('view engine', 'ejs'); // Sử dụng ejs làm view engine
+app.set('view engine', 'html'); 
+app.engine('html', require('ejs').renderFile);
+const publicPath = path.resolve(__dirname, 'public');
+app.use(express.static(publicPath));
 
 //connect MongoDB
 const DBConnection = require("./config/db");
 DBConnection();
+
+//require DB
+const infoSensor = require('./models/inforsensor.js');
+require("./models/SensorModel.js")
+require("./models/UserModel.js")
+require("./models/AdminModel.js")
+
+//Route
+const userRoutes = require("./routes/UserRoute.js")
+const adminRoutes = require("./routes/AdminRoute.js")
+
+//register routes
+const versionOne = (routeName) => `/api/v1/${routeName}`;
+app.use(versionOne("user"), userRoutes);
+app.use(versionOne("admin"), adminRoutes);
 
 //Socket io
 const http = require('http');
@@ -37,16 +55,16 @@ io.on('connection', (socket) => {
         let endIndex = end;
     
         let selectedSp02Data = sp02Data.slice(startIndex, endIndex + 1);
-        console.log(selectedSp02Data);
+        // console.log(selectedSp02Data);
         
         let selectedHeartbeatData = heartbeatData.slice(startIndex, endIndex + 1);
-        console.log(selectedHeartbeatData);
+        // console.log(selectedHeartbeatData);
         let sp02Average = calculateAverage(selectedSp02Data);
         let heartbeatAverage = calculateAverage(selectedHeartbeatData);
-        console.log("TB_SP02:= "+sp02Average);
-        console.log("TB_HEARTBEAT: =" +heartbeatAverage);
+        // console.log("TB_SP02:= "+sp02Average);
+        // console.log("TB_HEARTBEAT: =" +heartbeatAverage);
         let prediction = predict('21', heartbeatAverage, sp02Average);
-        console.log(prediction);
+        // console.log(prediction);
         io.emit('prediction',{prediction});            
     });
 });
@@ -136,19 +154,24 @@ let predict = (in1, in2, in3) => {
     return P;
   };
 
-//Web app
-app.get('/', async (req, res) => {
-    try{
-        const data = await infoSensor.find().exec();
-        sp02Data = data.map(item => item.sp02);
-        heartbeatData = data.map(item => item.heartbeat);
-           
-          res.render('home', { data });
-        } catch (error) {
-          console.error('Error retrieving data from MongoDB:', error);
-          res.status(500).json({ error: 'Internal Server Error' });
-        }
-      });
+//API
+app.get('/', async (req, res) => 
+{
+    try
+    {
+    const data = await infoSensor.find().exec();
+    sp02Data = data.map(item => item.sp02);
+    heartbeatData = data.map(item => item.heartbeat);
+    res.render('index', { data });
+    } 
+    
+    catch(error) 
+    {
+        console.error('Error retrieving data from MongoDB:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+);
 
 app.get('/api/getall', async (req, res) => {
     try{
@@ -159,6 +182,22 @@ app.get('/api/getall', async (req, res) => {
         res.status(500).json({message: error.message})
     }
 })
+
+app.delete('/api/delete10', async (req, res) => {
+    try {
+        const dataToDelete = await infoSensor
+            .find()
+            .sort({ createdAt: 1 }) // Sắp xếp theo thứ tự tăng dần để có được cũ nhất đầu tiên
+            .limit(10)
+            .exec();
+        await infoSensor.deleteMany({ _id: { $in: dataToDelete.map(item => item._id) } });
+
+        res.json({ message: 'Delete successful' });
+    } catch (err) {
+        console.error('Error deleting items from MongoDB:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {

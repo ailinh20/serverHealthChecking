@@ -23,9 +23,13 @@
     "mqtt": "^4.3.7",
     "nodemon": "^2.0.22",
     "pandas-js": "^0.2.4",
-    "socket.io": "^4.6.2"
+    "socket.io": "^4.6.2",
+    "sweetalert2": "^11.10.1"
   },
   "engines": {
     "node": ">=14 <15"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.41"
   }
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Link with JavaScript</title>
+    <link rel="stylesheet" href="./css/profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body style="background-image: url(./images/background.png); background-repeat: no-repeat;">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <h2>Thông tin cá nhân</h2>
+    </nav>
+    <div style="float: left; width: 25%; background-image: url(./images/br1.png);">
+        <!-- Profile picture card -->
+        <div>Ảnh đại diện</div>
+        <input type="file" id="inputImage" style="display: none;">
+        <div class="card-body text-center">
+            <!-- Profile picture image -->
+            <img id="profileImage" class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+            <!--Profile picture upload button -->
+            <button><label for="inputImage" class="btn btn-primary">Tải hình lên</label></button>  
+        </div>
+    </div>
+    <div style="width: 50%; float: right; margin-right: 20%;">
+        <!-- Account details card-->
+        <div style="background-color: rgba(131, 246, 189, 0.3); padding-left: 5%; padding-top: 3%;">
+                <form>
+                    <!-- Form Group (name)-->
+                    <div>
+                        <label for="inputFirstName">Họ và tên</label>
+                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Lê Thị A">
+                    </div>
+                    <div>
+                        <!-- Form Group (organization name)-->
+                        <div>
+                            <label  for="inputOrgName">Nghề nghiệp</label>
+                            <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Nhân viên văn phòng">
+                        </div>
+                        <!-- Form Group (location)-->
+                        <div>
+                            <label  for="inputLocation">Địa chỉ</label>
+                            <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="Quận 9, TP.HCM">
+                        </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div>
+                            <label  for="inputEmailAddress">Địa chỉ email</label>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                        </div>
+                        <!-- Form Row-->
+                        <!-- Form Group (phone number)-->
+                        <div>
+                            <label  for="inputPhone">Số điện thoại</label>
+                            <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                        </div>
+                        <!-- Form Group (birthday)-->
+                        <div>
+                            <label  for="inputBirthday">Ngày sinh</label>
+                            <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                        </div>
+                        <!-- Form Group (password) -->
+                        <div>
+                            <label  for="inputPassword">Mật khẩu</label>
+                            <input class="form-control" id="inputPassword" type="password" placeholder="Nhập mật khẩu">
+                        </div>
+                        <!-- Form Group (confirm password) -->
+                        <div>
+                            <label  for="inputConfirmPassword">Xác nhận mật khẩu</label>
+                            <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Xác nhận lại mật khẩu">
+                        </div>
+                    </div>
+                </form>
+            <!-- Save changes button-->
+            <div><button id="saveChangesBtn" type="button" style="margin-top: 5%;">Save changes</button></div>
+        </div>
+    </div>
+    <script type="module" src="./scripts/profile.js"></script>  
+    </body>
+    </html>

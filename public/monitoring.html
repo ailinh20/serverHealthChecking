@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Theo dõi</title>
+  <link rel="shortcut icon" href="images/heartbeat.png" type="">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/heartbeat.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="shortcut icon" href="/public/images/heartbeat.png" type="">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <link href="css/responsive.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- Bootstrap JS và jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clrewe1h6184ippb4mxvlj2yh"></script>
+
+  <script>
+    $(function () {
+      const datePicker = $("#dob");
+
+      datePicker.datepicker({
+        dateFormat: 'yy-mm-dd', // Set the desired date format
+        onSelect: function (dateText, inst) {
+          const selectedDate = new Date(dateText);
+          const day = selectedDate.getDate();
+          handleDayClick(day);
+        }
+      });
+    });
+  </script>
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <img src="images/hero-bg.png" alt="">
+    </div>
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/">
+            <span>
+              HEART HEALTH
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="active" href="monitoring.html">Theo dõi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="booking.html">Đặt lịch</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Đăng nhập</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div style="width: 100%">
+      <div class="header">
+        <img class="today-icon" src="images/today.png" alt="Today Icon" style="width: 10%; max-width: 100vw;">
+        <div class="watch">
+          <canvas id="canvas" width="100%" height="100%"></canvas>
+          <div id="weather-info"></div>
+        </div>
+      </div>
+
+      <div class="yourhealth">
+        <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: 1.5vw; text-align: center; margin-right:2vw">Sức
+          khỏe bạn hôm nay thế nào?</div>
+        <div id="stat" style="float: center; padding-right:2vw">
+          <section id="bpm-display-container">
+            <div id="bpm-display">
+              <output id="bpm-value" title="Heart rate"></output>
+              <label for="bpm-value">bpm</label>
+              <div id="bpm-icon"></div>
+            </div>
+          </section>
+          <section id="bpm-display-container">
+            <div id="spo2-display">
+              <output id="spo2-value" title="SpO2"></output>
+              <label for="spo2-value">SpO2(%)</label>
+            </div>
+          </section>
+          <div id="notification" class="text-animation">
+            <span id="text-content"></span>
+            <div id="face-emoji"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="content">
+        <div id="note">
+          <div id="ngaytheodoi">
+            <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
+            <input type="text" id="dob" name="dob">
+          </div>
+        </div>
+        <div class="chart" style="float: right;">
+          <div style="width: 100%;">
+            <div class="title" id="canH" style="color: rgb(255, 33, 21);">
+              <i class="fa fa-heartbeat" aria-hidden="true"></i> NHỊP TIM
+              <canvas id="canvasH"></canvas>
+            </div>
+            <div class="title" id="canS" style="color: aqua;">
+              % SpO2
+              <canvas id="canvasS"></canvas>
+            </div>
+          </div>
+          <button id="btnBack">Trước đó</button>
+          <button id="btnNext">Sau đó</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 footer_col">
+          <div class="footer_contact">
+            <h4>
+              Liên hệ chúng tôi:
+            </h4>
+            <div class="contact_link_box">
+              <a
+                href="https://www.google.com/maps/place/K%C3%BD+t%C3%BAc+x%C3%A1+Khu+A+%C4%90H+Qu%E1%BB%91c+gia+TP.+H%E1%BB%93+Ch%C3%AD+Minh/@10.8782444,106.8037157,17z/data=!4m16!1m9!3m8!1s0x3174d8a5f4e477e9:0x29d5aeb365cee20b!2zS8O9IHTDumMgeMOhIEtodSBBIMSQSCBRdeG7kWMgZ2lhIFRQLiBI4buTIENow60gTWluaA!8m2!3d10.8782444!4d106.8062906!9m1!1b1!16s%2Fg%2F1tncqcyc!3m5!1s0x3174d8a5f4e477e9:0x29d5aeb365cee20b!8m2!3d10.8782444!4d106.8062906!16s%2Fg%2F1tncqcyc?hl=vi-VN&entry=ttu">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Địa chỉ: KTX khu A, Linh Trung, TP Thủ Đức
+                </span>
+              </a>
+              <a href="tel:123456789">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Số điện thoại: 123456789
+                </span>
+              </a>
+              <a href="mailto:someone@example.com">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  demo@gmail.com
+                </span>
+              </a>
+            </div>
+          </div>
+          <!-- <div class="footer_social">
+            <a href="">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div> -->
+        </div>
+
+        <div class="col-md-6 col-lg-2 mx-auto footer_col">
+          <div class="footer_link_box">
+            <h4>
+              Liên kết
+            </h4>
+            <div class="footer_links">
+              <a class="active" href="/">
+                Trang chủ
+              </a>
+              <a class="" href="monitoring.html">
+                Theo dõi tình trạng
+              </a>
+              <a class="" href="booking.html">
+                Đặt lịch
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="#">US<br><br></a>
+          &copy; <span id="displayYear"></span> Distributed By
+          <a href="#">US</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+  <script>
+    document.addEventListener('dataUpdated', function () {
+      let alertMessage;
+      const notificationElement = document.getElementById('notification');
+      const textContentElement = document.getElementById('text-content');
+      const faceEmojiElement = document.getElementById('face-emoji');
+
+      if (predict > 0.5) {
+        notificationElement.classList.add('text-animation');
+        alertMessage = 'Có nguy cơ bị bệnh tim';
+      } else {
+        notificationElement.classList.remove('text-animation');
+        alertMessage = 'Không có nguy cơ bị bệnh tim';
+      }
+      textContentElement.textContent = alertMessage;
+      faceEmojiElement.innerHTML = predict > 0.5 ? '😢😢😢' : '😊😊😊';
+    });
+  </script>
+  <div id="tooltip" style="position: absolute; display: none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="scripts/time.js"></script>
+  <script src="scripts/calender.js"></script>
+  <script src="scripts/chart.js"></script>
+  <script src="scripts/weather.js"></script>
+  <script src="scripts/heartbeat.js"></script>
+</body>
+
+</html>
