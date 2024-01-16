@@ -1,7 +1,6 @@
 /// <reference types="chart.js" />
 document.addEventListener('DOMContentLoaded', function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const username = urlParams.get('username');
+  const username = localStorage.getItem('loginIdentifier');
   console.log(username);
 let globalData;
 const labelH = [];
