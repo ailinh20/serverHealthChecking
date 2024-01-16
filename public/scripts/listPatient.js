@@ -20,7 +20,7 @@ function displayListUser(users) {
             `<td>${user.dayOfBirth}</td>`,
             `<td>${user.phoneNumber}</td>`,
             `<td>${user.email}</td>`,
-            `<td><span class="badge ${user.status === 1 ? 'bg-primary' : 'bg-danger'}">${user.status === 1 ? 'Bình thường' : 'Nguy cơ'}</span></td>`,
+            `<td><span class="badge ${user.status === "Chờ" ? 'bg-primary' : 'bg-danger'}">${user.status === 1 ? 'Bình thường' : 'Nguy cơ'}</span></td>`,
             `<td>
                 <div class="flex align-items-center list-user-action">
                     <a class="btn btn-sm bg-primary info-button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xem" href="../app/patient-profile.html?username=${user.username}"><i class="ri-menu-3-line mr-0"></i></a>
@@ -51,8 +51,12 @@ function redirectToEditPage(user) {
     // Sử dụng window.location.href để chuyển hướng đến trang chỉnh sửa
     window.location.href = `patient-edit.html?username=${user.username}`;
 }
+
+const inputSearch = document.getElementById('exampleInputSearch');
+// Lắng nghe sự kiện khi người dùng nhập vào ô tìm kiếm
+inputSearch.addEventListener('input', searchUser);
+
 function searchUser() {
-    const inputSearch = document.getElementById('exampleInputSearch');
 
     let allUsers;  // Lưu trữ toàn bộ dữ liệu người dùng
 
@@ -64,20 +68,17 @@ function searchUser() {
                 // Lưu trữ toàn bộ dữ liệu người dùng
                 allUsers = data.data;
 
-                // Lắng nghe sự kiện khi người dùng nhập vào ô tìm kiếm
-                inputSearch.addEventListener('input', function () {
-                    const searchTerm = inputSearch.value.toLowerCase();
+                const searchTerm = inputSearch.value.toLowerCase();
 
-                    // Lọc người dùng dựa trên từ khóa tìm kiếm
-                    const filteredUsers = allUsers.filter(user =>
-                        user.name.toLowerCase().includes(searchTerm) ||
-                        user.phoneNumber.toLowerCase().includes(searchTerm) ||
-                        user.email.toLowerCase().includes(searchTerm)
-                    );
+                // Lọc người dùng dựa trên từ khóa tìm kiếm
+                const filteredUsers = allUsers.filter(user =>
+                    user.name.toLowerCase().includes(searchTerm) ||
+                    user.phoneNumber.toLowerCase().includes(searchTerm) ||
+                    user.email.toLowerCase().includes(searchTerm)
+                );
 
-                    // Hiển thị danh sách người dùng đã lọc
-                    displayListUser(filteredUsers);
-                });
+                // Hiển thị danh sách người dùng đã lọc
+                displayListUser(filteredUsers);
             } else {
                 console.error('Lỗi khi nhận dữ liệu từ API:', data.message);
             }

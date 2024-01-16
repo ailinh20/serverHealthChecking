@@ -7,7 +7,7 @@
     <title>Heart Health</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../assets/images/HEALTH.png" />
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
     <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
     <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.0">
     <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-calendar/dist/tui-calendar.css">
     <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css">
     <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="  ">
@@ -41,7 +42,7 @@
             <div class="data-scrollbar" data-scroll="1">
                 <nav class="iq-sidebar-menu">
                     <ul id="iq-sidebar-toggle" class="iq-menu">
-                        <li class="">
+                        <li class="active">
                             <a href="#patient" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                 <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -55,13 +56,8 @@
                             </a>
                             <ul id="patient" class="iq-submenu collapse" data-toggle="collapse">
                                 <li class="">
-                                    <a href="../app/patients.html">
+                                    <a href="../backend/page-patient.html">
                                         <i class="las la-minus"></i><span>Theo dõi</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="../app/patient-profile.html">
-                                        <i class="las la-minus"></i><span>User Profile</span>
                                     </a>
                                 </li>
                                 <li class="">
@@ -69,14 +65,14 @@
                                         <i class="las la-minus"></i><span>Thêm bệnh nhân</span>
                                     </a>
                                 </li>
-                                <li class="">
+                                <li class="active">
                                     <a href="../app/patient-list.html">
                                         <i class="las la-minus"></i><span>Danh sách</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li class="">
                             <a href="../backend/page-calender.html" class="svg-icon">
                                 <svg class="svg-icon" width="25" height="25" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -99,7 +95,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light p-0">
                     <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                         <i class="ri-menu-line wrapper-menu"></i>
-                        <a href="../backend/page-patient.html" class="header-logo">
+                        <a href="../backend/index.html" class="header-logo">
                             <h4 class="logo-title text-uppercase">Heart Health </h4>
 
                         </a>
@@ -119,7 +115,7 @@
                                     <div class="iq-search-bar device-search">
                                         <form action="#" class="searchbox">
                                             <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                                            <input type="text" class="text search-input" placeholder="Tìm kiếm...">
+                                            <input type="text" class="text search-input" placeholder="Search here...">
                                         </form>
                                     </div>
                                 </li>
@@ -133,7 +129,7 @@
                                         <form action="#" class="searchbox p-2">
                                             <div class="form-group mb-0 position-relative">
                                                 <input type="text" class="text search-input font-size-12"
-                                                    placeholder="tìm kiếm tại đây...">
+                                                    placeholder="type here to search...">
                                                 <a href="#" class="search-link"><i class="las la-search"></i></a>
                                             </div>
                                         </form>
@@ -157,7 +153,7 @@
                                             <div class="card-body p-0 ">
                                                 <div class="cust-title p-3">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <h5 class="mb-0">Tin nhắn</h5>
+                                                        <h5 class="mb-0">All Messages</h5>
                                                         <a class="badge badge-primary badge-card" href="#">3</a>
                                                     </div>
                                                 </div>
@@ -167,7 +163,7 @@
                                                             class="media align-items-center cust-card py-3 border-bottom">
                                                             <div class="">
                                                                 <img class="avatar-50 rounded-small"
-                                                                    src="../assets/images/user/1.jpg" alt="01">
+                                                                    src="../assets/images/user/01.jpg" alt="01">
                                                             </div>
                                                             <div class="media-body ml-3">
                                                                 <div
@@ -184,7 +180,7 @@
                                                             class="media align-items-center cust-card py-3 border-bottom">
                                                             <div class="">
                                                                 <img class="avatar-50 rounded-small"
-                                                                    src="../assets/images/user/1.jpg" alt="02">
+                                                                    src="../assets/images/user/02.jpg" alt="02">
                                                             </div>
                                                             <div class="media-body ml-3">
                                                                 <div
@@ -200,7 +196,7 @@
                                                         <div class="media align-items-center cust-card py-3">
                                                             <div class="">
                                                                 <img class="avatar-50 rounded-small"
-                                                                    src="../assets/images/user/1.jpg" alt="03">
+                                                                    src="../assets/images/user/03.jpg" alt="03">
                                                             </div>
                                                             <div class="media-body ml-3">
                                                                 <div
@@ -237,7 +233,7 @@
                                             <div class="card-body p-0 ">
                                                 <div class="cust-title p-3">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <h5 class="mb-0">Thông báo</h5>
+                                                        <h5 class="mb-0">Notifications</h5>
                                                         <a class="badge badge-primary badge-card" href="#">3</a>
                                                     </div>
                                                 </div>
@@ -247,7 +243,7 @@
                                                             class="media align-items-center cust-card py-3 border-bottom">
                                                             <div class="">
                                                                 <img class="avatar-50 rounded-small"
-                                                                    src="../assets/images/user/1.jpg" alt="01">
+                                                                    src="../assets/images/user/01.jpg" alt="01">
                                                             </div>
                                                             <div class="media-body ml-3">
                                                                 <div
@@ -264,7 +260,7 @@
                                                             class="media align-items-center cust-card py-3 border-bottom">
                                                             <div class="">
                                                                 <img class="avatar-50 rounded-small"
-                                                                    src="../assets/images/user/1.jpg" alt="02">
+                                                                    src="../assets/images/user/02.jpg" alt="02">
                                                             </div>
                                                             <div class="media-body ml-3">
                                                                 <div
@@ -280,7 +276,7 @@
                                                         <div class="media align-items-center cust-card py-3">
                                                             <div class="">
                                                                 <img class="avatar-50 rounded-small"
-                                                                    src="../assets/images/user/1.jpg" alt="03">
+                                                                    src="../assets/images/user/03.jpg" alt="03">
                                                             </div>
                                                             <div class="media-body ml-3">
                                                                 <div
@@ -372,101 +368,51 @@
         <div class="content-page">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-8">
-                        <div class="card card-block card-stretch card-height">
+                    <div class="col-sm-12">
+                        <div class="card">
                             <div class="card-header d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mr-3">20 Nov, Friday</h5>
-                                    <div class="mt-1">
-                                        <a href="#" id="cal-prev" class="text-dark mr-2 font-size-18"><i
-                                                class="las la-chevron-circle-left m-0"></i></a>
-                                        <a href="#" id="cal-next" class="text-dark font-size-18"><i
-                                                class="las la-chevron-circle-right m-0"></i></a>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <select name="cal_type" class="selectpicker calender-select" id="cal-type">
-                                        <option value="day">Ngày</option>
-                                        <option value="week">Tuần</option>
-                                        <option value="month">Tháng</option>
-                                    </select>
-                                    <a href="#" class="btn btn-primary btn-new"><i class="ri-add-line"></i>Tạo mới</a>
+                                <div class="header-title">
+                                    <h4 class="card-title">Danh sách</h4>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div id="calendar" style="height: 640px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="card border-bottom">
-                                    <div class="card-body text-center inln-date flet-datepickr">
-                                        <input type="text" id="inline-date" class="date-input basicFlatpickr d-none"
-                                            readonly="readonly">
-                                    </div>
-                                </div>
-                                <div class="card card-list">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="svg-icon text-secondary mr-3" width="24" height="24"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
-                                                </path>
-                                            </svg>
-                                            <div class="pl-3 border-left">
-                                                <h5>Direct Development</h5>
-                                                <p class="mb-0">Unveling the design system</p>
+                                <div class="table-responsive">
+                                    <div class="row justify-content-between">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div id="user_list_datatable_info" class="dataTables_filter">
+                                                <form class="mr-3 position-relative">
+                                                    <div class="form-group mb-0">
+                                                        <input type="search" class="form-control"
+                                                            id="exampleInputSearch" placeholder="Tìm kiếm"
+                                                            aria-controls="user-list-table">
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card card-list">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="svg-icon text-primary mr-3" width="24" height="24"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
-                                                <path
-                                                    d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
-                                                </path>
-                                            </svg>
-                                            <div class="pl-3 border-left">
-                                                <h5>action point assigned</h5>
-                                                <p class="mb-0">Unveling the design system</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card card-list mb-0">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="svg-icon text-warning mr-3" width="24" height="24"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round">
-                                                <path
-                                                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                                </path>
-                                                <polyline points="22,6 12,13 2,6"></polyline>
-                                            </svg>
-                                            <div class="pl-3 border-left">
-                                                <h5>Private Notes</h5>
-                                                <p class="mb-0">Unveling the design system</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <table id="user-list-table" class="table table-striped dataTable mt-4" role="grid"
+                                        aria-describedby="user-list-page-info">
+                                        <thead>
+                                            <tr class="ligth">
+                                                <th>Thông tin</th>
+                                                <th>Tên</th>
+                                                <th>Giới tính</th>
+                                                <th>Ngày hẹn</th>
+                                                <th>Giờ hẹn</th>
+                                                <th>Nội dung</th>
+                                                <th>Trạng thái</th>
+                                                <th style="min-width: 100px">Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody> 
+                                            <!-- Dữ liệu sẽ được chèn vào đây từ JavaScript -->
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Page end  -->
             </div>
         </div>
     </div>
@@ -776,13 +722,10 @@
 
     <!-- app JavaScript -->
     <script src="../assets/js/app.js"></script>
-
     <script src="../assets/vendor/moment.min.js"></script>
-    <script src="../assets/vendor/tui-calendar/tui-code-snippet/dist/tui-code-snippet.js"></script>
-    <script src="../assets/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.min.js"></script>
-    <script src="../assets/vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.min.js"></script>
-    <script src="../assets/vendor/tui-calendar/tui-calendar/dist/tui-calendar.min.js"></script>
-    <script src="../assets/js/calendar.js"></script>
+
+    <script src="../scripts/listSchedule.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../scripts/get-doctor-NameAva.js"></script>
 </body>
 

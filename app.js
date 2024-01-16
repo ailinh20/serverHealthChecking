@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const moment = require('moment');
 const mqtt = require('mqtt'); // Thêm dòng này để import thư viện mqtt
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -57,12 +58,14 @@ const SensorModel = require('./models/SensorModel.js');
 require("./models/SensorModel.js")
 require("./models/UserModel.js")
 require("./models/AdminModel.js")
+require("./models/ScheduleModel.js")
 require("./models/FeedbackModel.js")
 
 //Route
 const userRoutes = require("./routes/UserRoute.js")
 const adminRoutes = require("./routes/AdminRoute.js")
 const sensorRoutes = require("./routes/SensorRoute.js")
+const scheduleRoutes = require("./routes/ScheduleRoute.js")
 const FeedbackRoutes = require("./routes/FeedBackRoute.js")
 
 //register routes
@@ -70,6 +73,7 @@ const versionOne = (routeName) => `/api/v1/${routeName}`;
 app.use(versionOne("user"), userRoutes);
 app.use(versionOne("admin"), adminRoutes);
 app.use(versionOne("sensor"), sensorRoutes);
+app.use(versionOne("schedule"), scheduleRoutes);
 app.use(versionOne("feedback"), FeedbackRoutes);
 
 //Socket io
@@ -199,6 +203,53 @@ let predict = (in1, in2, in3) => {
     return P;
 };
 
+//send email
+function sendEmail(schedule, status) {
+    // Tạo một đối tượng transporter với các thông tin cấu hình
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: '20520614@gm.uit.edu.vn',
+            pass: 'rhhc nqhd kjcb jjsm'
+        }
+    });
+
+    // Đối tượng email
+    const mailOptions = {
+        from: '20520614@gm.uit.edu.vn',
+        to: schedule.email,
+        subject: 'Cập nhật trạng thái lịch hẹn khám',
+        text: `
+            Xin chào ${schedule.namePatient},
+            Thông tin về lịch hẹn khám bệnh:
+            - Ngày: ${schedule.date}
+            - Thời gian: ${schedule.time}
+            - Nội dung: ${schedule.content}
+            - Trạng thái: ${status === 1 ? 'Đã duyệt' : status === 0 ? 'Đã hủy' : 'Chờ duyệt'}
+            
+            Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.
+        `
+    };
+
+    // Gửi email
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.error('Lỗi khi gửi email:', error);
+        } else {
+            console.log('Email đã được gửi:', info.response);
+        }
+    });
+}
+
+app.post('/api/sendEmail', (req, res) => {
+    const schedule = req.body.schedule;
+    const status = req.body.status;
+
+    sendEmail(schedule, status);
+
+    res.json({ success: true });
+});
+
 //API
 app.get('/', async (req, res) => {
     try {
@@ -216,8 +267,6 @@ app.get('/', async (req, res) => {
 app.get('/index.html', (req, res) => {
     res.render('index'); // Thay 'index' bằng tên thực tế của mẫu index trong dự án của bạn
 });
-
-
 
 app.get('/api/getall', async (req, res) => {
     try{
