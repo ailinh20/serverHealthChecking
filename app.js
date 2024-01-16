@@ -53,7 +53,7 @@ const DBConnection = require("./config/db");
 DBConnection();
 
 //require DB
-const infoSensor = require('./models/inforsensor.js');
+const SensorModel = require('./models/SensorModel.js');
 require("./models/SensorModel.js")
 require("./models/UserModel.js")
 require("./models/AdminModel.js")
@@ -61,16 +61,18 @@ require("./models/AdminModel.js")
 //Route
 const userRoutes = require("./routes/UserRoute.js")
 const adminRoutes = require("./routes/AdminRoute.js")
+const sensorRoutes = require("./routes/SensorRoute.js")
 
 //register routes
 const versionOne = (routeName) => `/api/v1/${routeName}`;
 app.use(versionOne("user"), userRoutes);
 app.use(versionOne("admin"), adminRoutes);
+app.use(versionOne("sensor"), sensorRoutes);
 
 //Socket io
 const http = require('http');
 const server = http.createServer(app);
-const {Server} = require ('socket.io')
+const {Server} = require ('socket.io');
 let end = 0;
 let currentIndex = 0;
 const io = new Server(server)
@@ -118,7 +120,7 @@ const clientMqtt = mqtt.connect(connectUrl, {
     reconnectPeriod: 1000,
 });
 
-const topic = 'CE232_PUB';
+const topic = 'SE347_PUB';
 
 clientMqtt.on('connect', () => {
     console.log('MQTT Connected'.cyan.bold.underline);
@@ -138,11 +140,15 @@ clientMqtt.on('message', (topic, message) => {
     let dataArray = strMessage.split("\n");
 
     // Lấy giá trị Heart beat rate từ phần tử thứ nhất trong mảng
-    let heartbeatString = dataArray[0].split(":")[1].trim();
+    let idDeviceString = dataArray[0].split(":")[1].trim();
+    let idDevice = parseFloat(idDeviceString);
+
+    // Lấy giá trị Heart beat rate từ phần tử thứ nhất trong mảng
+    let heartbeatString = dataArray[1].split(":")[1].trim();
     let heartbeat = parseFloat(heartbeatString);
     
     // Lấy giá trị SpO2 từ phần tử thứ hai trong mảng
-    let sp02String = dataArray[1].split(":")[1].trim();
+    let sp02String = dataArray[2].split(":")[1].trim();
     let sp02 = parseFloat(sp02String);
 
     //Thời gian hiện tại
@@ -151,11 +157,13 @@ clientMqtt.on('message', (topic, message) => {
     const timing = currentTimeUTC7.format('YYYY-MM-DD HH:mm:ss');
     console.log(`Timing: ${timing}`.cyan.bold);
 
-    const data = new infoSensor({
-      age: "21",
-      sp02: sp02,
-      heartbeat: heartbeat,
-      timing: timing
+    const data = new SensorModel({
+        idUser: "65a503ab0bda96ed10dfb678",
+        age: "25",
+        sp02: sp02,
+        heartbeat: heartbeat,
+        timing: timing,
+        idDevice: idDevice
   })
     data.save()
         .then(() => {
@@ -193,7 +201,7 @@ app.get('/', async (req, res) =>
 {
     try
     {
-    const data = await infoSensor.find().exec();
+    const data = await SensorModel.find().exec();
     sp02Data = data.map(item => item.sp02);
     heartbeatData = data.map(item => item.heartbeat);
     res.render('index', { data });
@@ -209,7 +217,7 @@ app.get('/', async (req, res) =>
 
 app.get('/api/getall', async (req, res) => {
     try{
-        const data = await infoSensor.find();
+        const data = await SensorModel.find();
         console.log('Data from MongoDB:', data);
         res.json(data)
     }
@@ -220,12 +228,12 @@ app.get('/api/getall', async (req, res) => {
 
 app.delete('/api/delete10', async (req, res) => {
     try {
-        const dataToDelete = await infoSensor
+        const dataToDelete = await SensorModel
             .find()
             .sort({ createdAt: 1 }) // Sắp xếp theo thứ tự tăng dần để có được cũ nhất đầu tiên
             .limit(10)
             .exec();
-        await infoSensor.deleteMany({ _id: { $in: dataToDelete.map(item => item._id) } });
+        await SensorModel.deleteMany({ _id: { $in: dataToDelete.map(item => item._id) } });
 
         res.json({ message: 'Delete successful' });
     } catch (err) {
