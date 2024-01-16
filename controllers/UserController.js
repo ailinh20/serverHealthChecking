@@ -33,8 +33,14 @@ exports.createUser = asyncHandler(async (req, res, next) => {
             anamnesis: req.body.anamnesis,
             username: req.body.username,
             pass: req.body.pass,
-            role: req.body.role,
+            name: req.body.name,
+            address: req.body.address,
+            dayOfBirth: req.body.dayOfBirth,
+            idDevice: req.body.idDevice,
+            gender: req.body.gender,
             UrlImg: req.body.UrlImg,
+            status: req.body.status,
+            role: "user",
         });
 
         // Lưu người dùng mới vào cơ sở dữ liệu

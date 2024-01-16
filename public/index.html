@@ -11,8 +11,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/heartbeat.png" type="">
-  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clrewe1h6184ippb4mxvlj2yh"></script>
+  <link rel="shortcut icon" href="./images/heartbeat.png" type="">
 
   <title> HEART HEALTH </title>
 
@@ -27,37 +26,28 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- Font Awesome Style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="./css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom Styles for this Template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="./css/style.css" rel="stylesheet" />
 
   <!-- Responsive Style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="./css/responsive.css" rel="stylesheet" />
 
   <!-- Bootstrap JS và jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-
-  <!-- Popper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-
-  <!-- Bootstrap JS -->
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-
-  <!-- Owl Slider -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  <script>
+    $(function () {
+      // Load the header and pass the brand link and name
+      $("#header-container").load("header.html", function () {
+        // Replace 'BRAND_LINK' and 'BRAND_NAME' with the desired values for this page
+        $("#header-container .navbar-brand").attr("href", "/");
+        $("#header-container #brandName").text("Trang chủ");
+      });
+    });
   </script>
-
-  <!-- Custom JS -->
-  <script type="text/javascript" src="js/custom.js"></script>
-
 </head>
 
 <body>
@@ -68,40 +58,7 @@
       <img src="images/hero-bg.png" alt="">
     </div>
     <!-- header section strats -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="/">
-            <span>
-              HEART HEALTH
-            </span>
-          </a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" id="active" href="/">Trang chủ <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="monitoring.html">Theo dõi</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="booking.html">Đặt lịch</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">Đăng nhập</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
+    <div id="header-container"></div>
 
     <!-- slider section -->
     <section class="slider_section ">
@@ -161,7 +118,7 @@
                       Đội ngũ y bác sĩ tận tình, uy tín và chất lượng.
                     </p>
                     <div class="btn-box">
-                      <a href="booking.html" class="btn1">
+                      <a href="doctor.html" class="btn1">
                         Đặt ngay
                       </a>
                     </div>
@@ -216,8 +173,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <a href="booking.html"><img src="images/s2.png" alt=""></a>
-                <a href="booking.html"><img src="images/s2.png" alt=""></a>
+                <a href="doctor.html"><img src="images/s2.png" alt=""></a>
               </div>
               <div class="detail-box">
                 <h5>
@@ -295,7 +251,7 @@
                 </div>
               </div>
               <div class="img-box">
-                <img src="images\xovuamachmau.jpg" alt="">
+                <img src="./images/xovuamachmau.jpg" alt="">
               </div>
             </div>
           </div>
@@ -327,7 +283,7 @@
               </div>
               <!-- Add an image related to angina or heart attack -->
               <div class="img-box">
-                <img src="images\nhoimaucotim.jpg" alt="">
+                <img src="./images/nhoimaucotim.jpg" alt="">
               </div>
             </div>
           </div>
@@ -357,7 +313,115 @@
               </div>
               <!-- Add an image related to angina or heart attack -->
               <div class="img-box">
-                <img src="images\suytim.jpg" alt="">
+                <img src="./images/suytim.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more slides for other cardiovascular diseases -->
+
+      </div>
+      <ol class="carousel-indicators">
+        <!-- Add indicators for each slide -->
+        <li data-target="#customCarousel2" data-slide-to="0" class="active"></li>
+        <li data-target="#customCarousel2" data-slide-to="1"></li>
+        <li data-target="#customCarousel2" data-slide-to="2"></li>
+        <!-- Add more indicators for additional slides -->
+      </ol>
+    </div>
+  </section>
+  <!-- end slider section for disease-->
+
+  <!-- slider section -->
+  <section class="slider_section" style="background: #178066">
+    <div id="customCarousel2" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="detail-box">
+                  <h1>
+                    Bệnh Xơ Vữa Mạch Máu: Nguyên Nhân và Phòng Tránh
+                  </h1>
+                  <h3>Nguyên nhân:</h3>
+                  <p>Tích tụ chất béo và các tế bào xơ bám dính trên thành nội mạc của mạch máu.</p>
+
+                  <h3>Phòng tránh: </h3>
+                  <p>Duy trì lối sống lành mạnh, ăn uống cân đối và tập thể dục đều đặn.</p>
+
+                  <div class="btn-box">
+                    <a href="https://tamanhhospital.vn/xo-vua-dong-mach/" class="btn1" target="_blank">
+                      Đọc thêm
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="img-box">
+                <img src="./images/xovuamachmau.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Add more slides for other cardiovascular diseases -->
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="detail-box">
+                  <h1>
+                    Bệnh Nhồi Máu Cơ Tim: Nguyên Nhân và Phòng Tránh
+                  </h1>
+                  <h3>Nguyên nhân:</h3>
+                  <p>
+                    Gốc từ sự tắc nghẽn của các động mạch cung cấp máu đến cơ tim.
+                  </p>
+                  <h3>Phòng tránh: </h3>
+                  <p>
+                    Giữ mức huyết áp ổn định, duy trì cân nặng lành mạnh và thực hiện kiểm tra y tế định
+                    kỳ.
+                  </p>
+                  <div class="btn-box">
+                    <a href="https://tamanhhospital.vn/nhoi-mau-co-tim-cap/" class="btn1" target="_blank">
+                      Đọc thêm
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Add an image related to angina or heart attack -->
+              <div class="img-box">
+                <img src="./images/nhoimaucotim.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="detail-box">
+                  <h1>
+                    Bệnh Suy tim: Nguyên Nhân và Phòng Tránh
+                  </h1>
+                  <h3>Nguyên nhân:</h3>
+                  <p>
+                    Thường xuyên do tình trạng yếu kém của cơ tim, không đủ đẩy máu hiệu quả.
+                  </p>
+                  <h3>Phòng tránh: </h3>
+                  <p>
+                    Tuân thủ đúng liều lượng thuốc, duy trì lối sống lành mạnh, giữ trọng lượng cơ thể ổn định.
+                  </p>
+                  <div class="btn-box">
+                    <a href="https://tamanhhospital.vn/suy-tim/" class="btn1" target="_blank">
+                      Đọc thêm
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Add an image related to angina or heart attack -->
+              <div class="img-box">
+                <img src="./images/suytim.jpg" alt="">
               </div>
             </div>
           </div>
@@ -405,9 +469,11 @@
       </div>
     </div>
   </section>
+
   <!-- end about section -->
 
   <!-- doctor section -->
+
   <section class="doctor_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
@@ -425,7 +491,7 @@
               <img src="images/d2.jpg" alt="">
             </div>
             <div class="detail-box">
-              <div class="social_box">
+              <!-- <div class="social_box">
                 <a href="">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
@@ -438,7 +504,7 @@
                 <a href="">
                   <i class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
-              </div>
+              </div> -->
               <h5>
                 Hoàng Tân
               </h5>
@@ -454,7 +520,7 @@
               <img src="images/d1.jpg" alt="">
             </div>
             <div class="detail-box">
-              <div class="social_box">
+              <!-- <div class="social_box">
                 <a href="">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
@@ -467,7 +533,7 @@
                 <a href="">
                   <i class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
-              </div>
+              </div> -->
               <h5>
                 Ái Linh
               </h5>
@@ -483,7 +549,7 @@
               <img src="images/d3.jpg" alt="">
             </div>
             <div class="detail-box">
-              <div class="social_box">
+              <!-- <div class="social_box">
                 <a href="">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
@@ -496,7 +562,7 @@
                 <a href="">
                   <i class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
-              </div>
+              </div> -->
               <h5>
                 Thu Huyền
               </h5>
@@ -509,34 +575,34 @@
       </div>
     </div>
   </section>
+
   <!-- end doctor section -->
 
   <!-- contact section -->
   <section class="contact_section layout_padding">
-    <div class="container">
-
+    <!-- <div class="container">
+      <div class="heading_container">
+        <h2>Để lại thông tin liên hệ:</h2>
+      </div>
       <div class="row">
-        <div class="col-md-6" >
-          <div class="box">
-            <div class="img-box">
-              <img src="images/d3.jpg" alt=""> 
-              <!-- sửa backend -->
-            </div>
-            <div class="detail-box heading_container">
-              <h5>
-                Thu Huyền
-                <!-- sửa backend-->
-              </h5>
-            </div>
-          </div>
-        </div>
         <div class="col-md-6">
-          <div class="heading_container">
-            <h2>Để lại phản hồi/đánh giá:</h2>
-          </div>
           <div class="form_container contact-form">
             <form id="contactForm" action="">
-              <div class="col-md-12">
+              <div class="form-row">
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Họ và tên" id="fullName" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Số điện thoại" id="phoneNumber" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <input type="email" placeholder="Email" id="email" />
+              </div>
               <div>
                 <input type="text" class="message-box" placeholder="Lời nhắn" id="message" />
               </div>
@@ -546,16 +612,18 @@
             </form>
           </div>
         </div>
-        
       </div>
-    </div>
+    </div> -->
   </section>
   <!-- end contact section -->
-  <section class="client_section layout_padding-bottom">
+
+  <!-- client section -->
+
+  <!-- <section class="client_section layout_padding-bottom">
     <div class="container">
       <div class="heading_container heading_center ">
         <h2>
-          Các phản hồi/đánh giá
+          Cảm nhận
         </h2>
       </div>
       <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
@@ -639,7 +707,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+
   <!-- end client section -->
 
   <!-- footer section -->
@@ -652,39 +721,40 @@
               Liên hệ chúng tôi:
             </h4>
             <div class="contact_link_box">
-              <a
-                href="https://www.google.com/maps/place/K%C3%BD+t%C3%BAc+x%C3%A1+Khu+A+%C4%90H+Qu%E1%BB%91c+gia+TP.+H%E1%BB%93+Ch%C3%AD+Minh/@10.8782444,106.8037157,17z/data=!4m16!1m9!3m8!1s0x3174d8a5f4e477e9:0x29d5aeb365cee20b!2zS8O9IHTDumMgeMOhIEtodSBBIMSQSCBRdeG7kWMgZ2lhIFRQLiBI4buTIENow60gTWluaA!8m2!3d10.8782444!4d106.8062906!9m1!1b1!16s%2Fg%2F1tncqcyc!3m5!1s0x3174d8a5f4e477e9:0x29d5aeb365cee20b!8m2!3d10.8782444!4d106.8062906!16s%2Fg%2F1tncqcyc?hl=vi-VN&entry=ttu">
+              <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
                   Địa chỉ: KTX khu A, Linh Trung, TP Thủ Đức
                 </span>
               </a>
-              <a href="tel:123456789">
+              <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
                   Số điện thoại: 123456789
                 </span>
               </a>
-              <a href="mailto:someone@example.com">
+              <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  someone@gmail.com
+                  demo@gmail.com
                 </span>
               </a>
             </div>
-
           </div>
-          <div class="footer_social">
-            <a href="https://www.facebook.com/">
+          <!-- <div class="footer_social">
+            <a href="">
               <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
-            <a href="https://www.youtube.com/">
-              <i class="fa fa-youtube" aria-hidden="true"></i>
+            <a href="">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
             </a>
-            <a href="https://www.instagram.com/">
+            <a href="">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="">
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
-          </div>
+          </div> -->
         </div>
 
         <div class="col-md-6 col-lg-2 mx-auto footer_col">
@@ -700,34 +770,55 @@
                 Theo dõi tình trạng
               </a>
               <br>
-              <a class="" href="booking.html">
+              <a class="" href="doctor.html">
                 Đặt lịch
               </a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 mx-auto footer_col">
-          <div class="map">
-            <div id="googleMap">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.1230517268227!2d106.80371567480641!3d10.878244389276764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d8a5f4e477e9%3A0x29d5aeb365cee20b!2zS8O9IHTDumMgeMOhIEtodSBBIMSQSCBRdeG7kWMgZ2lhIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1705387754922!5m2!1svi!2s"
-                width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-        </div>
+        <!-- <div class="col-md-6 col-lg-3 footer_col ">
+          <h4>
+            Gửi cho chúng tôi
+          </h4>
+          <form action="#">
+            <input type="email" placeholder="Nhập email:" />
+            <button type="submit">
+              Đăng ký
+            </button>
+          </form>
+        </div> -->
       </div>
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="#">US<br><br></a>
+          <a href="https://html.design/">Me<br><br></a>
           &copy; <span id="displayYear"></span> Distributed By
-          <a href="#">US</a>
+          <a href="https://themewagon.com/">Me</a>
         </p>
+
       </div>
     </div>
   </footer>
   <!-- footer section -->
+
+  <!-- jQery -->
+  <script type="text/javascript" src="./scripts/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="./scripts/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="./scripts/index.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
 </body>
 
 </html>

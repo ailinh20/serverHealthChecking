@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
-app.set('view engine', 'html'); 
+app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 const publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
@@ -26,14 +26,14 @@ cloudinary.config({
     cloud_name: 'dktccqk0e',
     api_key: '744291944833613',
     api_secret: 'TFlT-KVRQBvkiArtp2Vq2B_HM1M'
-  });
+});
 
 app.post('/api/upload', async (req, res) => {
     try {
         const imageData = req.body.imageData; // Dữ liệu hình ảnh dưới dạng base64
 
         // Sử dụng Cloudinary để tải ảnh lên
-        cloudinary.uploader.upload(imageData, function(error, result) {
+        cloudinary.uploader.upload(imageData, function (error, result) {
             if (error) {
                 console.error('Cloudinary upload error:', error);
                 res.status(500).json({ success: false, error: 'Không thể lưu trữ hình ảnh' });
@@ -70,7 +70,7 @@ app.use(versionOne("admin"), adminRoutes);
 //Socket io
 const http = require('http');
 const server = http.createServer(app);
-const {Server} = require ('socket.io')
+const { Server } = require('socket.io')
 let end = 0;
 let currentIndex = 0;
 const io = new Server(server)
@@ -79,7 +79,7 @@ let sp02Data = [];
 let heartbeatData = [];
 
 io.on('connection', (socket) => {
-    console.log ("A client connected".yellow);
+    console.log("A client connected".yellow);
     // Lắng nghe sự kiện 'updateEndCurrent' từ client
     socket.on('updateEndCurrent', (data) => {
         end = data.end;
@@ -87,10 +87,10 @@ io.on('connection', (socket) => {
 
         let startIndex = currentIndex;
         let endIndex = end;
-    
+
         let selectedSp02Data = sp02Data.slice(startIndex, endIndex + 1);
         // console.log(selectedSp02Data);
-        
+
         let selectedHeartbeatData = heartbeatData.slice(startIndex, endIndex + 1);
         // console.log(selectedHeartbeatData);
         let sp02Average = calculateAverage(selectedSp02Data);
@@ -99,7 +99,7 @@ io.on('connection', (socket) => {
         // console.log("TB_HEARTBEAT: =" +heartbeatAverage);
         let prediction = predict('21', heartbeatAverage, sp02Average);
         // console.log(prediction);
-        io.emit('prediction',{prediction});            
+        io.emit('prediction', { prediction });
     });
 });
 
@@ -140,7 +140,7 @@ clientMqtt.on('message', (topic, message) => {
     // Lấy giá trị Heart beat rate từ phần tử thứ nhất trong mảng
     let heartbeatString = dataArray[0].split(":")[1].trim();
     let heartbeat = parseFloat(heartbeatString);
-    
+
     // Lấy giá trị SpO2 từ phần tử thứ hai trong mảng
     let sp02String = dataArray[1].split(":")[1].trim();
     let sp02 = parseFloat(sp02String);
@@ -152,11 +152,11 @@ clientMqtt.on('message', (topic, message) => {
     console.log(`Timing: ${timing}`.cyan.bold);
 
     const data = new infoSensor({
-      age: "21",
-      sp02: sp02,
-      heartbeat: heartbeat,
-      timing: timing
-  })
+        age: "21",
+        sp02: sp02,
+        heartbeat: heartbeat,
+        timing: timing
+    })
     data.save()
         .then(() => {
             console.log('Data saved to MongoDB'.green.bold);
@@ -179,42 +179,38 @@ function calculateAverage(data) {
 let predict = (in1, in2, in3) => {
     const coefficients = [0.08548920334542164, 0.10159895551625349, -0.9682936444948846];
     const intercept = 79.32097643456484;
-  
+
     let prediction = intercept;
     prediction += coefficients[0] * in1;
     prediction += coefficients[1] * in2;
     prediction += coefficients[2] * in3;
     let P = 1 / (1 + Math.exp(-prediction));
     return P;
-  };
+};
 
 //API
-app.get('/', async (req, res) => 
-{
-    try
-    {
-    const data = await infoSensor.find().exec();
-    sp02Data = data.map(item => item.sp02);
-    heartbeatData = data.map(item => item.heartbeat);
-    res.render('index', { data });
-    } 
-    
-    catch(error) 
-    {
+app.get('/', async (req, res) => {
+    try {
+        const data = await infoSensor.find().exec();
+        sp02Data = data.map(item => item.sp02);
+        heartbeatData = data.map(item => item.heartbeat);
+        res.render('login', { data });
+        console.log()
+    } catch (error) {
         console.error('Error retrieving data from MongoDB:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-}
-);
+});
+
 
 app.get('/api/getall', async (req, res) => {
-    try{
+    try {
         const data = await infoSensor.find();
         console.log('Data from MongoDB:', data);
         res.json(data)
     }
-    catch(error){
-        res.status(500).json({message: error.message})
+    catch (error) {
+        res.status(500).json({ message: error.message })
     }
 })
 
