@@ -57,17 +57,20 @@ const SensorModel = require('./models/SensorModel.js');
 require("./models/SensorModel.js")
 require("./models/UserModel.js")
 require("./models/AdminModel.js")
+require("./models/FeedbackModel.js")
 
 //Route
 const userRoutes = require("./routes/UserRoute.js")
 const adminRoutes = require("./routes/AdminRoute.js")
 const sensorRoutes = require("./routes/SensorRoute.js")
+const FeedbackRoutes = require("./routes/FeedBackRoute.js")
 
 //register routes
 const versionOne = (routeName) => `/api/v1/${routeName}`;
 app.use(versionOne("user"), userRoutes);
 app.use(versionOne("admin"), adminRoutes);
 app.use(versionOne("sensor"), sensorRoutes);
+app.use(versionOne("feedback"), FeedbackRoutes);
 
 //Socket io
 const http = require('http');
@@ -158,7 +161,7 @@ clientMqtt.on('message', (topic, message) => {
     console.log(`Timing: ${timing}`.cyan.bold);
 
     const data = new SensorModel({
-        idUser: "65a503ab0bda96ed10dfb678",
+        idUser: "65a6001ddc23bab886f900f9",
         age: "25",
         sp02: sp02,
         heartbeat: heartbeat,
@@ -199,7 +202,7 @@ let predict = (in1, in2, in3) => {
 //API
 app.get('/', async (req, res) => {
     try {
-        const data = await infoSensor.find().exec();
+        const data = await SensorModel.find().exec();
         sp02Data = data.map(item => item.sp02);
         heartbeatData = data.map(item => item.heartbeat);
         res.render('login', { data });
