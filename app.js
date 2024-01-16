@@ -118,7 +118,7 @@ const clientMqtt = mqtt.connect(connectUrl, {
     reconnectPeriod: 1000,
 });
 
-const topic = 'CE232_PUB';
+const topic = 'SE347_PUB';
 
 clientMqtt.on('connect', () => {
     console.log('MQTT Connected'.cyan.bold.underline);
@@ -201,6 +201,11 @@ app.get('/', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.get('/index.html', (req, res) => {
+    res.render('index'); // Thay 'index' bằng tên thực tế của mẫu index trong dự án của bạn
+});
+
 
 
 app.get('/api/getall', async (req, res) => {
