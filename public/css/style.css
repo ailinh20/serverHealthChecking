@@ -51,7 +51,7 @@ body {
 
 #weather-info {
   color: white;
-  font-size: 16px;
+  font-size: 1.5vw;
   font-weight: bold;
 }
 
@@ -77,6 +77,8 @@ body {
   float: right;
   border-radius: 10px;
   box-sizing: border-box; /* Đảm bảo padding không tăng kích thước tổng thể */
+  margin-left: 50%;
+  margin-right: 2vw;
 }
 
 #ngaytheodoi {
@@ -253,6 +255,11 @@ body {
   .chart {
     width: 80%;
   }
+  .yourhealth {
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 @media only screen and (min-width: 601px) and (max-width: 800px) {
@@ -294,6 +301,11 @@ body {
   #notification {
     padding: 0 0 0 5px;
     font-size: medium;
+  }
+  .yourhealth {
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -1205,3 +1217,7 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+#active{
+  background-color: #62d2a2;
+}
