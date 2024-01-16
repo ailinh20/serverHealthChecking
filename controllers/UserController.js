@@ -21,8 +21,16 @@ exports.createUser = asyncHandler(async (req, res, next) => {
 
         // Nếu không có username tồn tại, tiếp tục tạo người dùng mới
         const newUser = new UserModel({
+            zalo:req.body.zalo,
+            name: req.body.name,
+            dayOfBirth: req.body.dayOfBirth,
+            gender: req.body.gender,
+            address: req.body.address,
+            nationality: req.body.nationality,
+            carrier: req.body.carrier,
             phoneNumber: req.body.phoneNumber,
             email: req.body.email,
+            anamnesis: req.body.anamnesis,
             username: req.body.username,
             pass: req.body.pass,
             name: req.body.name,

@@ -1,5 +1,6 @@
 
 var citis = document.getElementById("city");
+console.log(citis)
 var districts = document.getElementById("district");
 var wards = document.getElementById("ward");
 var Parameter = {

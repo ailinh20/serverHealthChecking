@@ -378,28 +378,18 @@
                                 <form>
                                     <div class="form-group">
                                         <div class="crm-profile-img-edit position-relative">
-                                            <img class="crm-profile-pic rounded avatar-100"
+                                            <img id="profileImage" class="crm-profile-pic rounded avatar-100" 
                                                 src="../assets/images/user/11.png" alt="profile-pic">
                                             <div class="crm-p-image bg-primary">
                                                 <i class="las la-pen upload-button"></i>
-                                                <input class="file-upload" type="file" accept="image/*">
+                                                <input id="inputImage" class="file-upload" type="file" accept="image/*"style="display:none;" onchange="handleImageUpload(event)">
                                             </div>
                                         </div>
                                     </div>
                                     <div><span>Mạng xã hội</span></div>
                                     <div class="form-group">
-                                        <label for="furl">Zalo:</label>
-                                        <input type="text" class="form-control" id="furl" placeholder="Số điện thoại">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="furl">Facebook:</label>
-                                        <input type="text" class="form-control" id="furl"
-                                            placeholder="Đường dẫn Facebook">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="instaurl">Instagram:</label>
-                                        <input type="text" class="form-control" id="instaurl"
-                                            placeholder="Đường dẫn Instagram">
+                                        <label for="zurl">Zalo:</label>
+                                        <input type="text" class="form-control" id="zurl" placeholder="Số điện thoại">
                                     </div>
                                 </form>
                             </div>
@@ -432,13 +422,13 @@
                                             <div class="form-group col-sm-6">
                                                 <label class="d-block">Giới tính:</label>
                                                 <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadio6" name="customRadio1"
+                                                    <input type="radio" id="customRadio6" name="gender"
                                                         class="custom-control-input" checked="">
                                                     <label class="custom-control-label" for="customRadio6"> Nam
                                                     </label>
                                                 </div>
                                                 <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadio7" name="customRadio1"
+                                                    <input type="radio" id="customRadio7" name="gender"
                                                         class="custom-control-input">
                                                     <label class="custom-control-label" for="customRadio7"> Nữ
                                                     </label>
@@ -518,17 +508,24 @@
                                             <div class="form-group col-md-6">
                                                 <label for="pass">Mật khẩu:</label>
                                                 <input type="password" class="form-control" id="pass"
-                                                    placeholder="**********">
+                                                    placeholder="">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="rpass">Nhập lại mật khẩu:</label>
                                                 <input type="password" class="form-control" id="rpass"
-                                                    placeholder="**********">
+                                                    placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="role">Role:</label>
+                                                <select name="type" class="selectpicker form-control" data-style="py-0" id = "role">
+                                                    <option>user</option>
+                                                    <option>admin</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div> 
-                                            <button type="submit" class="btn btn-primary">Thêm</button>
-                                            <button type="reset" class="btn btn-light" >Hủy</button>
+                                            <button id="submit" type="submit" class="btn btn-primary">Thêm</button>
+                                            <button id="huy" type="reset" class="btn btn-light" >Hủy</button>
                                         </div>
                                     </form>
                                 </div>
@@ -851,6 +848,7 @@
     <!-- bo-loc-select-chon-tinh-thanh-quan-huyen-xa-phuong -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="../assets/js/address.js"></script>
+    <script src="../assets/js/patient-add.js"></script>  
 </body>
 
 </html>
