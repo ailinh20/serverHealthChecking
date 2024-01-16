@@ -202,6 +202,11 @@ app.get('/', async (req, res) => {
     }
 });
 
+app.get('/index.html', (req, res) => {
+    res.render('index'); // Thay 'index' bằng tên thực tế của mẫu index trong dự án của bạn
+});
+
+
 
 app.get('/api/getall', async (req, res) => {
     try {
