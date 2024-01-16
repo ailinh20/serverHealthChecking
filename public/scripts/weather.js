@@ -42,8 +42,8 @@ function displayWeatherInfo(data) {
     const weatherIcon = getWeatherIcon(data.weather[0].icon);
     const thermometerIcon = './images/nhietke.png'; 
 
-    const weatherHtml = `<div><i class="fa fa-thermometer-three-quarters" aria-hidden="true" style="font-size:60px; margin: 15px"></i>
-                        <p style="float:right"> ${temperatureCelsius} °C</p></div>
+    const weatherHtml = `<div><i class="fa fa-thermometer-three-quarters" aria-hidden="true" style="font-size: 200%; margin-left: 5%"></i>
+                        <p style="float:left; font-size: 100%; margin-left:5%"> ${temperatureCelsius} °C</p></div>
                         <div style="float:left">
                         <img src="${weatherIcon}" alt="Weather Icon" ></div>`;
 
