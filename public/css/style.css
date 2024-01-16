@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #000000;
+  background-color: #fefefe;
+  overflow-x: hidden;
+}
+
 #calendar.hidden {
   display: none;
 }
@@ -19,7 +27,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 #tooltip {
@@ -307,14 +314,6 @@ body {
     margin-left: 0;
     margin-right: 0;
   }
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-body {
-  font-family: 'Nunito', sans-serif;
-  color: #000000;
-  background-color: #fefefe;
-  overflow-x: hidden;
 }
 
 .layout_padding {
@@ -1079,7 +1078,7 @@ a:focus {
 }
 
 .footer_section .footer_col {
-  margin-bottom: 30px;
+  margin-bottom: 5%;
 }
 
 .footer_section .footer_contact .contact_link_box {
