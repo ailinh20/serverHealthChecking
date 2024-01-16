@@ -7,7 +7,7 @@ var country = document.getElementById("exampleFormControlSelect3");
 var address = document.getElementById("address");
 var genderMale = document.getElementsByName('customRadio6');
 var genderFemale = document.getElementsByName('customRadio7');
-
+var avatar = document.getElementById("avatarProfile");
 
 
 // const userLogin = localStorage.getItem('loginIdentifier');
@@ -34,6 +34,8 @@ function getInforInit() {
 
                 genderMale.value = data.data.male || false;
                 genderFemale.value = data.data.female;
+
+                avatar.src = data.data.urlAvatar;
             } else {
                 console.error('Không thể lấy thông tin người dùng');
             }
