@@ -74,6 +74,7 @@ function login() {
                     }).then((result) => {
                         // Cài đặt một cookie
                         document.cookie = "loginSuccess=true; path=/";
+                        // window.location.href = "/app/patient-list.html";
                         window.location.href = "/backend/page-patient.html";
                     });
                 }
