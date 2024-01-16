@@ -59,12 +59,14 @@ require("./models/SensorModel.js")
 require("./models/UserModel.js")
 require("./models/AdminModel.js")
 require("./models/ScheduleModel.js")
+require("./models/FeedbackModel.js")
 
 //Route
 const userRoutes = require("./routes/UserRoute.js")
 const adminRoutes = require("./routes/AdminRoute.js")
 const sensorRoutes = require("./routes/SensorRoute.js")
 const scheduleRoutes = require("./routes/ScheduleRoute.js")
+const FeedbackRoutes = require("./routes/FeedBackRoute.js")
 
 //register routes
 const versionOne = (routeName) => `/api/v1/${routeName}`;
@@ -72,6 +74,7 @@ app.use(versionOne("user"), userRoutes);
 app.use(versionOne("admin"), adminRoutes);
 app.use(versionOne("sensor"), sensorRoutes);
 app.use(versionOne("schedule"), scheduleRoutes);
+app.use(versionOne("feedback"), FeedbackRoutes);
 
 //Socket io
 const http = require('http');
@@ -162,7 +165,7 @@ clientMqtt.on('message', (topic, message) => {
     console.log(`Timing: ${timing}`.cyan.bold);
 
     const data = new SensorModel({
-        idUser: "65a503ab0bda96ed10dfb678",
+        idUser: "65a6001ddc23bab886f900f9",
         age: "25",
         sp02: sp02,
         heartbeat: heartbeat,
