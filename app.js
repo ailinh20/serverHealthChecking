@@ -159,24 +159,9 @@ clientMqtt.on('message', (topic, message) => {
     const currentTimeUTC7 = currentTime.utcOffset(7);
     const timing = currentTimeUTC7.format('YYYY-MM-DD HH:mm:ss');
     console.log(`Timing: ${timing}`.cyan.bold);
-      
-    let idUser;
-    fetch(`/api/user/${idDeviceString}`)
-    .then(response => response.json())
-    .then(data => {
-        if(data.success)
-        {
-            idUser = data.data._id;
-        }
-        else
-            console.log("Không tìm thấy user với id này");
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-      
+    
     const data = new SensorModel({
-        idUser: idUser,
+        idUser: "65a6c5362d40bb5cf9edda45",
         age: "25",
         sp02: sp02,
         heartbeat: heartbeat,
