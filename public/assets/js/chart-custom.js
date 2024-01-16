@@ -86,8 +86,8 @@ const configS = {
   },
 };
 
-Chart.defaults.color = '#484459';
-Chart.defaults.borderColor = '#484459';
+// Chart.defaults.color = '#484459';
+// Chart.defaults.borderColor = '#484459';
 
 const canvasH = document.getElementById('canvasH');
 const canvasS = document.getElementById('canvasS');
@@ -164,10 +164,6 @@ function updateChartConfiguration() {
   chartH.config.data.datasets[0].data = heartbeatData;
   chartS.config.data.datasets[0].data = sp02Data;
 
-  const selectedDate = new Date(globalData[end].timing.substring(0, 10));
-  const formattedDate = $.datepicker.formatDate("yy-mm-dd", selectedDate);
-  $("#dob").datepicker("setDate", formattedDate);
-
   console.log("end: " + end + "current: " + currentIndex);
   socket.emit('updateEndCurrent', { end, currentIndex });
   socket.on('prediction', function (data) {
@@ -176,7 +172,6 @@ function updateChartConfiguration() {
   });
   chartH.update();
   chartS.update();
-  updateBPM(heartbeatData, sp02Data);
 }
 
 
