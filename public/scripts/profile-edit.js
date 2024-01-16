@@ -8,10 +8,11 @@ var address = document.getElementById("address");
 var genderMale = document.getElementsByName('customRadio6');
 var genderFemale = document.getElementsByName('customRadio7');
 
+// const userLogin = localStorage.getItem('loginIdentifier');
 
 
 function getInforInit() {
-    fetch(`/api/v1/admin/getadmin`)
+    fetch(`/api/v1/admin/getadmin/${userLogin}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -55,7 +56,7 @@ function updateInfo() {
    
     // Hoặc có thể gửi dữ liệu lên server thông qua Ajax, tùy thuộc vào yêu cầu của bạn
     // Ví dụ sử dụng fetch:
-    fetch('/api/v1/admin/updateadmin', {
+    fetch(`/api/v1/admin/updateadmin/${userLogin}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

@@ -41,10 +41,16 @@ var UserModel = new Schema({
         type: String,
         ref: "SensorModel"
     },
-    carrier: {
+    UrlImg: {
         type: String
     },
-    UrlImg: {
+    status: {
+        type: Number
+    },
+    gender: {
+        type: String
+    },
+    carrier: {
         type: String
     },
     zalo: {

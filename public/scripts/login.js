@@ -33,7 +33,7 @@ function login() {
                         }).then((result) => {
                             // Cài đặt một cookie
                             document.cookie = "loginSuccess=true; path=/";
-                            window.location.href = "/";
+                            window.location.href = "/index.html";
                         });
                     }
                     else {
