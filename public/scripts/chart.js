@@ -1,4 +1,7 @@
 /// <reference types="chart.js" />
+document.addEventListener('DOMContentLoaded', function() {
+  const username = localStorage.getItem('loginIdentifier');
+  console.log(username);
 let globalData;
 const labelH = [];
 const dataH = {
@@ -110,20 +113,34 @@ function updateData(index) {
 }
 
 function fetchDataAndInitializeChart() {
-  fetch('/api/getall')
-    .then(response => response.json())
-    .then(data => {
-      globalData = data;
-      labelH.push(...data.map(item => item.timing.substring(11, 19)));
-      labelS.push(...data.map(item => item.timing.substring(11, 19)));
-      lastTimestamp = data[data.length - 1].timing;
-      currentIndex = globalData.length - 5;
-      end = globalData.length - 1;
-      updateChartConfiguration();
-    })
-    .catch(error => {
-      console.error('Lỗi khi lấy dữ liệu từ server:', error);
-    });
+  fetch(`/api/v1/user/getuser/${username}`)
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+        idUser = data.data._id;
+        console.log(`idUser for ${username}: ${idUser}`);
+        fetch(`/api/v1/sensor/${idUser}`)
+          .then(response => response.json())
+          .then(data => {
+            globalData = data;
+            labelH.push(...data.map(item => item.timing.substring(11, 19)));
+            labelS.push(...data.map(item => item.timing.substring(11, 19)));
+            lastTimestamp = data[data.length - 1].timing;
+            currentIndex = globalData.length - 5;
+            end = globalData.length - 1;
+            updateChartConfiguration();
+          })
+        .catch(error => {
+          console.error('Lỗi khi lấy dữ liệu sensor:', error);
+        });
+        }
+      else{
+        console.log("Get user không thành công");
+      }
+  })
+  .catch(error => {
+    console.error('Lỗi khi gọi API get user by username:', error);
+  });
 }
 
 const socket = io();
@@ -231,5 +248,5 @@ function updateChartConfiguration() {
   updateBPM(heartbeatData, sp02Data);
 }
 
-
+});
 

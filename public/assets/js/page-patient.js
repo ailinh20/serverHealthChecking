@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 if (data.success) {
                                     SPO2 = data.sensor.sp02;
                                     Heart = data.sensor.heartbeat;
-                                    console.log("SPO2: "+ SPO2+ "Heart :"+ Heart)
+                                    console.log("user: "+ user.username+ "SPO2: "+ SPO2+ "Heart :"+ Heart)
                                     displayUser(user, SPO2, Heart);
                                 } else {
                                     console.error('Không thể tìm thấy sensor');

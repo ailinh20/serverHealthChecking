@@ -162,3 +162,21 @@ function handleFeedbackData(data) {
   });
 }
 
+// Thêm sự kiện click cho liên kết "Đăng xuất"
+document.getElementById('loginNavItem').addEventListener('click', function() {
+    // Hiển thị thông báo xác nhận sử dụng SweetAlert
+    Swal.fire({
+        title: 'Bạn có muốn đăng xuất không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đồng ý',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Nếu người dùng nhấp chấp nhận, chuyển hướng về trang login.html
+            window.location.href = '/';
+        }
+    });
+});

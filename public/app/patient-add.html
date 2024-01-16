@@ -357,10 +357,10 @@
                                         <div class="crm-profile-img-edit position-relative">
                                             <img id="profileImage" class="crm-profile-pic rounded avatar-100" 
                                                 src="../assets/images/user/11.png" alt="profile-pic">
-                                            <div class="crm-p-image bg-primary">
-                                                <i class="las la-pen upload-button"></i>
-                                                <input id="inputImage" class="file-upload" type="file" accept="image/*"style="display:none;" onchange="handleImageUpload(event)">
-                                            </div>
+                                                <div class="crm-p-image bg-primary" onclick="document.getElementById('inputImage').click();">
+                                                    <i class="las la-pen upload-button"></i>
+                                                    <input id="inputImage" class="file-upload" type="file" accept="image/*" style="opacity: 0; position: absolute;" onchange="handleImageUpload(event)">
+                                                </div>                                                
                                         </div>
                                     </div>
                                     <div><span>Mạng xã hội</span></div>
@@ -498,6 +498,11 @@
                                                     <option>user</option>
                                                     <option>admin</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="role">idDevice:</label>
+                                                <input class="form-control" id="idDevice"
+                                                placeholder="">
                                             </div>
                                         </div>
                                         <div> 

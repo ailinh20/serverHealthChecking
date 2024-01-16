@@ -145,7 +145,7 @@ function fetchUserInfo(loginIdentifier) {
                 document.getElementById('email').value = data.data.email || '';
                 document.getElementById('History').value = data.data.anamnesis || '';
                 document.getElementById('uname').value = data.data.username || '';
-                document.getElementById('pass').value = data.data.pass || '';
+                // document.getElementById('pass').value = data.data.pass || '';
                 document.getElementById('profileImage').src = data.data.UrlImg || '';
                 document.getElementById('role').value = data.data.role || '';
                 imageUrl = data.data.UrlImg;
