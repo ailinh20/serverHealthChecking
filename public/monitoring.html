@@ -9,6 +9,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>Theo dõi</title>
+  <link rel="shortcut icon" href="images/heartbeat.png" type="">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/heartbeat.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -57,52 +58,83 @@
 
 <body class="sub_page">
   <div class="hero_area">
-    <div id="header-container"></div>
-    <div style="width: 100%">
 
+    <div class="hero_bg_box">
+      <img src="images/hero-bg.png" alt="">
+    </div>
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="/">
+            <span>
+              HEART HEALTH
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="active" href="monitoring.html">Theo dõi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="booking.html">Đặt lịch</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Đăng nhập</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div style="width: 100%">
       <div class="header">
-        <img class="today-icon" src="images/today.png" alt="Today Icon">
+        <img class="today-icon" src="images/today.png" alt="Today Icon" style="width: 10%; max-width: 100vw;">
         <div class="watch">
-          <canvas id="canvas" width="170%" height="170%"></canvas>
+          <canvas id="canvas" width="100%" height="100%"></canvas>
           <div id="weather-info"></div>
         </div>
       </div>
 
+      <div class="yourhealth">
+        <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: 1.5vw; text-align: center; margin-right:2vw">Sức
+          khỏe bạn hôm nay thế nào?</div>
+        <div id="stat" style="float: center; padding-right:2vw">
+          <section id="bpm-display-container">
+            <div id="bpm-display">
+              <output id="bpm-value" title="Heart rate"></output>
+              <label for="bpm-value">bpm</label>
+              <div id="bpm-icon"></div>
+            </div>
+          </section>
+          <section id="bpm-display-container">
+            <div id="spo2-display">
+              <output id="spo2-value" title="SpO2"></output>
+              <label for="spo2-value">SpO2(%)</label>
+            </div>
+          </section>
+          <div id="notification" class="text-animation">
+            <span id="text-content"></span>
+            <div id="face-emoji"></div>
+          </div>
+        </div>
+      </div>
+
       <div id="content">
-
         <div id="note">
-
           <div id="ngaytheodoi">
             <label for="dob" id="lbngaytheodoi">Ngày theo dõi:</label>
             <input type="text" id="dob" name="dob">
           </div>
-
-          <div class="yourhealth" style="margin-left: 50%;">
-            <div style="font-family: UTM Androgyne; color: rgb(6, 55, 39); font-size: x-large; text-align: right; margin:0px">Sức
-              khỏe bạn hôm nay thế nào?</div>
-            <div id="stat" style="float: right;">
-              <section id="bpm-display-container">
-                <div id="bpm-display">
-                  <output id="bpm-value" title="Heart rate"></output>
-                  <label for="bpm-value">bpm</label>
-                  <div id="bpm-icon"></div>
-                </div>
-              </section>
-              <section id="bpm-display-container">
-                <div id="spo2-display">
-                  <output id="spo2-value" title="SpO2"></output>
-                  <label for="spo2-value">SpO2(%)</label>
-                </div>
-              </section>
-              <div id="notification" class="text-animation">
-                <span id="text-content"></span>
-                <div id="face-emoji"></div>
-              </div>
-            </div>
-            <!-- <div id="face-emoji" style="font-size: xx-large; text-align: right; margin-right: 10%;"></div> -->
-          </div>
         </div>
-
         <div class="chart" style="float: right;">
           <div style="width: 100%;">
             <div class="title" id="canH" style="color: rgb(255, 33, 21);">
@@ -120,6 +152,7 @@
       </div>
     </div>
   </div>
+
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -130,19 +163,20 @@
               Liên hệ chúng tôi:
             </h4>
             <div class="contact_link_box">
-              <a href="">
+              <a
+                href="https://www.google.com/maps/place/K%C3%BD+t%C3%BAc+x%C3%A1+Khu+A+%C4%90H+Qu%E1%BB%91c+gia+TP.+H%E1%BB%93+Ch%C3%AD+Minh/@10.8782444,106.8037157,17z/data=!4m16!1m9!3m8!1s0x3174d8a5f4e477e9:0x29d5aeb365cee20b!2zS8O9IHTDumMgeMOhIEtodSBBIMSQSCBRdeG7kWMgZ2lhIFRQLiBI4buTIENow60gTWluaA!8m2!3d10.8782444!4d106.8062906!9m1!1b1!16s%2Fg%2F1tncqcyc!3m5!1s0x3174d8a5f4e477e9:0x29d5aeb365cee20b!8m2!3d10.8782444!4d106.8062906!16s%2Fg%2F1tncqcyc?hl=vi-VN&entry=ttu">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Địa chỉ:
+                  Địa chỉ: KTX khu A, Linh Trung, TP Thủ Đức
                 </span>
               </a>
-              <a href="">
+              <a href="tel:123456789">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
                   Số điện thoại: 123456789
                 </span>
               </a>
-              <a href="">
+              <a href="mailto:someone@example.com">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
                   demo@gmail.com
@@ -150,7 +184,7 @@
               </a>
             </div>
           </div>
-          <div class="footer_social">
+          <!-- <div class="footer_social">
             <a href="">
               <i class="fa fa-facebook" aria-hidden="true"></i>
             </a>
@@ -163,7 +197,7 @@
             <a href="">
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
-          </div>
+          </div> -->
         </div>
 
         <div class="col-md-6 col-lg-2 mx-auto footer_col">
@@ -178,33 +212,20 @@
               <a class="" href="monitoring.html">
                 Theo dõi tình trạng
               </a>
-              <br>
               <a class="" href="booking.html">
                 Đặt lịch
               </a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 footer_col ">
-          <h4>
-            Gửi cho chúng tôi
-          </h4>
-          <form action="#">
-            <input type="email" placeholder="Nhập email:" />
-            <button type="submit">
-              Đăng ký
-            </button>
-          </form>
-        </div>
       </div>
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Me<br><br></a>
+          <a href="#">US<br><br></a>
           &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/">Me</a>
+          <a href="#">US</a>
         </p>
-
       </div>
     </div>
   </footer>

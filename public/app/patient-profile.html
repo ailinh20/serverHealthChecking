@@ -16,7 +16,8 @@
       
       <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-calendar/dist/tui-calendar.css">
       <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css">
-      <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css">  </head>
+      <link rel="stylesheet" href="../assets/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css">  
+      <link rel="stylesheet" href="../css/chart_custom.css"></head>
   <body class="  ">
     <!-- loader Start -->
     <div id="loading">
@@ -285,15 +286,15 @@
                               </li>
                               <li class="nav-item nav-icon dropdown caption-content">
                                 <a href="#" class="search-toggle dropdown-toggle  d-flex align-items-center"
-                                    id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <img src="../assets/images/user/user-2.jpg" class="img-fluid rounded-circle"
-                                        alt="user">
-                                    <div class="caption ml-3">
-                                        <h6 class="mb-0 line-height">Tân Nguyễn<i
-                                                class="las la-angle-down ml-2"></i></h6>
-                                    </div>
-                                </a>
+                                id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <img src="../assets/images/user/user-2.jpg" class="img-fluid rounded-circle"
+                                    alt="user" id="avatarDoctor2">
+                                <div class="caption ml-3">
+                                    <h6 class="mb-0 line-height" id="nameDoctor2"><i
+                                            class="las la-angle-down ml-2"></i></h6>
+                                </div>
+                            </a>
                                 <ul class="dropdown-menu dropdown-menu-right border-none"
                                     aria-labelledby="dropdownMenuButton">
                                     <li class="dropdown-item d-flex svg-icon">
@@ -357,7 +358,7 @@
                <div class="card car-transparent">
                   <div class="card-body p-0">
                      <div class="profile-image position-relative">
-                        <img src="../assets/images/page-img/profile.png" class="img-fluid rounded w-100" alt="profile-image">
+                        <img src="../assets/images/page-img/br.png" class="img-fluid rounded w-100" alt="profile-image">
                      </div>
                   </div>
                </div>
@@ -369,7 +370,7 @@
                   <div class="card-body">
                      <div class="d-flex align-items-center mb-3">
                         <div class="profile-img position-relative">
-                           <img src="../assets/images/user/1.jpg" class="img-fluid rounded avatar-110" alt="profile-image">
+                           <img id="profileImage" src="../assets/images/user/1.jpg" class="img-fluid rounded avatar-110" alt="profile-image">
                         </div>
                         <div class="ml-3">
                            <h4 class="mb-1" id="HoTen">Nguyễn Văn A</h4>
@@ -399,7 +400,7 @@
                               <svg class="svg-icon mr-3" height="16" width="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                               </svg>
-                              <p class="mb-0" id="SoDienThoai">+91 01234 56789</p>   
+                              <p class="mb-0" id="SoDienThoai">+84 01234 56789</p>   
                            </div>
                         </li>
                         <li>
@@ -435,8 +436,8 @@
                                    <h4 class="card-title">Biểu đồ Nhịp tim của bệnh nhân</h4>
                                 </div>
                              </div>
-                             <div class="card-body">
-                                <div id="NhipTim"></div>
+                             <div class="card-body" id="canH">
+                                <canvas id="canvasH"></canvas>
                              </div>
                         </div>
                         <div id="profile2" class="tab-pane fade">
@@ -445,8 +446,8 @@
                                    <h4 class="card-title">Biểu đồ Nồng độ Oxy bệnh nhân</h4>
                                 </div>
                              </div>
-                             <div class="card-body">
-                                <div id="SpO2"></div>
+                             <div class="card-body" id="canS">
+                                <canvas id="canvasS"></canvas>
                              </div>
                         </div>
                         <div id="profile5" class="tab-pane fade">
@@ -753,12 +754,15 @@
     <script async src="../assets/js/chart-custom.js"></script>
     <!-- Chart Custom JavaScript -->
     <script async src="../assets/js/slider.js"></script>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <!-- app JavaScript -->
     <script src="../assets/js/app.js"></script>
     
     <script src="../assets/vendor/moment.min.js"></script>
     <script async src="../scripts/get-patient-profile.js"></script>
+    <script src="../scripts/get-doctor-NameAva.js"></script>
 
   </body>
 </html>
