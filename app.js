@@ -163,9 +163,9 @@ clientMqtt.on('message', (topic, message) => {
     const currentTimeUTC7 = currentTime.utcOffset(7);
     const timing = currentTimeUTC7.format('YYYY-MM-DD HH:mm:ss');
     console.log(`Timing: ${timing}`.cyan.bold);
-
+    
     const data = new SensorModel({
-        idUser: "65a6001ddc23bab886f900f9",
+        idUser: "65a6c5362d40bb5cf9edda45",
         age: "25",
         sp02: sp02,
         heartbeat: heartbeat,

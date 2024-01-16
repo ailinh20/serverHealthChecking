@@ -41,6 +41,7 @@ exports.createUser = asyncHandler(async (req, res, next) => {
             UrlImg: req.body.UrlImg,
             status: req.body.status,
             role: "user",
+            idDevice: req.body.idDevice,
         });
 
         // Lưu người dùng mới vào cơ sở dữ liệu
@@ -86,6 +87,22 @@ exports.getUser = asyncHandler(async (req, res, next) => {
             });
         }
     } catch (err) {
+        return res.status(500).json({ success: false, message: 'Không thể tìm thấy người dùng' });
+    } 
+});
+exports.getUserByIdDv = asyncHandler(async (req, res, next) => {
+    try {
+        user = await UserModel.findOne({ idDevice: req.params.id });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'Không thể tìm thấy người dùng' });
+        } else {
+            res.status(200).json({
+                success: true,
+                data: user
+            });
+        }
+    }
+     catch (err) {
         return res.status(500).json({ success: false, message: 'Không thể tìm thấy người dùng' });
     } 
 });

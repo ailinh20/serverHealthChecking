@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Vui lòng điền username của bạn');
         } else if (document.getElementById('pass').value == '') {
             alert('Vui lòng điền password của bạn');
+        } else if (document.getElementById('idDevice').value == '') {
+            alert('Vui lòng điền idDevice của bạn');
         } else if (password !== confirmPassword) {
             alert('Mật khẩu và xác nhận mật khẩu không khớp.');
         } else {
@@ -142,6 +144,7 @@ function createUser() {
         pass: document.getElementById('pass').value,
         role:document.getElementById('role').value,
         UrlImg: imageUrl,
+        idDevice: document.getElementById('idDevice').value
     };
     
     console.log(createUser); // Log để kiểm tra giá trị
