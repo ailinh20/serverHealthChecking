@@ -10,8 +10,16 @@ function displayListSche(schedules) {
 
         // Tạo các ô dữ liệu
         const cells = [
-            `<td class="text-center"><img class="rounded img-fluid avatar-40" src="${schedule.imgPatient}" alt="profile"></td>`,
-            `<td>${schedule.namePatient}</td>`,
+            `<td class="text-center">
+                <a href="../app/patient-profile.html?username=${schedule.idPatient}">
+                    <img class="rounded img-fluid avatar-40" src="${schedule.imgPatient}" alt="profile">
+                </a>
+            </td>`,
+            `<td>
+                <a href="../app/patient-profile.html?username=${schedule.idPatient}" style="color: black">
+                    ${schedule.namePatient}
+                </a>
+            </td>`,
             `<td>${schedule.genderPatient}</td>`,
             `<td>${schedule.date}</td>`,
             `<td>${schedule.time}</td>`,
@@ -23,9 +31,9 @@ function displayListSche(schedules) {
             </td>`,
             `<td>
                 <div class="flex align-items-center list-user-action">
-                    <a class="btn btn-sm bg-success infor-button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Duyệt" href="#" onclick="updateStatus(1, '${schedule._id}');"><i class="fa fa-check mr-0"></i></a>
-                    <a class="btn btn-sm bg-primary edit-button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hủy" href="#"  onclick="updateStatus(0, '${schedule._id}');"><i class="fa fa-times mr-0"></i></a>
-                    <a class="btn btn-sm bg-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa" href="#" onclick="deleteShedule('${schedule._id}');"><i class="fa fa-trash mr-0"></i></a>
+                    <a class="btn btn-sm bg-success infor-button" data-toggle="tooltip" data-placement="top" title="Duyệt" data-original-title="Duyệt" href="#" onclick="updateStatus(1, '${schedule._id}');"><i class="fa fa-check mr-0"></i></a>
+                    <a class="btn btn-sm bg-primary edit-button" data-toggle="tooltip" data-placement="top" title="Hủy" data-original-title="Hủy" href="#"  onclick="updateStatus(0, '${schedule._id}');"><i class="fa fa-times mr-0"></i></a>
+                    <a class="btn btn-sm bg-danger" data-toggle="tooltip" data-placement="top" title="Xóa" data-original-title="Xóa" href="#" onclick="deleteShedule('${schedule._id}');"><i class="fa fa-trash mr-0"></i></a>
                 </div>
             </td>`
         ];
