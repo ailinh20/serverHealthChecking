@@ -31,6 +31,8 @@
   <!-- Custom Styles for this Template -->
   <link href="/css/style.css" rel="stylesheet" />
 
+  <link href="/css/index.css" rel="stylesheet" />
+
   <!-- Responsive Style -->
   <link href="/css/responsive.css" rel="stylesheet" />
 
@@ -49,10 +51,13 @@
   <!-- Bootstrap JS -->
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
+  <script src="scripts/index.js"></script>
+
   <!-- Owl Slider -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
-
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   <!-- Custom JS -->
   <script type="text/javascript" src="js/custom.js"></script>
 
@@ -535,73 +540,8 @@
         </h2>
       </div>
       <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-md-11 col-lg-10 mx-auto">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/Minh.jpg" alt="" />
-                  </div>
-                  <div class="detail-box">
-                    <div class="name">
-                      <h6>
-                        Nhật Minh
-                      </h6>
-                    </div>
-                    <p>
-                      Bác sĩ tận tình.
-                    </p>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-md-11 col-lg-10 mx-auto">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/Minh.jpg" alt="" />
-                  </div>
-                  <div class="detail-box">
-                    <div class="name">
-                      <h6>
-                        Nhật Minh
-                      </h6>
-                    </div>
-                    <p>
-                      Bác sĩ chuyên nghiệp.
-                    </p>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-md-11 col-lg-10 mx-auto">
-                <div class="box">
-                  <div class="img-box">
-                    <img src="images/Minh.jpg" alt="" />
-                  </div>
-                  <div class="detail-box">
-                    <div class="name">
-                      <h6>
-                        Nhật Minh
-                      </h6>
-                    </div>
-                    <p>
-                      Bác sĩ cho lời khuyên hay.
-                    </p>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div id="feedbackContainer" class="feedback-container">
+          <!-- Các phản hồi sẽ được thêm vào đây -->
         </div>
         <div class="carousel_btn-container">
           <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
@@ -704,6 +644,7 @@
     </div>
   </footer>
   <!-- footer section -->
-
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>

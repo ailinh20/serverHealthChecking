@@ -186,6 +186,13 @@ function handleDayClick(day) {
   updateChart();
 }
 
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 let predict = 0;
 function updateChartConfiguration() {
   const displayedLabelH = labelH.slice(currentIndex, end + 1);
@@ -210,8 +217,8 @@ function updateChartConfiguration() {
   chartS.config.data.datasets[0].data = sp02Data;
 
   const selectedDate = new Date(globalData[end].timing.substring(0, 10));
-  const formattedDate = $.datepicker.formatDate("yy-mm-dd", selectedDate);
-  $("#dob").datepicker("setDate", formattedDate);
+  const formattedDate = formatDate(selectedDate);
+  $("#dob").val(formattedDate);
 
   console.log("end: " + end + "current: " + currentIndex);
   socket.emit('updateEndCurrent', { end, currentIndex });
