@@ -13,17 +13,13 @@ exports.getSensor = asyncHandler(async (req, res, next) => {
         // Tìm sensor có thời gian lớn nhất
         const latestSensor = sensors.reduce((max, sensor) => (sensor.timing > max.timing ? sensor : max));
 
-        const latestData = await SensorModel.findOne({ _id: latestSensor._id })
-            .select('spo2 heartRate timing')
-            .lean();
+        // const latestData = await SensorModel.findOne({ _id: latestSensor._id })
+        //     .select('spo2 heartRate timing')
+        //     .lean();
 
         return res.status(200).json({
             success: true,
-            sensor: latestSensor,
-            latestData: {
-                spo2: latestData.spo2,
-                heartRate: latestData.heartRate
-            }
+            sensor: latestSensor
         });
 
     } catch (err) {
