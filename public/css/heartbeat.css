@@ -40,10 +40,8 @@
 /* BPM and SpO2 circle */
 /* Add these styles for color-coded circles */
 #bpm-display-container {
-  height: 5vw;
-  width: 5vw;
-  max-width: 8vw;
-  max-height: 8vw;
+  height: 80px;
+  width: 80px;
   margin: 0 auto;
   border: 9px solid var(--graph-color);
   border-radius: 100%;

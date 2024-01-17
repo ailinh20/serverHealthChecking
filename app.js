@@ -174,7 +174,10 @@ clientMqtt.on('message', (topic, message) => {
     else if (idDevice == 4) { // Truc
         idUserSet = "65a58f18b29749740cb9ca2e";
     }
-    else if (idDevice == 5) { // Truc
+    else if (idDevice == 5) { // Thanh
+        idUserSet = "65a6001ddc23bab886f900f9";
+    }
+    else if (idDevice == 6) { // Thanh
         idUserSet = "65a6001ddc23bab886f900f9";
     }
     const data = new SensorModel({
