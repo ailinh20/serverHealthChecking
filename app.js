@@ -140,8 +140,6 @@ clientMqtt.on('connect', () => {
 clientMqtt.on('message', (topic, message) => {
     //message is a Buffer
     let strMessage = message.toString();
-    console.log("********".cyan.bold);
-    console.log(strMessage.cyan.bold);
 
     //Split messsage
     let dataArray = strMessage.split("\n");
