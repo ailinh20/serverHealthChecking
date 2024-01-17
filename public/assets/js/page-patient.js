@@ -81,7 +81,7 @@ function displayUser(user, sp02, heartbeat) {
              <a href="../app/patient-profile.html?username=${user.username}">
                 <h4 class="mb-2">${user.name}</h4>
              </a>
-             <p class="mb-3" id="SoDienThoai">${user.phoneNumber}</p>
+             <p class="mb-3" id="idDevice">ID Device: ${user.idDevice}</p>
           
           <div class="odr-img">
              <img src="${user.UrlImg}" alt="Avatar" class="img-fluid rounded-circle avatar-90 m-auto"> <!-- Thêm hình ảnh -->
