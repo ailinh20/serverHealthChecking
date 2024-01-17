@@ -20,7 +20,7 @@ function displayListUser(users) {
             `<td>${user.dayOfBirth}</td>`,
             `<td>${user.phoneNumber}</td>`,
             `<td>${user.email}</td>`,
-            `<td><span class="badge ${user.status === "Chờ" ? 'bg-primary' : 'bg-danger'}">${user.status === 1 ? 'Bình thường' : 'Nguy cơ'}</span></td>`,
+            `<td><span class="badge ${user.status === 1 ? 'bg-primary' : 'bg-danger'}">${user.status === 1 ? 'Bình thường' : 'Nguy cơ'}</span></td>`,
             `<td>
                 <div class="flex align-items-center list-user-action">
                     <a class="btn btn-sm bg-primary info-button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xem" href="../app/patient-profile.html?username=${user.username}"><i class="ri-menu-3-line mr-0"></i></a>
