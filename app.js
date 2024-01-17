@@ -161,15 +161,30 @@ clientMqtt.on('message', (topic, message) => {
     const currentTimeUTC7 = currentTime.utcOffset(7);
     const timing = currentTimeUTC7.format('YYYY-MM-DD HH:mm:ss');
     console.log(`Timing: ${timing}`.cyan.bold);
-    
+    var idUserSet;
+    if (idDevice == 1) { //Huyen
+        idUserSet = "65a503da0bda96ed10dfb682";
+    }
+    else if (idDevice == 2) { // AiLinh
+        idUserSet = "65a503ab0bda96ed10dfb678";
+    }
+    else if (idDevice == 10) { // Minh
+        idUserSet = "65a55e24c014d7c201f36a2f";
+    }
+    else if (idDevice == 15) { // Truc
+        idUserSet = "65a58f18b29749740cb9ca2e";
+    }
+    else if (idDevice == 12) { // Truc
+        idUserSet = "65a6001ddc23bab886f900f9";
+    }
     const data = new SensorModel({
-        idUser: "65a503da0bda96ed10dfb682",
+        idUser: idUserSet,
         age: "25",
         sp02: sp02,
         heartbeat: heartbeat,
         timing: timing,
         idDevice: idDevice
-  })
+    })
     data.save()
         .then(() => {
             console.log('Data saved to MongoDB'.green.bold);
@@ -267,7 +282,7 @@ app.get('/index.html', (req, res) => {
 });
 
 app.get('/api/getall', async (req, res) => {
-    try{
+    try {
         const data = await SensorModel.find();
         console.log('Data from MongoDB:', data);
         res.json(data)
