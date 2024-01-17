@@ -148,6 +148,7 @@ function fetchUserInfo(loginIdentifier) {
                 // document.getElementById('pass').value = data.data.pass || '';
                 document.getElementById('profileImage').src = data.data.UrlImg || '';
                 document.getElementById('role').value = data.data.role || '';
+                document.getElementById('idDevice').value = data.data.idDevice || '';
                 imageUrl = data.data.UrlImg;
                 resolve();
             } else {
@@ -197,6 +198,7 @@ function updateUser(username) {
         username: document.getElementById('uname').value,
         pass: document.getElementById('pass').value,
         role:document.getElementById('role').value,
+        idDevice:document.getElementById('idDevice').value,
         UrlImg: imageUrl,
     };
     
