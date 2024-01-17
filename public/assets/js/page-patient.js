@@ -1,5 +1,9 @@
+let contentChange = document.getElementById('displayUser');
 document.addEventListener('DOMContentLoaded', function () {
-    // Gọi API để lấy danh sách tất cả người dùng
+    getDataSensor();
+});
+
+function getDataSensor(){
     fetch('/api/v1/user')
         .then(response => response.json())
         .then(data => {
@@ -47,15 +51,26 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Lỗi khi gọi API getAllUsers:', error);
         });
+}
 
+const socket = io();
+
+socket.on('newData', function (data) {
+    updateUser(data.idUser, data.sp02, data.heartbeat);
 });
 
+function updateUser(user, sp02, heartbeat){
+    var m_bpm = document.getElementById(`bpm ${user}`);
+    var m_spo2 = document.getElementById(`spo2 ${user}`);
+    m_bpm.innerHTML = `${heartbeat}`
+    m_spo2.innerHTML = `${sp02}`
+}
 
 function displayUser(user, sp02, heartbeat) {
     // Tạo một phần tử div mới cho mỗi người dùng
     const userDiv = document.createElement('div');
     userDiv.className = 'col-lg-4 col-md-6';
-
+    
     // Thêm nội dung HTML cho người dùng
     userDiv.innerHTML = `
 
@@ -74,14 +89,14 @@ function displayUser(user, sp02, heartbeat) {
           <div id="stat" class = "odr-content">
              <section id="bpm-display-container">
                 <div id="bpm-display">
-                   <output id="bpm-value" title="Heart rate">${sp02}</output>
+                   <output id="bpm ${user._id}" class="bpm-value" title="Heart rate">${heartbeat}</output>
                    <label for="bpm-value">bpm</label>
                    <div id="bpm-icon"></div>
                 </div>
              </section>
              <section id="bpm-display-container">
                 <div id="spo2-display">
-                   <output id="spo2-value" title="SpO2">${heartbeat}</output>
+                   <output id="spo2 ${user._id}" class="spo2-value" title="SpO2">${sp02}</output>
                    <label for="spo2-value">SpO2(%)</label>
                 </div>
              </section>
@@ -99,5 +114,5 @@ function displayUser(user, sp02, heartbeat) {
     `;
 
     // Thêm người dùng vào trang web
-    document.getElementById('displayUser').appendChild(userDiv);
+    contentChange.appendChild(userDiv);
 }

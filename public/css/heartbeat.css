@@ -68,6 +68,12 @@
   font-weight: bolder;
 }
 
+.bpm-value {
+  display: block;
+  font-size: 1rem;
+  font-family: UTM Androgyne;
+  color: rgb(42, 165, 161);
+}
 #bpm-value {
   display: block;
   font-size: 1rem;
@@ -90,6 +96,12 @@
   font-weight: bolder;
 }
 
+.spo2-value {
+  display: block;
+  font-size: 1rem;
+  font-family: UTM Androgyne;
+  color: rgb(42, 165, 161);
+}
 #spo2-value {
   display: block;
   font-size: 1rem;
