@@ -168,13 +168,13 @@ clientMqtt.on('message', (topic, message) => {
     else if (idDevice == 2) { // AiLinh
         idUserSet = "65a503ab0bda96ed10dfb678";
     }
-    else if (idDevice == 10) { // Minh
+    else if (idDevice == 3) { // Minh
         idUserSet = "65a55e24c014d7c201f36a2f";
     }
-    else if (idDevice == 15) { // Truc
+    else if (idDevice == 4) { // Truc
         idUserSet = "65a58f18b29749740cb9ca2e";
     }
-    else if (idDevice == 12) { // Truc
+    else if (idDevice == 5) { // Truc
         idUserSet = "65a6001ddc23bab886f900f9";
     }
     const data = new SensorModel({
